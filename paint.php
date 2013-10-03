@@ -2,12 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
+    <meta name="dcterms.created" content="jeu., 03 oct. 2013 19:34:09 GMT">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
-
-    <title>Roofing visualization</title>
+    <meta name="keywords" content="">
+	
+	<?php
+$target_Path = "images/";
+$target_Path = $target_Path.basename( $_FILES['userFile']['name'] );
+move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
+?>
+	
+    <title>Créer les pentes</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -44,16 +50,7 @@
       </div>
     </div>
 
-<div class="container">
-	<form role="form"  enctype="multipart/form-data" action="paint.php" method="POST">
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" name="userFile" id="exampleInputFile">
-    <p class="help-block">Choose the image you want to work on</p>
 
-  <button type="submit" class="btn btn-default-lg">Submit</button>
-</form>
-</div>
   
 
 
