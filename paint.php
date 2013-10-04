@@ -12,7 +12,9 @@ $target_Path = "images/";
 $target_Path = $target_Path.basename( $_FILES['userFile']['name'] );
 move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
 ?>
-	
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+<meta charset=utf-8 />
+
     <title>Créer les pentes</title>
 
     <!-- Bootstrap core CSS -->
@@ -49,7 +51,22 @@ move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
         </div>
       </div>
     </div>
+<div class="box">
+<img src="<?php echo $target_Path ?>" class="img-polaroid" /></div>
 
+<script>
+$(document).ready(function() {
+  $('.box').click(function(e) {
+    var offset = $(this).offset();
+    $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
+  });
+});
+</script>
+</div>
+
+<div class="btn btn-default btn-lg">Ajouter un versant</button>
+</div> 
+<p id="position"></p>
 
   
 

@@ -47,12 +47,13 @@
 <div class="container">
 	<form role="form"  enctype="multipart/form-data" action="paint.php" method="POST">
   <div class="form-group">
-    <label for="exampleInputFile">File input</label>
+   <br> <label for="exampleInputFile">File input</label> </br>
     <input type="file" name="userFile" id="exampleInputFile">
     <p class="help-block">Choose the image you want to work on</p>
 
-  <button type="submit" class="btn btn-default-lg">Submit</button>
-</form>
+  <button type="submit" class="btn btn-default btn-lg">Submit</button>
+    </form>
+  </div>
 </div>
   
 
