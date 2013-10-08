@@ -15,7 +15,7 @@ move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
 <meta charset=utf-8 />
 
-    <title>Créer les pentes</title>
+    <title>CrÃ©er les pentes</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -27,7 +27,7 @@ move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
   <style>
-
+ 
  body {
   padding-top: 50px;
 }
@@ -51,80 +51,41 @@ move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
         </div>
       </div>
     </div>
-<div><button class="btn btn-large" id="debuter">Débuter</button>
-<script type="text/javascript">
- 
-$(document).ready(function() {
-  $('#debuter').click(function () {
-  $('#angle').hide();
-  $('#pente').hide();
-  });
-});
-
-</script>
-
-
-
-</div>	
-<div class="box" id="target">
-
+<div class="box">
 <img src="<?php echo $target_Path ?>" class="img-polaroid" /></div>
-
 <script>
 $(document).ready(function() {
   $('.box').click(function(e) {
     var offset = $(this).offset();
   $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
-  $('.tabpos').append('<div class="position"><p id="position"></p></p></div>' );
   });
 });
 </script>
-<div class="table">
 
-
-  <button class="btn" id="versant">Submit versant</button>
-  <button class="btn" id="angle">Submit angle</button>
-  <button class="btn" id ="pente">Submit pente</button>
-</div>
-<div class ="tabpos">
-
-</div>
-
-
-  <!--<p id="position"></p> 
-<script>
+<script type="text/javascript" language="javascript">
 $(document).ready(function() {
-   $(".box").click(function(e) { 
-   $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
-   });
+//  $('.box').click(function(e) {
+    $("div").click(function () {
+    var offset = $(this).offset();
+	$(this).append('<div class="inner"><p id="position"></p></div>' );
+//  $( ".inner" ).append('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
+	//});
+  });
 });
-
 </script>
-<script>
-$(document).ready(function() {
-   $("div").click(function() {    
-      $(this).append('<div class="div"><p id="position"></p></div>' );
-	 // $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
-
-// var offset = $(this).offset();
- // $( "#target" ).click(function() {
-  //  alert( "Handler for .click() called." );
-//});
- // $('.box').click(function(e) {
-    
- // $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
-     
-   });
-});
-//<p id="position"></p>
-</script>
-
-
-
+</div>
 
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
+<div class="container">
+  <div class="inner"></div>
 
+  
+</div>
+
+
+
+  
 
 
     <!-- Bootstrap core JavaScript
