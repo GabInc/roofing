@@ -26,7 +26,8 @@ move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
-  <style>
+
+<style>
 
  body {
   padding-top: 50px;
@@ -35,11 +36,16 @@ move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
   padding: 40px 15px;
   text-align: center;
 }
+
+img{
+    max-width:640px;
+	cursor: crosshair;
+}
  
   </style>
   </head>
 
-  <body>
+  <body onmousemove="capmouse(event)">
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -51,14 +57,16 @@ move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
         </div>
       </div>
     </div>
-<div><button class="btn btn-large" id="debuter">Débuter</button>
 <script type="text/javascript">
  
 $(document).ready(function() {
-  $('#debuter').click(function () {
   $('#angle').hide();
   $('#pente').hide();
-  });
+  $('#submitall').hide();
+  $('#editversant').hide();
+  $('#editangle').hide();
+  $('#editpente').hide();
+  
 });
 
 </script>
@@ -66,9 +74,29 @@ $(document).ready(function() {
 
 
 </div>	
-<div class="box" id="target">
+<div class="box" id="box">
 
-<img src="<?php echo $target_Path ?>" class="img-polaroid" /></div>
+<img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/>
+<script type="text/javascript">
+        $("#testimg").click(function (ev) {
+        mouseX = ev.pageX;
+        mouseY = ev.pageY
+        //alert(mouseX + ' ' + mouseY);
+        var color = '#000000';
+        var size = '3px';
+        $("body").append(
+            $('<div></div>')
+                .css('position', 'absolute')
+                .css('top', mouseY + 'px')
+                .css('left', mouseX + 'px')
+                .css('width', size)
+                .css('height', size)
+                .css('background-color', color)
+        );
+    })
+</script>
+
+</div>
 
 <script>
 $(document).ready(function() {
@@ -82,9 +110,59 @@ $(document).ready(function() {
 <div class="table">
 
 
-  <button class="btn" id="versant">Submit versant</button>
-  <button class="btn" id="angle">Submit angle</button>
-  <button class="btn" id ="pente">Submit pente</button>
+<button class="btn btn-primary" id="versant">Submit versant</button>
+<button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
+<button class="btn btn-primary" id="angle">Submit angle</button>
+<button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
+<button class="btn btn-primary" id ="pente">Save versant</button>
+<button class="btn btn-mini" id="editpente"><span class="glyphicon glyphicon-arrow-left"></span></button>
+<button class="btn btn-primary" id ="submitall">Create images</button>
+<script>
+$(document).ready(function() {
+  $('#versant').click(function () {
+  $('#editversant').show(500);
+  $('#angle').show(500);
+  $('#versant').attr('class','btn');  
+  });
+}); 
+</script>  
+
+<script>
+$(document).ready(function() {
+  $('#angle').click(function () {
+  $('#editangle').show(500);
+  $('#pente').show(500);
+  $('#angle').attr('class','btn');  
+  });
+}); 
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#pente').click(function () {
+  $('#editpente').show(500);
+  $('#submitall').show(500);
+  $('#pente').attr('class','btn');  
+  });
+}); 
+</script>
+<script>
+$(document).ready(function() {
+  $('#submitall').click(function () {
+  $('#editversant').hide(500);
+  $('#angle').hide(500);
+  $('#editangle').hide(500);
+  $('#pente').hide(500);
+  $('#editpente').hide(500);
+  $('#submitall').hide(500);
+  });
+}); 
+</script>
+
+
+
+
+
 </div>
 <div class ="tabpos">
 
