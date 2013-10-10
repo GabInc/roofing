@@ -41,7 +41,14 @@ img{
     max-width:640px;
 	cursor: crosshair;
 }
- 
+.position{  
+    width:100px;
+    border-width: 1px; 
+	border-style: solid; 
+	border-color: #000000;
+
+
+}
   </style>
   </head>
 
@@ -60,20 +67,30 @@ img{
 <script type="text/javascript">
  
 $(document).ready(function() {
-  $('#angle').hide();
+  $('#boutonangle').hide();
   $('#pente').hide();
   $('#submitall').hide();
   $('#editversant').hide();
   $('#editangle').hide();
   $('#editpente').hide();
+  $('#eraselast').hide();  
+  
   
 });
 
 </script>
 
+<script>
+$(document).ready(function() {
+  $('#testimg').click(function(e) {
+    if ( $('#tabpos').children().length > 2 ) {
+     $('#versant').removeAttr('disabled'); 
+	 }
+  });
+});
 
 
-</div>	
+</script>
 <div class="box" id="box">
 
 <img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/>
@@ -100,29 +117,41 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-  $('.box').click(function(e) {
+  $('#testimg').click(function(e) {
     var offset = $(this).offset();
-  $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
-  $('.tabpos').append('<div class="position"><p id="position"></p></p></div>' );
+	var msg = "";
+ msg += event.pageX + ", " + event.pageY;
+  $( ".tabpos" ).append( "<div>" + msg + "</div>" );
+  $('#eraselast').show(350);
   });
 });
 </script>
 <div class="table">
 
 
-<button class="btn btn-primary" id="versant">Submit versant</button>
+<button class="btn btn-primary" id="versant" disabled="disabled">Submit positons</button>
 <button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
-<button class="btn btn-primary" id="angle">Submit angle</button>
+<div class="btn-group-vertical" id="boutonangle">
+<button type="radio" class="btn btn-primary" id="angle" disabled="disabled">Submit angle</button>
+<button type="radio" class="btn btn-primary" id="angle1">45°</button>
+<button type="radio" class="btn btn-primary" id="angle2">90°</button>
+<button type="radio" class="btn btn-primary" id="angle3">135°</button>
+</div>
 <button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
-<button class="btn btn-primary" id ="pente">Save versant</button>
+<button class="btn btn-primary" id ="pente" disabled="disabled">Submit pente</button>
 <button class="btn btn-mini" id="editpente"><span class="glyphicon glyphicon-arrow-left"></span></button>
 <button class="btn btn-primary" id ="submitall">Create images</button>
+
+<!--Versant
+    ================================================== -->
 <script>
 $(document).ready(function() {
   $('#versant').click(function () {
   $('#editversant').show(500);
-  $('#angle').show(500);
+  $('#boutonangle').show(500);
+  $('#eraselast').hide(500);
   $('#versant').attr('class','btn');  
+  $('#versant').prop("disabled", true);
   });
 }); 
 </script>  
@@ -133,6 +162,10 @@ $(document).ready(function() {
   $('#editangle').show(500);
   $('#pente').show(500);
   $('#angle').attr('class','btn');  
+  $('#angle1').prop("disabled", true);
+  $('#angle2').prop("disabled", true);
+  $('#angle3').prop("disabled", true);
+  $('#angle').prop("disabled", true);
   });
 }); 
 </script>
@@ -150,57 +183,68 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('#submitall').click(function () {
   $('#editversant').hide(500);
-  $('#angle').hide(500);
+  $('#boutonangle').hide(500);
   $('#editangle').hide(500);
   $('#pente').hide(500);
   $('#editpente').hide(500);
   $('#submitall').hide(500);
+  $('#tabpos').empty(500);
+  $('#versant').attr('class','btn btn-primary');
+  $('#angle').attr('class','btn btn-primary');
+  $('#pente').attr('class','btn btn-primary');
+  });
+}); 
+</script>
+
+<!-- Angle
+    ================================================== -->
+<script>
+$(document).ready(function() {
+  $('#angle1').click(function () {
+  $('#angle').removeAttr('disabled');
+
+  });
+}); 
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#angle2').click(function () {
+  $('#angle').removeAttr('disabled'); 
+  });
+}); 
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#angle3').click(function () {
+  $('#angle').removeAttr('disabled');
+  
+  });
+}); 
+</script>
+
+
+</div>
+<div class ="tabpos" id="tabpos">
+
+</div>
+<div></div>
+<div>
+<button class="btn btn-danger" id="eraselast">Erase last</button>
+<script>
+$(document).ready(function() {
+  $('#eraselast').click(function () {
+  $('#tabpos').children("div:last").remove();
+  $("body").children("div:last").remove();  
   });
 }); 
 </script>
 
 
 
-
-
-</div>
-<div class ="tabpos">
-
 </div>
 
-
-  <!--<p id="position"></p> 
-<script>
-$(document).ready(function() {
-   $(".box").click(function(e) { 
-   $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
-   });
-});
-
-</script>
-<script>
-$(document).ready(function() {
-   $("div").click(function() {    
-      $(this).append('<div class="div"><p id="position"></p></div>' );
-	 // $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
-
-// var offset = $(this).offset();
- // $( "#target" ).click(function() {
-  //  alert( "Handler for .click() called." );
-//});
- // $('.box').click(function(e) {
-    
- // $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
-     
-   });
-});
-//<p id="position"></p>
-</script>
-
-
-
-
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
 
 
