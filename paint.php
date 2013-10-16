@@ -87,7 +87,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   $('#testimg').click(function(e) {
-    if ( $('#tabpos').children().length > 1 ) {
+    if (( $('#tabpos').children().length > 1 )&&( $("#testimg").hasClass("img-polaroid") )){
      $('#versant').removeAttr('disabled'); 
 	 }
   });
@@ -98,13 +98,17 @@ $(document).ready(function() {
 <div class="box" id="box">
 
 <img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/>
+
+
+</div>
 <script type="text/javascript">
-        $("#testimg").click(function (ev) {
+    $("#testimg").click(function (ev) {
         mouseX = ev.pageX;
-        mouseY = ev.pageY
+        mouseY = ev.pageY;
         //alert(mouseX + ' ' + mouseY);
         var color = '#000000';
         var size = '3px';
+		if ( $("#testimg").hasClass("img-polaroid") ) {
         $("body").append(
             $('<div class="point"></div>')
                 .css('position', 'absolute')
@@ -112,21 +116,22 @@ $(document).ready(function() {
                 .css('left', mouseX + 'px')
                 .css('width', size)
                 .css('height', size)
-                .css('background-color', color)
-        );
-    })
+                .css('background-color', color));
+				}
+
+    });
+
 </script>
-
-</div>
-
 <script>
 $(document).ready(function() {
   $('#testimg').click(function(e) {
     var offset = $(this).offset();
 	var msg = "";
  msg += event.pageX + ", " + event.pageY;
+ if ( $("#testimg").hasClass("img-polaroid") ) {
   $( ".tabpos" ).append( "<div>" + msg + "</div>" );
   $('#eraselast').show(350);
+  }
   });
 });
 </script>
@@ -136,14 +141,13 @@ $(document).ready(function() {
 <button class="btn btn-primary" id="versant" disabled="disabled">Submit positons</button>
 <button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
 <div class="btn-group-vertical" id="boutonangle">
-<button type="radio" class="btn btn-primary" id="angle" disabled="disabled">Submit angle</button>
+
 <button type="radio" class="btn btn-primary" id="angle1">45°</button>
 <button type="radio" class="btn btn-primary" id="angle2">90°</button>
 <button type="radio" class="btn btn-primary" id="angle3">135°</button>
 </div>
 <button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
 <div class="btn-group-vertical" id="boutonpente">
-<button class="btn btn-primary" id ="pente" disabled="disabled">Submit pente</button>
 <button type="radio" class="btn btn-primary" id="pente1">4/12</button>
 <button type="radio" class="btn btn-primary" id="pente2">6/12</button>
 <button type="radio" class="btn btn-primary" id="pente3">8/12</button>
@@ -165,6 +169,8 @@ $(document).ready(function() {
   $('#eraselast').hide(500);
   $('#versant').attr('class','btn');  
   $('#versant').prop("disabled", true);
+  $('.img-polaroid').removeClass("img-polaroid");
+ // $('#testimg').attr('disabled','disabled');
   });
 }); 
 </script>  
@@ -177,6 +183,8 @@ $(document).ready(function() {
   $('#eraselast').show(500);
   $('#versant').attr('class','btn btn-primary');  
   $('#versant').prop("disabled", false);
+  $('#testimg').addClass("img-polaroid");
+ // $('#testimg').prop("disabled", false);
   });
 }); 
 </script>  
@@ -188,14 +196,40 @@ $(document).ready(function() {
     ================================================== -->
 <script>
 $(document).ready(function() {
-  $('#angle').click(function () {
+  $('#angle1').click(function () {
   $('#editangle').show(500);
   $('#boutonpente').show(500);
   $('#angle').attr('class','btn');  
   $('#angle1').prop("disabled", true);
   $('#angle2').prop("disabled", true);
   $('#angle3').prop("disabled", true);
-  $('#angle').prop("disabled", true);
+  $('#editversant').prop("disabled", true);
+  });
+}); 
+</script>
+<script>
+$(document).ready(function() {
+  $('#angle2').click(function () {
+  $('#editangle').show(500);
+  $('#boutonpente').show(500);
+  $('#angle').attr('class','btn');  
+  $('#angle1').prop("disabled", true);
+  $('#angle2').prop("disabled", true);
+  $('#angle3').prop("disabled", true);
+  $('#editversant').prop("disabled", true);
+  });
+}); 
+</script>
+<script>
+$(document).ready(function() {
+  $('#angle3').click(function () {
+  $('#editangle').show(500);
+  $('#boutonpente').show(500);
+  $('#angle').attr('class','btn');  
+  $('#angle1').prop("disabled", true);
+  $('#angle2').prop("disabled", true);
+  $('#angle3').prop("disabled", true);
+  $('#editversant').prop("disabled", true);
   });
 }); 
 </script>
@@ -204,16 +238,15 @@ $(document).ready(function() {
   $('#editangle').click(function () {
   $('#editangle').hide(500);
   $('#boutonpente').hide(500);
-  $('#angle').attr('class','btn btn-primary');  
   $('#angle1').prop("disabled", false);
   $('#angle2').prop("disabled", false);
   $('#angle3').prop("disabled", false);
-  $('#angle').prop("disabled", false);
+  $('#editversant').prop("disabled", false);
   });
 }); 
 </script>
 
-<script>
+<!--<script>
 $(document).ready(function() {
   $('#angle1').click(function () {
   $('#angle').removeAttr('disabled');
@@ -242,31 +275,255 @@ $(document).ready(function() {
     ================================================== -->
 <script>
 $(document).ready(function() {
-  $('#pente').click(function () {
-  $('#editpente').show(500);
-  $('#boutonsubmit').show(500);
-  $('#pente').attr('class','btn');  
+  $('#pente1').click(function () {
+  //$('#editpente').show(500);
+  //$('#boutonsubmit').show(500);
   $('#pente1').prop("disabled", true);
   $('#pente2').prop("disabled", true);
   $('#pente3').prop("disabled", true);
   $('#pente4').prop("disabled", true);
   $('#pente5').prop("disabled", true);
-  $('#pente').prop("disabled", true);
+  $('#editangle').prop("disabled", true);
+ // $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' );
   });
 }); 
 </script>
+<script>	
+$(document).ready(function() {
+var n = 0;
+var msg = "Versant";
+var name = 'Versant'
+  $('#boutonpente').click(function () { 
+  $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li id="' + name + msg + (n += 0) + '"><a href="">delete</a></li></ul></div>' ); 
+  
+  });  
+});
+</script>
+
 <script>
 $(document).ready(function() {
-  $('#editpente').click(function () {
-  $('#editpente').hide(500);
-  $('#submitall').hide(500);
-  $('#pente').attr('class','btn btn-primary');  
+  $('#pente1').click(function () {
+  $('#editversant').hide(500);
+  $('#boutonangle').hide(500);
+  $('#editangle').hide(500);
+  $('#boutonpente').hide(500);
+ // $('#editpente').hide(500);
+ // $('#boutonsubmit').hide(500);
+  $('#submitall').show(500);
+  $('#tabpos').empty(500);
+  $('#versant').attr('class','btn btn-primary');
+ // $('#angle').attr('class','btn btn-primary');
+ // $('#pente').attr('class','btn btn-primary');
+  $('#versant').prop("disabled", true);
+  //$('#pente').prop("disabled", true);
+ // $('#angle').prop("disabled", true);
+  $('#angle1').prop("disabled", false);
+  $('#angle2').prop("disabled", false);
+  $('#angle3').prop("disabled", false);
   $('#pente1').prop("disabled", false);
   $('#pente2').prop("disabled", false);
   $('#pente3').prop("disabled", false);
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
-  $('#pente').prop("disabled", false);
+  $('.point').remove(); 
+  $('#testimg').addClass("img-polaroid");
+  });  
+});
+</script>
+<script>
+$(document).ready(function() {
+  $('#pente2').click(function () {
+//  $('#editpente').show(500);
+ // $('#boutonsubmit').show(500);
+  $('#pente1').prop("disabled", true);
+  $('#pente2').prop("disabled", true);
+  $('#pente3').prop("disabled", true);
+  $('#pente4').prop("disabled", true);
+  $('#pente5').prop("disabled", true);
+  $('#editangle').prop("disabled", true);
+ // $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' );
+  });
+}); 
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#pente2').click(function () {
+  $('#editversant').hide(500);
+  $('#boutonangle').hide(500);
+  $('#editangle').hide(500);
+  $('#boutonpente').hide(500);
+ // $('#editpente').hide(500);
+ // $('#boutonsubmit').hide(500);
+  $('#submitall').show(500);
+  $('#tabpos').empty(500);
+  $('#versant').attr('class','btn btn-primary');
+ // $('#angle').attr('class','btn btn-primary');
+ // $('#pente').attr('class','btn btn-primary');
+  $('#versant').prop("disabled", true);
+  //$('#pente').prop("disabled", true);
+ // $('#angle').prop("disabled", true);
+  $('#angle1').prop("disabled", false);
+  $('#angle2').prop("disabled", false);
+  $('#angle3').prop("disabled", false);
+  $('#pente1').prop("disabled", false);
+  $('#pente2').prop("disabled", false);
+  $('#pente3').prop("disabled", false);
+  $('#pente4').prop("disabled", false);
+  $('#pente5').prop("disabled", false);
+  $('.point').remove(); 
+  $('#testimg').addClass("img-polaroid");
+  });  
+});
+</script>
+<script>
+$(document).ready(function() {
+  $('#pente3').click(function () {
+ // $('#editpente').show(500);
+ // $('#boutonsubmit').show(500);
+  $('#pente1').prop("disabled", true);
+  $('#pente2').prop("disabled", true);
+  $('#pente3').prop("disabled", true);
+  $('#pente4').prop("disabled", true);
+  $('#pente5').prop("disabled", true);
+  $('#editangle').prop("disabled", true);
+//  $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' );
+  });
+}); 
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#pente3').click(function () {
+  $('#editversant').hide(500);
+  $('#boutonangle').hide(500);
+  $('#editangle').hide(500);
+  $('#boutonpente').hide(500);
+//  $('#editpente').hide(500);
+//  $('#boutonsubmit').hide(500);
+  $('#submitall').show(500);
+  $('#tabpos').empty(500);
+  $('#versant').attr('class','btn btn-primary');
+ // $('#angle').attr('class','btn btn-primary');
+ // $('#pente').attr('class','btn btn-primary');
+  $('#versant').prop("disabled", true);
+ // $('#pente').prop("disabled", true);
+//  $('#angle').prop("disabled", true);
+  $('#angle1').prop("disabled", false);
+  $('#angle2').prop("disabled", false);
+  $('#angle3').prop("disabled", false);
+  $('#pente1').prop("disabled", false);
+  $('#pente2').prop("disabled", false);
+  $('#pente3').prop("disabled", false);
+  $('#pente4').prop("disabled", false);
+  $('#pente5').prop("disabled", false);
+  $('.point').remove(); 
+  $('#testimg').addClass("img-polaroid");
+  });  
+});
+</script>
+<script>
+$(document).ready(function() {
+  $('#pente4').click(function () {
+ // $('#editpente').show(500);
+ // $('#boutonsubmit').show(500);
+  $('#pente1').prop("disabled", true);
+  $('#pente2').prop("disabled", true);
+  $('#pente3').prop("disabled", true);
+  $('#pente4').prop("disabled", true);
+  $('#pente5').prop("disabled", true);
+  $('#editangle').prop("disabled", true);
+ // $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' );
+  });
+}); 
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#pente4').click(function () {
+  $('#editversant').hide(500);
+  $('#boutonangle').hide(500);
+  $('#editangle').hide(500);
+  $('#boutonpente').hide(500);
+//  $('#editpente').hide(500);
+//  $('#boutonsubmit').hide(500);
+  $('#submitall').show(500);
+  $('#tabpos').empty(500);
+  $('#versant').attr('class','btn btn-primary');
+ // $('#angle').attr('class','btn btn-primary');
+//  $('#pente').attr('class','btn btn-primary');
+  $('#versant').prop("disabled", true);
+ // $('#pente').prop("disabled", true);
+ // $('#angle').prop("disabled", true);
+  $('#angle1').prop("disabled", false);
+  $('#angle2').prop("disabled", false);
+  $('#angle3').prop("disabled", false);
+  $('#pente1').prop("disabled", false);
+  $('#pente2').prop("disabled", false);
+  $('#pente3').prop("disabled", false);
+  $('#pente4').prop("disabled", false);
+  $('#pente5').prop("disabled", false);
+  $('.point').remove(); 
+  $('#testimg').addClass("img-polaroid");
+  });  
+});
+</script>
+<script>
+$(document).ready(function() {
+  $('#pente5').click(function () {
+  //$('#editpente').show(500);
+ // $('#boutonsubmit').show(500);
+  $('#pente1').prop("disabled", true);
+  $('#pente2').prop("disabled", true);
+  $('#pente3').prop("disabled", true);
+  $('#pente4').prop("disabled", true);
+  $('#pente5').prop("disabled", true);
+  $('#editangle').prop("disabled", true);
+ // $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' );
+  });
+}); 
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#pente5').click(function () {
+  $('#editversant').hide(500);
+  $('#boutonangle').hide(500);
+  $('#editangle').hide(500);
+  $('#boutonpente').hide(500);
+ // $('#editpente').hide(500);
+ // $('#boutonsubmit').hide(500);
+  $('#submitall').show(500);
+  $('#tabpos').empty(500);
+  $('#versant').attr('class','btn btn-primary');
+ // $('#angle').attr('class','btn btn-primary');
+//  $('#pente').attr('class','btn btn-primary');
+  $('#versant').prop("disabled", true);
+//  $('#pente').prop("disabled", true);
+//  $('#angle').prop("disabled", true);
+  $('#angle1').prop("disabled", false);
+  $('#angle2').prop("disabled", false);
+  $('#angle3').prop("disabled", false);
+  $('#pente1').prop("disabled", false);
+  $('#pente2').prop("disabled", false);
+  $('#pente3').prop("disabled", false);
+  $('#pente4').prop("disabled", false);
+  $('#pente5').prop("disabled", false);
+  $('.point').remove(); 
+  $('#testimg').addClass("img-polaroid");
+  });  
+});
+</script>
+<!--<script>
+$(document).ready(function() {
+  $('#editpente').click(function () {
+  $('#editpente').hide(500);
+  $('#submitall').hide(500);
+  $('#pente1').prop("disabled", false);
+  $('#pente2').prop("disabled", false);
+  $('#pente3').prop("disabled", false);
+  $('#pente4').prop("disabled", false);
+  $('#pente5').prop("disabled", false);
   });
 }); 
 </script>
@@ -319,7 +576,7 @@ var n = 0;
 var msg = "Versant";
 var name = 'Versant'
   $('#addversant').click(function () { 
-  $('.versants').append('<button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button>' ); 
+  $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' ); 
   });  
 });
 </script>
@@ -333,6 +590,7 @@ $(document).ready(function() {
   $('#boutonpente').hide(500);
   $('#editpente').hide(500);
   $('#boutonsubmit').hide(500);
+  $('#submitall').show(500);
   $('#tabpos').empty(500);
   $('#versant').attr('class','btn btn-primary');
   $('#angle').attr('class','btn btn-primary');
@@ -349,6 +607,7 @@ $(document).ready(function() {
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
+  $('#testimg').addClass("img-polaroid");
   //$('#versants').append ( "<button type="button" class="btn btn-success">" + msg + "</button>" );//<button type="button" class="btn btn-success">Versant 1</button>
   });
 }); 
@@ -357,32 +616,7 @@ $(document).ready(function() {
 <!-- Submit all
     ================================================== -->
 <script>
-$(document).ready(function() {
-  $('#submitall').click(function () {
-  $('#editversant').hide(500);
-  $('#boutonangle').hide(500);
-  $('#editangle').hide(500);
-  $('#boutonpente').hide(500);
-  $('#editpente').hide(500);
-  $('#boutonsubmit').hide(500);
-  $('#tabpos').empty(500);
-  $('#versant').attr('class','btn btn-primary');
-  $('#angle').attr('class','btn btn-primary');
-  $('#pente').attr('class','btn btn-primary');
-  $('#versant').prop("disabled", true);
-  $('#pente').prop("disabled", true);
-  $('#angle').prop("disabled", true);
-  $('#angle1').prop("disabled", false);
-  $('#angle2').prop("disabled", false);
-  $('#angle3').prop("disabled", false);
-  $('#pente1').prop("disabled", false);
-  $('#pente2').prop("disabled", false);
-  $('#pente3').prop("disabled", false);
-  $('#pente4').prop("disabled", false);
-  $('#pente5').prop("disabled", false);
-  $('.point').remove(); 
-  });
-}); 
+
 </script>
 
 
@@ -398,6 +632,10 @@ $(document).ready(function() {
   $('#eraselast').click(function () {
   $('#tabpos').children("div:last").remove();
   $("body").children("div:last").remove();  
+  if ( $('#tabpos').children().length == 0 ){
+  $('#eraselast').hide(); }
+  if ( $('#tabpos').children().length < 3 ){
+  $('#versant').prop("disabled", true);}
   });
 }); 
 </script>
@@ -405,10 +643,16 @@ $(document).ready(function() {
 
 
 </div>
-<div class="versants">
-<button class="btn btn-primary" id ="submitall">Create images</button>
-<ul class="dropdown-menu" role="menu">
+<div class="btn-group" id="versants">
+  <div class="btn-group">
+
+  </div>
+</div>
+
+<div><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
+<!--<ul class="dropdown-menu" role="menu">
     <li><a href="#">delete</a></li>
+	<li><a href="#">edit</a></li>
 </ul>
 
 </div>
