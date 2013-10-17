@@ -50,8 +50,11 @@ img{
 	border-color: #000000;
 }
 
+.lien{
+	cursor: pointer;
+}
 
-  </style>
+</style>
   </head>
 
   <body onmousemove="capmouse(event)">
@@ -70,11 +73,79 @@ img{
 
 
 <div class="box" id="box">
-
 <img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/>
-
-
 </div>
+
+
+
+<div class="table">
+  <button class="btn btn-primary" id="versant" disabled="disabled">Submit positons</button>
+  <button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
+    <div class="btn-group-vertical" id="boutonangle">
+      <button type="radio" class="btn btn-primary" id="angle1">45°</button>
+      <button type="radio" class="btn btn-primary" id="angle2">90°</button>
+      <button type="radio" class="btn btn-primary" id="angle3">135°</button>
+    </div>
+  <button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
+    <div class="btn-group-vertical" id="boutonpente">
+      <button type="radio" class="btn btn-primary" id="pente1">4/12</button>
+      <button type="radio" class="btn btn-primary" id="pente2">6/12</button>
+      <button type="radio" class="btn btn-primary" id="pente3">8/12</button>
+      <button type="radio" class="btn btn-primary" id="pente4">10/12</button>
+      <button type="radio" class="btn btn-primary" id="pente5">12/12</button>
+    </div>
+  <button class="btn btn-mini" id="editpente"><span class="glyphicon glyphicon-arrow-left"></span></button>
+    <div class="btn-group-vertical" id="boutonsubmit">
+      <button class="btn btn-primary" id ="addversant">Add a Versant</button>
+    </div>
+</div>
+
+
+<div class ="tabpos" id="tabpos">
+</div>
+
+<div></div>
+
+<div>
+<button class="btn btn-danger" id="eraselast">Erase last</button>
+</div>
+
+<div class="btn-group" id="versants">
+  <div class="btn-group">
+  </div>
+</div>
+
+<div><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
+
+<!-- Button hidding on page load
+    ================================================== -->
+	
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#boutonangle').hide();
+  $('#boutonpente').hide();
+  $('#boutonsubmit').hide();
+  $('#editversant').hide();
+  $('#editangle').hide();
+  $('#editpente').hide();
+  $('#eraselast').hide();  
+  $('#submitall').hide();   
+});
+</script>
+
+<!-- Enable submit positions button after 3 positions
+Il faut vérifier pourquoi c'est pas plus >2 qui fonctionne ?????
+    ================================================== -->
+	
+<script>
+$(document).ready(function() {
+  $('#testimg').click(function(e) {
+    if (( $('#tabpos').children().length > 1 )&&( $("#testimg").hasClass("img-polaroid") )){
+     $('#versant').removeAttr('disabled'); 
+	 }
+  });
+});
+</script>
 
 <!-- Add point on the image on click
     ================================================== -->
@@ -116,27 +187,22 @@ $(document).ready(function() {
 });
 </script>
 
-<div class="table">
-  <button class="btn btn-primary" id="versant" disabled="disabled">Submit positons</button>
-  <button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
-    <div class="btn-group-vertical" id="boutonangle">
-      <button type="radio" class="btn btn-primary" id="angle1">45°</button>
-      <button type="radio" class="btn btn-primary" id="angle2">90°</button>
-      <button type="radio" class="btn btn-primary" id="angle3">135°</button>
-    </div>
-  <button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
-    <div class="btn-group-vertical" id="boutonpente">
-      <button type="radio" class="btn btn-primary" id="pente1">4/12</button>
-      <button type="radio" class="btn btn-primary" id="pente2">6/12</button>
-      <button type="radio" class="btn btn-primary" id="pente3">8/12</button>
-      <button type="radio" class="btn btn-primary" id="pente4">10/12</button>
-      <button type="radio" class="btn btn-primary" id="pente5">12/12</button>
-    </div>
-  <button class="btn btn-mini" id="editpente"><span class="glyphicon glyphicon-arrow-left"></span></button>
-    <div class="btn-group-vertical" id="boutonsubmit">
-      <button class="btn btn-primary" id ="addversant">Add a Versant</button>
-    </div>
-</div>
+<!-- Erase last button
+    ================================================== -->
+<script>
+$(document).ready(function() {
+  $('#eraselast').click(function () {
+  $('#tabpos').children("div:last").remove();
+  $("body").children("div:last").remove();  
+  if ( $('#tabpos').children().length == 0 ){
+  $('#eraselast').hide(); }
+  if ( $('#tabpos').children().length < 3 ){
+  $('#versant').prop("disabled", true);}
+  });
+}); 
+</script>
+
+
 
 <!--Position Buttons, submit and edit 
     ================================================== -->
@@ -241,9 +307,174 @@ $(document).ready(function() {
 var n = 0;
 var msg = "Versant";
 var name = 'Versant'
+var x = 'ul'
+var y = 'li'
   $('#boutonpente').click(function () { 
-  $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li id="' + name + msg + (n += 0) + '"><a href="">delete</a></li></ul></div>' );
+  $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu" id="' + x + (n += 0) + '"><li class="lien" id="' + y + (n += 0) + '"><a>delete</a></li></ul></div>' );
   });  
+});
+</script>
+
+<!-- Create versant on choosing a pente (Max 20 versants)
+    ================================================== -->
+	
+<script>
+$('#li1').live('click', function() {
+ $('#Versant1').remove();
+ $('#li1').remove();
+ $('#ul1').remove();
+});
+</script>
+
+<script>
+$('#li2').live('click', function() {
+ $('#Versant2').remove();
+ $('#li2').remove();
+ $('#ul2').remove();
+});
+</script>
+
+<script>
+$('#li3').live('click', function() {
+ $('#Versant3').remove();
+ $('#li3').remove();
+ $('#ul3').remove();
+});
+</script>
+
+<script>
+$('#li4').live('click', function() {
+ $('#Versant4').remove();
+ $('#li4').remove();
+ $('#ul4').remove();
+});
+</script>
+
+<script>
+$('#li5').live('click', function() {
+ $('#Versant5').remove();
+ $('#li5').remove();
+ $('#ul5').remove();
+});
+</script>
+
+<script>
+$('#li6').live('click', function() {
+ $('#Versant6').remove();
+ $('#li6').remove();
+ $('#ul6').remove();
+});
+</script>
+
+<script>
+$('#li7').live('click', function() {
+ $('#Versant7').remove();
+ $('#li7').remove();
+ $('#ul7').remove();
+});
+</script>
+
+<script>
+$('#li8').live('click', function() {
+ $('#Versant8').remove();
+ $('#li8').remove();
+ $('#ul8').remove();
+});
+</script>
+
+<script>
+$('#li9').live('click', function() {
+ $('#Versant9').remove();
+ $('#li9').remove();
+ $('#ul9').remove();
+});
+</script>
+
+<script>
+$('#li10').live('click', function() {
+ $('#Versant10').remove();
+ $('#li10').remove();
+ $('#ul10').remove();
+});
+</script>
+
+<script>
+$('#li11').live('click', function() {
+ $('#Versant11').remove();
+ $('#li11').remove();
+ $('#ul11').remove();
+});
+</script>
+
+<script>
+$('#li12').live('click', function() {
+ $('#Versant12').remove();
+ $('#li12').remove();
+ $('#ul12').remove();
+});
+</script>
+
+<script>
+$('#li13').live('click', function() {
+ $('#Versant13').remove();
+ $('#li13').remove();
+ $('#ul13').remove();
+});
+</script>
+
+<script>
+$('#li14').live('click', function() {
+ $('#Versant14').remove();
+ $('#li14').remove();
+ $('#ul14').remove();
+});
+</script>
+
+<script>
+$('#li15').live('click', function() {
+ $('#Versant15').remove();
+ $('#li15').remove();
+ $('#ul15').remove();
+});
+</script>
+
+<script>
+$('#li16').live('click', function() {
+ $('#Versant16').remove();
+ $('#li16').remove();
+ $('#ul16').remove();
+});
+</script>
+
+<script>
+$('#li17').live('click', function() {
+ $('#Versant17').remove();
+ $('#li17').remove();
+ $('#ul17').remove();
+});
+</script>
+
+<script>
+$('#li18').live('click', function() {
+ $('#Versant18').remove();
+ $('#li18').remove();
+ $('#ul18').remove();
+});
+</script>
+
+<script>
+$('#li19').live('click', function() {
+ $('#Versant19').remove();
+ $('#li19').remove();
+ $('#ul19').remove();
+});
+</script>
+
+<script>
+$('#li20').live('click', function() {
+ $('#Versant20').remove();
+ $('#li20').remove();
+ $('#ul20').remove();
 });
 </script>
 
@@ -440,76 +671,12 @@ $(document).ready(function() {
 });
 </script>
 
-	
 <!-- Create images
     ================================================== -->
 <script>
 
 </script>
 
-
-
-<div class ="tabpos" id="tabpos">
-
-</div>
-<div></div>
-<div>
-<button class="btn btn-danger" id="eraselast">Erase last</button>
-
-<!-- Erase position button
-    ================================================== -->
-	
-<script>
-$(document).ready(function() {
-  $('#eraselast').click(function () {
-  $('#tabpos').children("div:last").remove();
-  $("body").children("div:last").remove();  
-  if ( $('#tabpos').children().length == 0 ){
-  $('#eraselast').hide(); }
-  if ( $('#tabpos').children().length < 3 ){
-  $('#versant').prop("disabled", true);}
-  });
-}); 
-</script>
-
-</div>
-<div class="btn-group" id="versants">
-  <div class="btn-group">
-
-  </div>
-</div>
-
-<div><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
-
-<!-- Button hidding on page load
-    ================================================== -->
-	
-<script type="text/javascript">
-$(document).ready(function() {
-  $('#boutonangle').hide();
-  $('#boutonpente').hide();
-  $('#boutonsubmit').hide();
-  $('#editversant').hide();
-  $('#editangle').hide();
-  $('#editpente').hide();
-  $('#eraselast').hide();  
-  $('#submitall').hide();   
-});
-</script>
-
-<!-- Enable submit positions button after 3 positions
-Il faut vérifier pourquoi c'est pas plus >2 qui fonctionne ?????
-    ================================================== -->
-	
-<script>
-$(document).ready(function() {
-  $('#testimg').click(function(e) {
-    if (( $('#tabpos').children().length > 1 )&&( $("#testimg").hasClass("img-polaroid") )){
-     $('#versant').removeAttr('disabled'); 
-	 }
-  });
-});
-</script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
