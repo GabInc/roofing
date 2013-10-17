@@ -66,46 +66,23 @@ img{
         </div>
       </div>
     </div>
-<script type="text/javascript">
- 
-$(document).ready(function() {
-  $('#boutonangle').hide();
-  $('#boutonpente').hide();
-  $('#boutonsubmit').hide();
-  $('#editversant').hide();
-  $('#editangle').hide();
-  $('#editpente').hide();
-  $('#eraselast').hide();  
-  $('#submitall').hide();  
-  
-  
-  
-});
-
-</script>
-
-<script>
-$(document).ready(function() {
-  $('#testimg').click(function(e) {
-    if (( $('#tabpos').children().length > 1 )&&( $("#testimg").hasClass("img-polaroid") )){
-     $('#versant').removeAttr('disabled'); 
-	 }
-  });
-});
+	
 
 
-</script>
 <div class="box" id="box">
 
 <img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/>
 
 
 </div>
+
+<!-- Add point on the image on click
+    ================================================== -->
+	
 <script type="text/javascript">
     $("#testimg").click(function (ev) {
         mouseX = ev.pageX;
         mouseY = ev.pageY;
-        //alert(mouseX + ' ' + mouseY);
         var color = '#000000';
         var size = '3px';
 		if ( $("#testimg").hasClass("img-polaroid") ) {
@@ -118,10 +95,13 @@ $(document).ready(function() {
                 .css('height', size)
                 .css('background-color', color));
 				}
-
     });
-
 </script>
+
+<!-- Showing positions in new div
+Il faut faire en sorte qu'il les enregistre
+    ================================================== -->
+	
 <script>
 $(document).ready(function() {
   $('#testimg').click(function(e) {
@@ -135,31 +115,30 @@ $(document).ready(function() {
   });
 });
 </script>
+
 <div class="table">
-
-
-<button class="btn btn-primary" id="versant" disabled="disabled">Submit positons</button>
-<button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
-<div class="btn-group-vertical" id="boutonangle">
-
-<button type="radio" class="btn btn-primary" id="angle1">45°</button>
-<button type="radio" class="btn btn-primary" id="angle2">90°</button>
-<button type="radio" class="btn btn-primary" id="angle3">135°</button>
-</div>
-<button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
-<div class="btn-group-vertical" id="boutonpente">
-<button type="radio" class="btn btn-primary" id="pente1">4/12</button>
-<button type="radio" class="btn btn-primary" id="pente2">6/12</button>
-<button type="radio" class="btn btn-primary" id="pente3">8/12</button>
-<button type="radio" class="btn btn-primary" id="pente4">10/12</button>
-<button type="radio" class="btn btn-primary" id="pente5">12/12</button>
-</div>
-<button class="btn btn-mini" id="editpente"><span class="glyphicon glyphicon-arrow-left"></span></button>
-<div class="btn-group-vertical" id="boutonsubmit">
-<button class="btn btn-primary" id ="addversant">Add a Versant</button>
+  <button class="btn btn-primary" id="versant" disabled="disabled">Submit positons</button>
+  <button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
+    <div class="btn-group-vertical" id="boutonangle">
+      <button type="radio" class="btn btn-primary" id="angle1">45°</button>
+      <button type="radio" class="btn btn-primary" id="angle2">90°</button>
+      <button type="radio" class="btn btn-primary" id="angle3">135°</button>
+    </div>
+  <button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
+    <div class="btn-group-vertical" id="boutonpente">
+      <button type="radio" class="btn btn-primary" id="pente1">4/12</button>
+      <button type="radio" class="btn btn-primary" id="pente2">6/12</button>
+      <button type="radio" class="btn btn-primary" id="pente3">8/12</button>
+      <button type="radio" class="btn btn-primary" id="pente4">10/12</button>
+      <button type="radio" class="btn btn-primary" id="pente5">12/12</button>
+    </div>
+  <button class="btn btn-mini" id="editpente"><span class="glyphicon glyphicon-arrow-left"></span></button>
+    <div class="btn-group-vertical" id="boutonsubmit">
+      <button class="btn btn-primary" id ="addversant">Add a Versant</button>
+    </div>
 </div>
 
-<!--Versant
+<!--Position Buttons, submit and edit 
     ================================================== -->
 <script>
 $(document).ready(function() {
@@ -169,8 +148,8 @@ $(document).ready(function() {
   $('#eraselast').hide(500);
   $('#versant').attr('class','btn');  
   $('#versant').prop("disabled", true);
+  $('#editversant').prop("disabled", false);
   $('.img-polaroid').removeClass("img-polaroid");
- // $('#testimg').attr('disabled','disabled');
   });
 }); 
 </script>  
@@ -184,7 +163,6 @@ $(document).ready(function() {
   $('#versant').attr('class','btn btn-primary');  
   $('#versant').prop("disabled", false);
   $('#testimg').addClass("img-polaroid");
- // $('#testimg').prop("disabled", false);
   });
 }); 
 </script>  
@@ -192,7 +170,8 @@ $(document).ready(function() {
 
 
 
-<!-- Angle
+<!-- Angle chosing buttons
+Il va falloir enregistrer le choix d'angle
     ================================================== -->
 <script>
 $(document).ready(function() {
@@ -204,9 +183,11 @@ $(document).ready(function() {
   $('#angle2').prop("disabled", true);
   $('#angle3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
+  $('#editangle').prop("disabled", false);
   });
 }); 
 </script>
+
 <script>
 $(document).ready(function() {
   $('#angle2').click(function () {
@@ -217,9 +198,11 @@ $(document).ready(function() {
   $('#angle2').prop("disabled", true);
   $('#angle3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
+  $('#editangle').prop("disabled", false);
   });
 }); 
 </script>
+
 <script>
 $(document).ready(function() {
   $('#angle3').click(function () {
@@ -230,9 +213,11 @@ $(document).ready(function() {
   $('#angle2').prop("disabled", true);
   $('#angle3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
+  $('#editangle').prop("disabled", false);
   });
 }); 
 </script>
+
 <script>
 $(document).ready(function() {
   $('#editangle').click(function () {
@@ -246,58 +231,36 @@ $(document).ready(function() {
 }); 
 </script>
 
-<!--<script>
-$(document).ready(function() {
-  $('#angle1').click(function () {
-  $('#angle').removeAttr('disabled');
 
-  });
-}); 
-</script>
-
-<script>
-$(document).ready(function() {
-  $('#angle2').click(function () {
-  $('#angle').removeAttr('disabled'); 
-  });
-}); 
-</script>
-
-<script>
-$(document).ready(function() {
-  $('#angle3').click(function () {
-  $('#angle').removeAttr('disabled');
-  
-  });
-}); 
-</script>
-<!-- Pente
+	
+<!-- Create versant on choosing a pente
     ================================================== -->
-<script>
-$(document).ready(function() {
-  $('#pente1').click(function () {
-  //$('#editpente').show(500);
-  //$('#boutonsubmit').show(500);
-  $('#pente1').prop("disabled", true);
-  $('#pente2').prop("disabled", true);
-  $('#pente3').prop("disabled", true);
-  $('#pente4').prop("disabled", true);
-  $('#pente5').prop("disabled", true);
-  $('#editangle').prop("disabled", true);
- // $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' );
-  });
-}); 
-</script>
+		
 <script>	
 $(document).ready(function() {
 var n = 0;
 var msg = "Versant";
 var name = 'Versant'
   $('#boutonpente').click(function () { 
-  $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li id="' + name + msg + (n += 0) + '"><a href="">delete</a></li></ul></div>' ); 
-  
+  $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li id="' + name + msg + (n += 0) + '"><a href="">delete</a></li></ul></div>' );
   });  
 });
+</script>
+
+<!-- Pente buttons
+Il va falloir enregister le choix de pente
+    ================================================== -->
+<script>
+$(document).ready(function() {
+  $('#pente1').click(function () {
+  $('#pente1').prop("disabled", true);
+  $('#pente2').prop("disabled", true);
+  $('#pente3').prop("disabled", true);
+  $('#pente4').prop("disabled", true);
+  $('#pente5').prop("disabled", true);
+  $('#editangle').prop("disabled", true);
+  });
+}); 
 </script>
 
 <script>
@@ -307,16 +270,10 @@ $(document).ready(function() {
   $('#boutonangle').hide(500);
   $('#editangle').hide(500);
   $('#boutonpente').hide(500);
- // $('#editpente').hide(500);
- // $('#boutonsubmit').hide(500);
   $('#submitall').show(500);
   $('#tabpos').empty(500);
   $('#versant').attr('class','btn btn-primary');
- // $('#angle').attr('class','btn btn-primary');
- // $('#pente').attr('class','btn btn-primary');
   $('#versant').prop("disabled", true);
-  //$('#pente').prop("disabled", true);
- // $('#angle').prop("disabled", true);
   $('#angle1').prop("disabled", false);
   $('#angle2').prop("disabled", false);
   $('#angle3').prop("disabled", false);
@@ -330,18 +287,16 @@ $(document).ready(function() {
   });  
 });
 </script>
+
 <script>
 $(document).ready(function() {
   $('#pente2').click(function () {
-//  $('#editpente').show(500);
- // $('#boutonsubmit').show(500);
   $('#pente1').prop("disabled", true);
   $('#pente2').prop("disabled", true);
   $('#pente3').prop("disabled", true);
   $('#pente4').prop("disabled", true);
   $('#pente5').prop("disabled", true);
   $('#editangle').prop("disabled", true);
- // $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' );
   });
 }); 
 </script>
@@ -353,16 +308,10 @@ $(document).ready(function() {
   $('#boutonangle').hide(500);
   $('#editangle').hide(500);
   $('#boutonpente').hide(500);
- // $('#editpente').hide(500);
- // $('#boutonsubmit').hide(500);
   $('#submitall').show(500);
   $('#tabpos').empty(500);
   $('#versant').attr('class','btn btn-primary');
- // $('#angle').attr('class','btn btn-primary');
- // $('#pente').attr('class','btn btn-primary');
   $('#versant').prop("disabled", true);
-  //$('#pente').prop("disabled", true);
- // $('#angle').prop("disabled", true);
   $('#angle1').prop("disabled", false);
   $('#angle2').prop("disabled", false);
   $('#angle3').prop("disabled", false);
@@ -376,18 +325,16 @@ $(document).ready(function() {
   });  
 });
 </script>
+
 <script>
 $(document).ready(function() {
   $('#pente3').click(function () {
- // $('#editpente').show(500);
- // $('#boutonsubmit').show(500);
   $('#pente1').prop("disabled", true);
   $('#pente2').prop("disabled", true);
   $('#pente3').prop("disabled", true);
   $('#pente4').prop("disabled", true);
   $('#pente5').prop("disabled", true);
   $('#editangle').prop("disabled", true);
-//  $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' );
   });
 }); 
 </script>
@@ -399,16 +346,10 @@ $(document).ready(function() {
   $('#boutonangle').hide(500);
   $('#editangle').hide(500);
   $('#boutonpente').hide(500);
-//  $('#editpente').hide(500);
-//  $('#boutonsubmit').hide(500);
   $('#submitall').show(500);
   $('#tabpos').empty(500);
   $('#versant').attr('class','btn btn-primary');
- // $('#angle').attr('class','btn btn-primary');
- // $('#pente').attr('class','btn btn-primary');
   $('#versant').prop("disabled", true);
- // $('#pente').prop("disabled", true);
-//  $('#angle').prop("disabled", true);
   $('#angle1').prop("disabled", false);
   $('#angle2').prop("disabled", false);
   $('#angle3').prop("disabled", false);
@@ -422,18 +363,16 @@ $(document).ready(function() {
   });  
 });
 </script>
+
 <script>
 $(document).ready(function() {
   $('#pente4').click(function () {
- // $('#editpente').show(500);
- // $('#boutonsubmit').show(500);
   $('#pente1').prop("disabled", true);
   $('#pente2').prop("disabled", true);
   $('#pente3').prop("disabled", true);
   $('#pente4').prop("disabled", true);
   $('#pente5').prop("disabled", true);
   $('#editangle').prop("disabled", true);
- // $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' );
   });
 }); 
 </script>
@@ -445,16 +384,10 @@ $(document).ready(function() {
   $('#boutonangle').hide(500);
   $('#editangle').hide(500);
   $('#boutonpente').hide(500);
-//  $('#editpente').hide(500);
-//  $('#boutonsubmit').hide(500);
   $('#submitall').show(500);
   $('#tabpos').empty(500);
   $('#versant').attr('class','btn btn-primary');
- // $('#angle').attr('class','btn btn-primary');
-//  $('#pente').attr('class','btn btn-primary');
   $('#versant').prop("disabled", true);
- // $('#pente').prop("disabled", true);
- // $('#angle').prop("disabled", true);
   $('#angle1').prop("disabled", false);
   $('#angle2').prop("disabled", false);
   $('#angle3').prop("disabled", false);
@@ -468,18 +401,16 @@ $(document).ready(function() {
   });  
 });
 </script>
+
 <script>
 $(document).ready(function() {
   $('#pente5').click(function () {
-  //$('#editpente').show(500);
- // $('#boutonsubmit').show(500);
   $('#pente1').prop("disabled", true);
   $('#pente2').prop("disabled", true);
   $('#pente3').prop("disabled", true);
   $('#pente4').prop("disabled", true);
   $('#pente5').prop("disabled", true);
   $('#editangle').prop("disabled", true);
- // $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' );
   });
 }); 
 </script>
@@ -491,16 +422,10 @@ $(document).ready(function() {
   $('#boutonangle').hide(500);
   $('#editangle').hide(500);
   $('#boutonpente').hide(500);
- // $('#editpente').hide(500);
- // $('#boutonsubmit').hide(500);
   $('#submitall').show(500);
   $('#tabpos').empty(500);
   $('#versant').attr('class','btn btn-primary');
- // $('#angle').attr('class','btn btn-primary');
-//  $('#pente').attr('class','btn btn-primary');
   $('#versant').prop("disabled", true);
-//  $('#pente').prop("disabled", true);
-//  $('#angle').prop("disabled", true);
   $('#angle1').prop("disabled", false);
   $('#angle2').prop("disabled", false);
   $('#angle3').prop("disabled", false);
@@ -514,119 +439,26 @@ $(document).ready(function() {
   });  
 });
 </script>
-<!--<script>
-$(document).ready(function() {
-  $('#editpente').click(function () {
-  $('#editpente').hide(500);
-  $('#submitall').hide(500);
-  $('#pente1').prop("disabled", false);
-  $('#pente2').prop("disabled", false);
-  $('#pente3').prop("disabled", false);
-  $('#pente4').prop("disabled", false);
-  $('#pente5').prop("disabled", false);
-  });
-}); 
-</script>
 
-<script>
-$(document).ready(function() {
-  $('#pente1').click(function () {
-  $('#pente').removeAttr('disabled');
-  
-  });
-}); 
-</script>
-<script>
-$(document).ready(function() {
-  $('#pente2').click(function () {
-  $('#pente').removeAttr('disabled');
-  
-  });
-}); 
-</script>
-<script>
-$(document).ready(function() {
-  $('#pente3').click(function () {
-  $('#pente').removeAttr('disabled');
-  
-  });
-}); 
-</script>
-<script>
-$(document).ready(function() {
-  $('#pente4').click(function () {
-  $('#pente').removeAttr('disabled');
-  
-  });
-}); 
-</script>
-<script>
-$(document).ready(function() {
-  $('#pente5').click(function () {
-  $('#pente').removeAttr('disabled');
-  
-  });
-}); 
-</script>
-<!-- Add versant
-    ================================================== -->
-<script>	
-$(document).ready(function() {
-var n = 0;
-var msg = "Versant";
-var name = 'Versant'
-  $('#addversant').click(function () { 
-  $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="#">delete</a></li></ul></div>' ); 
-  });  
-});
-</script>
 	
-<script>
-$(document).ready(function() {
-  $('#addversant').click(function () {
-  $('#editversant').hide(500);
-  $('#boutonangle').hide(500);
-  $('#editangle').hide(500);
-  $('#boutonpente').hide(500);
-  $('#editpente').hide(500);
-  $('#boutonsubmit').hide(500);
-  $('#submitall').show(500);
-  $('#tabpos').empty(500);
-  $('#versant').attr('class','btn btn-primary');
-  $('#angle').attr('class','btn btn-primary');
-  $('#pente').attr('class','btn btn-primary');
-  $('#versant').prop("disabled", true);
-  $('#pente').prop("disabled", true);
-  $('#angle').prop("disabled", true);
-  $('#angle1').prop("disabled", false);
-  $('#angle2').prop("disabled", false);
-  $('#angle3').prop("disabled", false);
-  $('#pente1').prop("disabled", false);
-  $('#pente2').prop("disabled", false);
-  $('#pente3').prop("disabled", false);
-  $('#pente4').prop("disabled", false);
-  $('#pente5').prop("disabled", false);
-  $('.point').remove(); 
-  $('#testimg').addClass("img-polaroid");
-  //$('#versants').append ( "<button type="button" class="btn btn-success">" + msg + "</button>" );//<button type="button" class="btn btn-success">Versant 1</button>
-  });
-}); 
-</script>	
-	
-<!-- Submit all
+<!-- Create images
     ================================================== -->
 <script>
 
 </script>
 
 
-</div>
+
 <div class ="tabpos" id="tabpos">
 
 </div>
 <div></div>
 <div>
 <button class="btn btn-danger" id="eraselast">Erase last</button>
+
+<!-- Erase position button
+    ================================================== -->
+	
 <script>
 $(document).ready(function() {
   $('#eraselast').click(function () {
@@ -640,8 +472,6 @@ $(document).ready(function() {
 }); 
 </script>
 
-
-
 </div>
 <div class="btn-group" id="versants">
   <div class="btn-group">
@@ -650,16 +480,36 @@ $(document).ready(function() {
 </div>
 
 <div><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
-<!--<ul class="dropdown-menu" role="menu">
-    <li><a href="#">delete</a></li>
-	<li><a href="#">edit</a></li>
-</ul>
 
-</div>
+<!-- Button hidding on page load
+    ================================================== -->
+	
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#boutonangle').hide();
+  $('#boutonpente').hide();
+  $('#boutonsubmit').hide();
+  $('#editversant').hide();
+  $('#editangle').hide();
+  $('#editpente').hide();
+  $('#eraselast').hide();  
+  $('#submitall').hide();   
+});
+</script>
 
-
-
-
+<!-- Enable submit positions button after 3 positions
+Il faut vérifier pourquoi c'est pas plus >2 qui fonctionne ?????
+    ================================================== -->
+	
+<script>
+$(document).ready(function() {
+  $('#testimg').click(function(e) {
+    if (( $('#tabpos').children().length > 1 )&&( $("#testimg").hasClass("img-polaroid") )){
+     $('#versant').removeAttr('disabled'); 
+	 }
+  });
+});
+</script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
