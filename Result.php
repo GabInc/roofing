@@ -30,7 +30,7 @@
  
   </style>
 
-    <title>Résultats</title>
+    <title>Interlock Roofing</title>
     
     <!--[if IE]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -49,5 +49,7 @@
         </div>
       </div>
     </div>
+	
+Ben oui : <?php echo $_GET["positio"]; ?><br>
   </body>
 </html>

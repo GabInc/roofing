@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.png">
 
-    <title>Interlock Roofing</title>
+    <title>Roofing visualization</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -45,7 +45,7 @@
     </div>
 
 <div class="container">
-	<form role="form"  enctype="multipart/form-data" action="paint.php" method="POST">
+	<form role="form"  enctype="multipart/form-data" action="test4.php" method="POST">
   <div class="form-group">
    <br> <label for="exampleInputFile">File input</label> </br>
     <input type="file" name="userFile" id="exampleInputFile">

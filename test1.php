@@ -1,7 +1,35 @@
 <?php
+
 $target_Path = "images/";
+
 $target_Path = $target_Path.basename( $_FILES['userFile']['name'] );
 move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
+
+// set up array of points for polygon
+$values = array(
+            40,  50,  // Point 1 (x, y)
+            20,  240, // Point 2 (x, y)
+            60,  60,  // Point 3 (x, y)
+            240, 20,  // Point 4 (x, y)
+            50,  40,  // Point 5 (x, y)
+            10,  10   // Point 6 (x, y)
+            );
+
+
+// allocate colors
+$bg   = imagecolorallocate($target_Path, 0, 0, 0);
+$blue = imagecolorallocate($target_Path, 0, 0, 255);
+
+// fill the background
+imagefilledrectangle($target_Path, 0, 0, 249, 249, $bg);
+
+// draw a polygon
+imagefilledpolygon($target_Path, $values, 6, $blue);
+
+// flush image
+header('Content-type: image/jpeg');
+imagepng($image);
+imagedestroy($image);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +39,12 @@ move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
     <meta name="dcterms.created" content="jeu., 03 oct. 2013 19:34:09 GMT">
     <meta name="description" content="">
     <meta name="keywords" content="">
+	
+	
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
 <meta charset=utf-8 />
 
-    <title>Interlock Roofing</title>
+    <title>Créer les pentes</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -54,7 +84,6 @@ img{
 }
 
 </style>
-
   </head>
 
   <body onmousemove="capmouse(event)">
@@ -104,7 +133,7 @@ img{
 <div class ="tabpos" id="tabpos">
 </div>
 
-
+<div></div>
 
 <div>
 <button class="btn btn-danger" id="eraselast">Erase last</button>
@@ -116,16 +145,6 @@ img{
 </div>
 
 <div><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
-<div style="display: none;">
-<form action="Result.php" method="get" id="form1">
-<input type="text" input type="hidden" name="positio" id="posit"><br>
-<input type="text" input type="hidden" name="test" id="test"><br>
-<input type="submit">
-</form>
-</div>
-
-<div class ="tabpos2" id="tabpos2" style="display: none;">
-</div>
 
 <!-- Button hidding on page load
     ================================================== -->
@@ -165,7 +184,7 @@ $(document).ready(function() {
         mouseX = ev.pageX;
         mouseY = ev.pageY;
         var color = '#000000';
-        var size = '2px';
+        var size = '3px';
 		if ( $("#testimg").hasClass("img-polaroid") ) {
         $("body").append(
             $('<div class="point"></div>')
@@ -180,6 +199,7 @@ $(document).ready(function() {
 </script>
 
 <!-- Showing positions in new div
+Il faut faire en sorte qu'il les enregistre
     ================================================== -->
 	
 <script>
@@ -189,21 +209,19 @@ $(document).ready(function() {
 	var msg = "";
  msg += event.pageX + ", " + event.pageY;
  if ( $("#testimg").hasClass("img-polaroid") ) {
-  $( ".tabpos" ).append( "<div>" + msg + '.' + "</div>" );
-  $( ".tabpos2" ).append( "<div>" + msg + '.' + "</div>" );
+  $( ".tabpos" ).append( "<div>" + msg + "</div>" );
   $('#eraselast').show(350);
   }
   });
 });
 </script>
 
-<!-- Erase last position button
+<!-- Erase last button
     ================================================== -->
 <script>
 $(document).ready(function() {
   $('#eraselast').click(function () {
   $('#tabpos').children("div:last").remove();
-  $('#tabpos2').children("div:last").remove();
   $("body").children("div:last").remove();  
   if ( $('#tabpos').children().length == 0 ){
   $('#eraselast').hide(); }
@@ -247,8 +265,8 @@ $(document).ready(function() {
 
 
 
-<!-- Angle chosing buttons + edit button
-
+<!-- Angle chosing buttons
+Il va falloir enregistrer le choix d'angle
     ================================================== -->
 <script>
 $(document).ready(function() {
@@ -261,7 +279,6 @@ $(document).ready(function() {
   $('#angle3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
   $('#editangle').prop("disabled", false);
-  $( ".tabpos2" ).append( "<div>" + 'Angle' + 1 + '.' + "</div>" );
   });
 }); 
 </script>
@@ -277,7 +294,6 @@ $(document).ready(function() {
   $('#angle3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
   $('#editangle').prop("disabled", false);
-  $( ".tabpos2" ).append( "<div>" + 'Angle' + 2 + '.' + "</div>" );
   });
 }); 
 </script>
@@ -293,7 +309,6 @@ $(document).ready(function() {
   $('#angle3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
   $('#editangle').prop("disabled", false);
-  $( ".tabpos2" ).append( "<div>" + 'Angle' + 3 + '.' + "</div>" );
   });
 }); 
 </script>
@@ -307,14 +322,13 @@ $(document).ready(function() {
   $('#angle2').prop("disabled", false);
   $('#angle3').prop("disabled", false);
   $('#editversant').prop("disabled", false);
-  $('#tabpos2').children("div:last").remove();
   });
 }); 
 </script>
 
 
 	
-<!-- Create versant on choosing a pente buttons
+<!-- Create versant on choosing a pente
     ================================================== -->
 		
 <script>	
@@ -325,52 +339,176 @@ var name = 'Versant'
 var x = 'ul'
 var y = 'li'
   $('#boutonpente').click(function () { 
-  $('#versants').append( '<div class="btn-group"><button class="btn btn-success" id="' + name + (n += 1) + '">' + msg + " " +(n) + '</button></div>' );
+  $('#versants').append( '<div class="btn-group"><button class="btn btn-success dropdown-toggle" data-toggle="dropdown" id="' + name + (n += 1) + '">' + msg + " " +(n += 0) + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu" id="' + x + (n += 0) + '"><li class="lien" id="' + y + (n += 0) + '"><a>delete</a></li></ul></div>' );
   });  
 });
 </script>
 
+<!-- Create versant on choosing a pente (Max 20 versants)
+    ================================================== -->
+	
 <script>
-$(document).ready(function() {
-  $('#pente1').click(function () {
-  $( ".tabpos2" ).append( "<div>" + 'Pente' + 1 + '.' + "</div>" );
-  });
-}); 
+$('#li1').live('click', function() {
+ $('#Versant1').remove();
+ $('#li1').remove();
+ $('#ul1').remove();
+});
 </script>
 
 <script>
-$(document).ready(function() {
-  $('#pente2').click(function () {
-  $( ".tabpos2" ).append( "<div>" + 'Pente' + 2 + '.' + "</div>" );
-  });
-}); 
+$('#li2').live('click', function() {
+ $('#Versant2').remove();
+ $('#li2').remove();
+ $('#ul2').remove();
+});
 </script>
 
 <script>
-$(document).ready(function() {
-  $('#pente3').click(function () {
-  $( ".tabpos2" ).append( "<div>" + 'Pente' + 3 + '.' + "</div>" );
-  });
-}); 
+$('#li3').live('click', function() {
+ $('#Versant3').remove();
+ $('#li3').remove();
+ $('#ul3').remove();
+});
 </script>
 
 <script>
-$(document).ready(function() {
-  $('#pente4').click(function () {
-  $( ".tabpos2" ).append( "<div>" + 'Pente' + 4 + '.' + "</div>" );
-  });
-}); 
+$('#li4').live('click', function() {
+ $('#Versant4').remove();
+ $('#li4').remove();
+ $('#ul4').remove();
+});
 </script>
 
 <script>
-$(document).ready(function() {
-  $('#pente5').click(function () {
-  $( ".tabpos2" ).append( "<div>" + 'Pente' + 5 + '.' + "</div>" );
-  });
-}); 
+$('#li5').live('click', function() {
+ $('#Versant5').remove();
+ $('#li5').remove();
+ $('#ul5').remove();
+});
+</script>
+
+<script>
+$('#li6').live('click', function() {
+ $('#Versant6').remove();
+ $('#li6').remove();
+ $('#ul6').remove();
+});
+</script>
+
+<script>
+$('#li7').live('click', function() {
+ $('#Versant7').remove();
+ $('#li7').remove();
+ $('#ul7').remove();
+});
+</script>
+
+<script>
+$('#li8').live('click', function() {
+ $('#Versant8').remove();
+ $('#li8').remove();
+ $('#ul8').remove();
+});
+</script>
+
+<script>
+$('#li9').live('click', function() {
+ $('#Versant9').remove();
+ $('#li9').remove();
+ $('#ul9').remove();
+});
+</script>
+
+<script>
+$('#li10').live('click', function() {
+ $('#Versant10').remove();
+ $('#li10').remove();
+ $('#ul10').remove();
+});
+</script>
+
+<script>
+$('#li11').live('click', function() {
+ $('#Versant11').remove();
+ $('#li11').remove();
+ $('#ul11').remove();
+});
+</script>
+
+<script>
+$('#li12').live('click', function() {
+ $('#Versant12').remove();
+ $('#li12').remove();
+ $('#ul12').remove();
+});
+</script>
+
+<script>
+$('#li13').live('click', function() {
+ $('#Versant13').remove();
+ $('#li13').remove();
+ $('#ul13').remove();
+});
+</script>
+
+<script>
+$('#li14').live('click', function() {
+ $('#Versant14').remove();
+ $('#li14').remove();
+ $('#ul14').remove();
+});
+</script>
+
+<script>
+$('#li15').live('click', function() {
+ $('#Versant15').remove();
+ $('#li15').remove();
+ $('#ul15').remove();
+});
+</script>
+
+<script>
+$('#li16').live('click', function() {
+ $('#Versant16').remove();
+ $('#li16').remove();
+ $('#ul16').remove();
+});
+</script>
+
+<script>
+$('#li17').live('click', function() {
+ $('#Versant17').remove();
+ $('#li17').remove();
+ $('#ul17').remove();
+});
+</script>
+
+<script>
+$('#li18').live('click', function() {
+ $('#Versant18').remove();
+ $('#li18').remove();
+ $('#ul18').remove();
+});
+</script>
+
+<script>
+$('#li19').live('click', function() {
+ $('#Versant19').remove();
+ $('#li19').remove();
+ $('#ul19').remove();
+});
+</script>
+
+<script>
+$('#li20').live('click', function() {
+ $('#Versant20').remove();
+ $('#li20').remove();
+ $('#ul20').remove();
+});
 </script>
 
 <!-- Pente buttons
+Il va falloir enregister le choix de pente
     ================================================== -->
 <script>
 $(document).ready(function() {
@@ -406,7 +544,6 @@ $(document).ready(function() {
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
   $('#testimg').addClass("img-polaroid");
-  $( ".tabpos2" ).append( "<div>" + 'x' + "</div>" );
   });  
 });
 </script>
@@ -445,7 +582,6 @@ $(document).ready(function() {
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
   $('#testimg').addClass("img-polaroid");
-  $( ".tabpos2" ).append( "<div>" + 'x' + "</div>" );
   });  
 });
 </script>
@@ -484,7 +620,6 @@ $(document).ready(function() {
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
   $('#testimg').addClass("img-polaroid");
-  $( ".tabpos2" ).append( "<div>" + 'x' + "</div>" );
   });  
 });
 </script>
@@ -523,7 +658,6 @@ $(document).ready(function() {
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
   $('#testimg').addClass("img-polaroid");
-  $( ".tabpos2" ).append( "<div>" + 'x' + "</div>" );
   });  
 });
 </script>
@@ -562,28 +696,15 @@ $(document).ready(function() {
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
   $('#testimg').addClass("img-polaroid");
-  $( ".tabpos2" ).append( "<div>" + 'x' + "</div>" );  
   });  
 });
 </script>
 
-<!-- Delete versant (????)
+<!-- Create images
     ================================================== -->
-	
-	
-
-<!-- Send data to result.php                   
-================================================= -->
 <script>
-$(document).ready(function() {
-  $('#submitall').click(function () {
-var position = $('#tabpos2').text();
-  $('#posit').val( position );
-  $('#form1').submit()
-  });  
-});  
-</script> 
 
+</script>
 
 
     <!-- Bootstrap core JavaScript
