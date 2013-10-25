@@ -50,6 +50,26 @@
       </div>
     </div>
 	
-Ben oui : <?php echo $_GET["positio"]; ?><br>
+positions1 : <?php echo $_GET["chosedposition1"]; ?><br>
+angle1 : <?php echo $_GET["chosedangle1"]; ?><br>
+pente1 : <?php echo $_GET["chosedpen1"]; ?><br>
+
+positions2 : <?php echo $_GET["chosedposition2"]; ?><br>
+angle2 : <?php echo $_GET["chosedangle2"]; ?><br>
+pente2 : <?php echo $_GET["chosedpen2"]; ?><br>
+
+positions3 : <?php echo $_GET["chosedposition3"]; ?><br>
+angle3 : <?php echo $_GET["chosedangle3"]; ?><br>
+pente3 : <?php echo $_GET["chosedpen3"]; ?><br>
+
+positions4 : <?php echo $_GET["chosedposition4"]; ?><br>
+angle4 : <?php echo $_GET["chosedangle4"]; ?><br>
+pente4 : <?php echo $_GET["chosedpen4"]; ?><br>
+
+positions5 : <?php echo $_GET["chosedposition5"]; ?><br>
+angle5 : <?php echo $_GET["chosedangle5"]; ?><br>
+pente5 : <?php echo $_GET["chosedpen5"]; ?><br>
+
+
   </body>
 </html>

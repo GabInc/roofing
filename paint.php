@@ -112,19 +112,23 @@ img{
 
 <div class="btn-group" id="versants">
   <div class="btn-group">
+  <button type="button" class="btn btn-danger" id ="lastversanterase">erase last versant</button>
+  <button type="button" class="btn btn-primary" id ="next">next versant</button>
   </div>
 </div>
 
 <div><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
 <div style="display: none;">
 <form action="Result.php" method="get" id="form1">
-<input type="text" input type="hidden" name="positio" id="posit"><br>
-<input type="text" input type="hidden" name="test" id="test"><br>
 <input type="submit">
 </form>
 </div>
 
 <div class ="tabpos2" id="tabpos2" style="display: none;">
+</div>
+<div class ="chosedpente" id="chosedpente" style="display: none;">
+</div>
+<div class ="chosedang" id="chosedang" style="display: none;">
 </div>
 
 <!-- Button hidding on page load
@@ -139,7 +143,9 @@ $(document).ready(function() {
   $('#editangle').hide();
   $('#editpente').hide();
   $('#eraselast').hide();  
-  $('#submitall').hide();   
+  $('#submitall').hide();  
+  $('#next').hide(); 
+  $('#lastversanterase').hide(); 
 });
 </script>
 
@@ -189,7 +195,7 @@ $(document).ready(function() {
 	var msg = "";
  msg += event.pageX + ", " + event.pageY;
  if ( $("#testimg").hasClass("img-polaroid") ) {
-  $( ".tabpos" ).append( "<div>" + msg + '.' + "</div>" );
+  $( ".tabpos" ).append( "<div>" + msg + "</div>" );
   $( ".tabpos2" ).append( "<div>" + msg + '.' + "</div>" );
   $('#eraselast').show(350);
   }
@@ -261,7 +267,7 @@ $(document).ready(function() {
   $('#angle3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
   $('#editangle').prop("disabled", false);
-  $( ".tabpos2" ).append( "<div>" + 'Angle' + 1 + '.' + "</div>" );
+  $( ".chosedang" ).append( "<div>" + 1 + "</div>" );
   });
 }); 
 </script>
@@ -277,7 +283,7 @@ $(document).ready(function() {
   $('#angle3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
   $('#editangle').prop("disabled", false);
-  $( ".tabpos2" ).append( "<div>" + 'Angle' + 2 + '.' + "</div>" );
+  $( ".chosedang" ).append( "<div>" + 2 + "</div>" );
   });
 }); 
 </script>
@@ -293,7 +299,7 @@ $(document).ready(function() {
   $('#angle3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
   $('#editangle').prop("disabled", false);
-  $( ".tabpos2" ).append( "<div>" + 'Angle' + 3 + '.' + "</div>" );
+  $( ".chosedang" ).append( "<div>" + 3 + "</div>" );
   });
 }); 
 </script>
@@ -307,7 +313,7 @@ $(document).ready(function() {
   $('#angle2').prop("disabled", false);
   $('#angle3').prop("disabled", false);
   $('#editversant').prop("disabled", false);
-  $('#tabpos2').children("div:last").remove();
+  $('#chosedang').children("div:last").remove();
   });
 }); 
 </script>
@@ -322,10 +328,21 @@ $(document).ready(function() {
 var n = 0;
 var msg = "Versant";
 var name = 'Versant'
-var x = 'ul'
-var y = 'li'
+var name2 = 'chosedangle'
+var name3 = 'chosedposition'
+var name4 = 'chosedpen'
   $('#boutonpente').click(function () { 
-  $('#versants').append( '<div class="btn-group"><button class="btn btn-success" id="' + name + (n += 1) + '">' + msg + " " +(n) + '</button></div>' );
+var angle = $('#chosedang').text();  
+var position = $('#tabpos2').text();
+var pente = $('#chosedpente').text();
+  $('#versants').append( '<div class="btn-group"><button class="btn btn-success" id="' + name + (n += 1) + '">' + msg + " " + (n) + '</button></div>' );
+  $('#form1').append( '<input type="text" value="' + (angle) + '" name="' + name2 + (n) + '" id="' + name2 + (n) + '"><br>' );
+  $('#form1').append( '<input type="text" value="' + (position) + '" name="' + name3 + (n) + '" id="' + name3 + (n) + '"><br>' );
+  $('#form1').append( '<input type="text" value="' + (pente) + '" name="' + name4 + (n) + '" id="' + name4 + (n) + '"><br>' );
+  $('#testimg').removeClass("img-polaroid");
+  $('#next').show(500);
+  $('#lastversanterase').show(500);
+  $('#versant').hide(500);
   });  
 });
 </script>
@@ -333,7 +350,7 @@ var y = 'li'
 <script>
 $(document).ready(function() {
   $('#pente1').click(function () {
-  $( ".tabpos2" ).append( "<div>" + 'Pente' + 1 + '.' + "</div>" );
+  $( ".chosedpente" ).append( "<div>" + 1 +"</div>" );
   });
 }); 
 </script>
@@ -341,7 +358,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   $('#pente2').click(function () {
-  $( ".tabpos2" ).append( "<div>" + 'Pente' + 2 + '.' + "</div>" );
+  $( ".chosedpente" ).append( "<div>" + 2 +"</div>" );
   });
 }); 
 </script>
@@ -349,7 +366,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   $('#pente3').click(function () {
-  $( ".tabpos2" ).append( "<div>" + 'Pente' + 3 + '.' + "</div>" );
+  $( ".chosedpente" ).append( "<div>" + 3 +"</div>" );
   });
 }); 
 </script>
@@ -357,7 +374,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   $('#pente4').click(function () {
-  $( ".tabpos2" ).append( "<div>" + 'Pente' + 4 + '.' + "</div>" );
+  $( ".chosedpente" ).append( "<div>" + 4 + "</div>" );
   });
 }); 
 </script>
@@ -365,7 +382,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   $('#pente5').click(function () {
-  $( ".tabpos2" ).append( "<div>" + 'Pente' + 5 + '.' + "</div>" );
+  $( ".chosedpente" ).append( "<div>" + 5 + "</div>" );
   });
 }); 
 </script>
@@ -405,8 +422,6 @@ $(document).ready(function() {
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
-  $('#testimg').addClass("img-polaroid");
-  $( ".tabpos2" ).append( "<div>" + 'x' + "</div>" );
   });  
 });
 </script>
@@ -444,8 +459,6 @@ $(document).ready(function() {
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
-  $('#testimg').addClass("img-polaroid");
-  $( ".tabpos2" ).append( "<div>" + 'x' + "</div>" );
   });  
 });
 </script>
@@ -483,8 +496,6 @@ $(document).ready(function() {
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
-  $('#testimg').addClass("img-polaroid");
-  $( ".tabpos2" ).append( "<div>" + 'x' + "</div>" );
   });  
 });
 </script>
@@ -522,8 +533,6 @@ $(document).ready(function() {
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
-  $('#testimg').addClass("img-polaroid");
-  $( ".tabpos2" ).append( "<div>" + 'x' + "</div>" );
   });  
 });
 </script>
@@ -561,15 +570,41 @@ $(document).ready(function() {
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
   $('.point').remove(); 
-  $('#testimg').addClass("img-polaroid");
-  $( ".tabpos2" ).append( "<div>" + 'x' + "</div>" );  
   });  
 });
 </script>
 
-<!-- Delete versant (????)
+<!-- Erase last versant 
     ================================================== -->
-	
+<script>
+$(document).ready(function() {
+  $('#lastversanterase').click(function () {
+  $('#form1').children("input:last").remove();
+  $('#form1').children("input:last").remove();
+  $('#form1').children("input:last").remove();
+  $('#form1').children("br:last").remove();
+  $('#form1').children("br:last").remove();
+  $('#form1').children("br:last").remove();
+  $('#versants').children("div:last").remove();
+ // $('#form1').children("div:last").remove();
+  });  
+});  
+</script>	
+
+<!-- Next versant 
+    ================================================== -->
+<script>
+$(document).ready(function() {
+  $('#next').click(function () {
+  $('#testimg').addClass("img-polaroid");
+  $('#next').hide(500);
+  $('#versant').show(500);
+  $('#tabpos2').empty();
+  $('#chosedang').empty();
+  $('#chosedpente').empty();
+  });  
+});  
+</script>	
 	
 
 <!-- Send data to result.php                   
@@ -577,8 +612,6 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   $('#submitall').click(function () {
-var position = $('#tabpos2').text();
-  $('#posit').val( position );
   $('#form1').submit()
   });  
 });  
