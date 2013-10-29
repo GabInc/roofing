@@ -49,7 +49,22 @@
         </div>
       </div>
     </div>
+    
+
+	<?php 
+	$query = $_GET["imgtrav"];
 	
+	foreach (explode('&', $query) as $chunk) {
+    $param = explode("=", $chunk);
+
+    if ($param) {
+       printf("\"%s\"<br/>\n", urldecode($param[0]), urldecode($param[1]));
+    }
+}?>
+<div class="box" id="box">
+
+	</div>
+
 positions1 : <?php echo $_GET["chosedposition1"]; ?><br>
 angle1 : <?php echo $_GET["chosedangle1"]; ?><br>
 pente1 : <?php echo $_GET["chosedpen1"]; ?><br>

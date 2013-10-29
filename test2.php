@@ -1,29 +1,48 @@
-<?php
-// set up array of points for polygon
+<?php 
+
+$target_Path = "images/";
+
+$target_Path = $target_Path.basename( $_FILES['userFile']['name'] );
+move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
+
+$im = imagecreatefrompng($target_Path);
+$imback = imagecreatefrompng("Motif_kagome_01(1).png");
+
+
+$blue = imagecolorallocate($im, 0, 0, 255);
+$transparent = imagecolorallocate($im, 0, 0, 255);
+$fuchia = imagecolorallocate($im, 173, 255, 47);
+$black = imagecolorallocate($im, 0, 0, 0);
+
 $values = array(
-            40,  50,  // Point 1 (x, y)
-            20,  240, // Point 2 (x, y)
-            60,  60,  // Point 3 (x, y)
-            240, 20,  // Point 4 (x, y)
-            50,  40,  // Point 5 (x, y)
-            10,  10   // Point 6 (x, y)
+            343, 70,  // Point 1 (x, y)
+            288, 160, // Point 2 (x, y)
+            199, 160, // Point 3 (x, y)
+            269, 226, // Point 4 (x, y)  
+            229, 297,   
+            356, 258,
+            457, 307,
+            426, 225,
+            497, 173,
+            407, 154,
             );
 
-// create image
-$image = imagecreatetruecolor(250, 250);
+$w = imagesx( $im ); 
+$h = imagesy( $im ); 
+$newwidth = $w;
+$newheight = $h;
+$width = $w;
+$height = $h;
+$thumb = imagecreatetruecolor($newwidth, $newheight);
 
-// allocate colors
-$bg   = imagecolorallocate($image, 0, 0, 0);
-$blue = imagecolorallocate($image, 0, 0, 255);
+imagecopyresized($thumb, $imback, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+imagefilledpolygon($im, $values, 10, $fuchia);
+imagecolortransparent($im, $fuchia);
+imagecopymerge($thumb, $im, 0, 0, 0, 0, $w, $h, 100);
 
-// fill the background
-imagefilledrectangle($image, 0, 0, 249, 249, $bg);
 
-// draw a polygon
-imagefilledpolygon($image, $values, 6, $blue);
 
-// flush image
-header('Content-type: image/png');
-imagepng($image);
-imagedestroy($image);
-?>
+
+// OUTPUT IMAGE: 
+header("Content-Type: image/png"); 
+imagepng($thumb); 

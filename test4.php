@@ -6,11 +6,11 @@ $target_Path = $target_Path.basename( $_FILES['userFile']['name'] );
 move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
 
 // Setup an image
-$im = imagecreatefromjpeg($target_Path);
-$imback = imagecreatefromjpeg("motiftoit.jpg");
+$im = imagecreatefrompng($target_Path);
+$imback = imagecreatefrompng("Motif_kagome_01(1).png");
 
 $values = array(
-            18,  80,  // Point 1 (x, y)
+            17,  80,  // Point 1 (x, y)
             9,  110, // Point 2 (x, y)
             231,  110,  // Point 3 (x, y)
             214, 80,  // Point 4 (x, y)   
@@ -20,19 +20,18 @@ $values = array(
 
 			
 // allocate colors
-$bg   = imagecolorallocate($imback, 0, 0, 0);
 $blue = imagecolorallocate($im, 0, 0, 255);
+$transparent = imagecolorallocate($im, 0, 0, 255);
+$fuchia = imagecolorallocate($im, 255, 0, 255);
+$black = imagecolorallocate($im, 0, 0, 0);
+
+imagecolortransparent($im, $fuchia);
+imagefilledpolygon($im, $values, 4, $fuchia);
+imagecopy($imback, $im, 0, 0, 0, 0, 400, 400);
 
 
-// draw a polygon
-imagefilledpolygon($im, $values, 4,$bg);
-
-imagecopy($imback, $im, 0, 0, 20, 13, 80, 40);
-
-
-header('Content-type: image/jpeg');
-imagejpeg($im);
-imagejpeg($imback);
+header('Content-type: image/png');
+imagepng($imback);
 imagedestroy($imback);
 imagedestroy($im);
 ?>

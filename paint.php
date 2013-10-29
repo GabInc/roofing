@@ -2,6 +2,7 @@
 $target_Path = "images/";
 $target_Path = $target_Path.basename( $_FILES['userFile']['name'] );
 move_uploaded_file( $_FILES['userFile']['tmp_name'], $target_Path );
+$imgtrav = urlencode($target_Path);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,6 +121,12 @@ img{
 <div><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
 <div style="display: none;">
 <form action="Result.php" method="get" id="form1">
+<input type="submit">
+</form>
+</div>
+
+<div style="display: none;">
+<form enctype="multipart/form-data" ation="Result.php" method="get" id="form2">
 <input type="submit">
 </form>
 </div>
@@ -335,10 +342,12 @@ var name4 = 'chosedpen'
 var angle = $('#chosedang').text();  
 var position = $('#tabpos2').text();
 var pente = $('#chosedpente').text();
+var img = '<?php echo $imgtrav; ?>';
   $('#versants').append( '<div class="btn-group"><button class="btn btn-success" id="' + name + (n += 1) + '">' + msg + " " + (n) + '</button></div>' );
   $('#form1').append( '<input type="text" value="' + (angle) + '" name="' + name2 + (n) + '" id="' + name2 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (position) + '" name="' + name3 + (n) + '" id="' + name3 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (pente) + '" name="' + name4 + (n) + '" id="' + name4 + (n) + '"><br>' );
+  $('#form1').append( '<input type="text" value="' + (img) + '" name="imgtrav" id="imgtrav"><br>' );
   $('#testimg').removeClass("img-polaroid");
   $('#next').show(500);
   $('#lastversanterase').show(500);
@@ -613,6 +622,8 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('#submitall').click(function () {
   $('#form1').submit()
+
+  
   });  
 });  
 </script> 

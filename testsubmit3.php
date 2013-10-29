@@ -45,7 +45,7 @@
     </div>
 
 <div class="container">
-	<form role="form"  enctype="multipart/form-data" action="test4.php" method="POST">
+	<form role="form"  enctype="multipart/form-data" action="test2.php" method="POST">
   <div class="form-group">
    <br> <label for="exampleInputFile">File input</label> </br>
     <input type="file" name="userFile" id="exampleInputFile">
