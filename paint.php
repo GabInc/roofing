@@ -33,26 +33,12 @@ $imgtrav = urlencode($target_Path);
   padding-top: 50px;
 }
 
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
-}
 
 img{
-    max-width:640px;
+
 	cursor: crosshair;
 }
 
-.position{  
-    width:100px;
-    border-width: 1px; 
-	border-style: solid; 
-	border-color: #000000;
-}
-
-.lien{
-	cursor: pointer;
-}
 
 </style>
 
@@ -75,8 +61,27 @@ img{
 
 <div class="box" id="box">
 <img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/>
-</div>
 
+
+
+
+<!-- Showing positions in new div
+    ================================================== -->
+	
+<script>
+$(document).ready(function() {
+  $('.box').click(function(e) {
+    var offset = $('.box').offset();
+ 	var msg = ((e.clientX - offset.left) + ", ." + (e.clientY - offset.top)); if ( $("#testimg").hasClass("img-polaroid") ) {
+  $( ".tabpos" ).append( "<div>" + msg + "</div>" );
+  $( ".tabpos2" ).append( "<div>" + '.' + msg + ',' + "</div>" );
+  $('#eraselast').show(350);
+  }
+  });
+});
+</script>
+
+</div>
 
 
 <div class="table">
@@ -156,7 +161,7 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- Enable submit positions button after 3 positions
+<!-- Enable submit s button after 3 positions
 Il faut vérifier pourquoi c'est pas plus >2 qui fonctionne ?????
     ================================================== -->
 	
@@ -192,23 +197,6 @@ $(document).ready(function() {
     });
 </script>
 
-<!-- Showing positions in new div
-    ================================================== -->
-	
-<script>
-$(document).ready(function() {
-  $('#testimg').click(function(e) {
-    var offset = $(this).offset();
-	var msg = "";
- msg += event.pageX + ", " + event.pageY;
- if ( $("#testimg").hasClass("img-polaroid") ) {
-  $( ".tabpos" ).append( "<div>" + msg + "</div>" );
-  $( ".tabpos2" ).append( "<div>" + msg + '.' + "</div>" );
-  $('#eraselast').show(350);
-  }
-  });
-});
-</script>
 
 <!-- Erase last position button
     ================================================== -->
@@ -345,7 +333,7 @@ var pente = $('#chosedpente').text();
 var img = '<?php echo $imgtrav; ?>';
   $('#versants').append( '<div class="btn-group"><button class="btn btn-success" id="' + name + (n += 1) + '">' + msg + " " + (n) + '</button></div>' );
   $('#form1').append( '<input type="text" value="' + (angle) + '" name="' + name2 + (n) + '" id="' + name2 + (n) + '"><br>' );
-  $('#form1').append( '<input type="text" value="' + (position) + '" name="' + name3 + (n) + '" id="' + name3 + (n) + '"><br>' );
+  $('#form1').append( '<input type="text" value="' + "pos" + (position) + '" name="' + name3 + (n) + '" id="' + name3 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (pente) + '" name="' + name4 + (n) + '" id="' + name4 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (img) + '" name="imgtrav" id="imgtrav"><br>' );
   $('#testimg').removeClass("img-polaroid");

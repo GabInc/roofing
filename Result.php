@@ -22,11 +22,9 @@
 
  body {
   padding-top: 50px;
+
 }
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
-}
+
  
   </style>
 
@@ -50,20 +48,58 @@
       </div>
     </div>
     
+<?php 
 
-	<?php 
+
 	$query = $_GET["imgtrav"];
+	$query2 = urldecode($query);
 	
-	foreach (explode('&', $query) as $chunk) {
-    $param = explode("=", $chunk);
+	$im = imagecreatefromjpeg($query2);
+$imback = imagecreatefrompng("Motif_kagome_01(1).png");
+imageantialias($imback, true);
+$position = $_GET["chosedposition1"];
+$position = str_replace("pos.", "", $position);
+$posfinal = (explode('.', $position, 200));
 
-    if ($param) {
-       printf("\"%s\"<br/>\n", urldecode($param[0]), urldecode($param[1]));
-    }
-}?>
+$numberarray = count($posfinal)/2;
+
+
+$blue = imagecolorallocate($im, 0, 0, 255);
+$transparent = imagecolorallocate($im, 0, 0, 255);
+$fuchia = imagecolorallocate($im, 173, 255, 47);
+$black = imagecolorallocate($im, 0, 0, 0);
+
+
+$w = imagesx( $im ); 
+$h = imagesy( $im ); 
+$newwidth = $w;
+$newheight = $h;
+$width = $w;
+$height = $h;
+$thumb = imagecreatetruecolor($newwidth, $newheight);
+
+imagecopyresized($thumb, $imback, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+imagefilledpolygon($im, $posfinal, $numberarray, $fuchia);
+imagecolortransparent($im, $fuchia);
+imagecopymerge($thumb, $im, 0, 0, 0, 0, $w, $h, 100);
+imageantialias($thumb, true);
+imagepolygon($thumb, $posfinal, $numberarray, $black);
+
+
+
+
+
+imagepng($thumb, $query2)
+	
+?>
+	
 <div class="box" id="box">
+	<img src="<?php echo $query2 ?>" class="img-polaroid" id="testimg"/>
+</div>
+	
+<p id="position"></p>
 
-	</div>
+
 
 positions1 : <?php echo $_GET["chosedposition1"]; ?><br>
 angle1 : <?php echo $_GET["chosedangle1"]; ?><br>
@@ -85,6 +121,14 @@ positions5 : <?php echo $_GET["chosedposition5"]; ?><br>
 angle5 : <?php echo $_GET["chosedangle5"]; ?><br>
 pente5 : <?php echo $_GET["chosedpen5"]; ?><br>
 
+<script>
 
+$(document).ready(function() {
+  $('.box').click(function(e) {
+    var offset = $(this).offset();
+    $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
+  });
+});
+</script>
   </body>
 </html>

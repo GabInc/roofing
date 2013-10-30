@@ -26,10 +26,7 @@ imagefilledrectangle($target_Path, 0, 0, 249, 249, $bg);
 // draw a polygon
 imagefilledpolygon($target_Path, $values, 6, $blue);
 
-// flush image
-header('Content-type: image/jpeg');
-imagepng($image);
-imagedestroy($image);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
