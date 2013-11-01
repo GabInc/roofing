@@ -60,7 +60,7 @@ img{
 
 
 <div class="box" id="box">
-<img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/>
+<img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/><div><span id="spnCursor"></span></div>
 
 
 
@@ -72,14 +72,27 @@ img{
 $(document).ready(function() {
   $('.box').click(function(e) {
     var offset = $('.box').offset();
- 	var msg = ((e.clientX - offset.left) + ", ." + (e.clientY - offset.top)); if ( $("#testimg").hasClass("img-polaroid") ) {
-  $( ".tabpos" ).append( "<div>" + msg + "</div>" );
+ 	var msg = ((e.clientX - offset.left) + ", ." + (e.clientY - offset.top)); 
+ 	var msg2 = ("Horizontal Axis : " + (e.clientX - offset.left) + "," + "  Vertical Axis : " + (e.clientY - offset.top));
+ 	if ( $("#testimg").hasClass("img-polaroid") ) {
+  $( ".tabpos" ).append( "<div>" + msg2 + "</div>" );
   $( ".tabpos2" ).append( "<div>" + '.' + msg + ',' + "</div>" );
   $('#eraselast').show(350);
   }
   });
 });
 </script>
+
+<!-- Showing positions to user
+    ================================================== -->
+    
+<script type="text/javascript">
+   $(document).ready(function(){
+       $(document).mousemove(function(e){
+          $('#spnCursor').html("Horizontal Axis : " + e.clientX + "<br/> Vertical Axis : " + (e.clientY-50));
+       });
+    });
+  </script>
 
 </div>
 

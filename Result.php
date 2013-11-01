@@ -50,7 +50,7 @@
     
 <?php 
 
-
+// Aller chercher le data et décoder url image
 	$queryimg = $_GET["imgtrav"];
 	$queryimgdecoded = urldecode($queryimg);
 	$queryang = $_GET["chosedangle1"];
@@ -66,7 +66,7 @@
 	$queryang6 = $_GET["chosedangle6"];
 	$querypente6 = $_GET["chosedpen6"];
 
-
+//Définir l'image de derrière versant 1
 		
 if ($queryang == 1 && $querypente == 1) {
 	$imback = imagecreatefrompng("1.png");
@@ -143,10 +143,10 @@ elseif ($queryang == 3 && $querypente == 5) {
 }
 
 else {
-	$message = "Ben oui ton choix existe pas";
-echo "<script type='text/javascript'>alert('$message');</script>";
-	
+
 }
+
+//Définir l'image de derrière versant 2
 
 if ($queryang2 == 1 && $querypente2 == 1) {
 	$imback2 = imagecreatefrompng("1.png");
@@ -227,6 +227,8 @@ else {
 	
 }
 
+//Définir l'image de derrière versant 3
+
 if ($queryang3 == 1 && $querypente3 == 1) {
 	$imback3 = imagecreatefrompng("1.png");
 } 
@@ -306,6 +308,8 @@ else {
 	
 }
 
+//Définir l'image de derrière versant 4
+
 if ($queryang4 == 1 && $querypente4 == 1) {
 	$imback4 = imagecreatefrompng("1.png");
 } 
@@ -384,7 +388,9 @@ else {
 
 	
 }
-	
+
+//Définir l'image de derrière versant 5
+
 if ($queryang5 == 1 && $querypente5 == 1) {
 	$imback5 = imagecreatefrompng("1.png");
 } 
@@ -464,6 +470,8 @@ else {
 	
 }
 
+//Définir l'image de derrière versant 6
+
 if ($queryang6 == 1 && $querypente6 == 1) {
 	$imback6 = imagecreatefrompng("1.png");
 } 
@@ -542,6 +550,8 @@ else {
 
 	
 }		
+
+// Création versant 1
 	$im = imagecreatefromjpeg($queryimgdecoded);
 
 imageantialias($imback, true);
@@ -598,6 +608,8 @@ imagecopymerge($thumb, $im, 0, 0, 0, 0, $w, $h, 100);
 imageantialias($thumb, true);
 imagepolygon($thumb, $position1, $numberarray, $black);
 
+//Vérification si versant 2 existe et création versant 2
+
 $querypos2 = $_GET["chosedposition2"];
 
 if (empty($querypos2)) {
@@ -624,6 +636,8 @@ imagepolygon($thumb2, $position2, $numberarray2, $black);
 
 
 }
+
+//Vérification si versant 3 existe et création versant 3
 
 $querypos3 = $_GET["chosedposition3"];
 
@@ -654,6 +668,8 @@ imageantialias($thumb3, true);
 imagepolygon($thumb3, $position3, $numberarray3, $black);	
 	
 }
+
+//Vérification si versant 4 existe et création versant 4
 
 $querypos4 = $_GET["chosedposition4"];
 if (empty($querypos4) && ($querypos3 != '') ) {
@@ -690,6 +706,8 @@ imagepolygon($thumb4, $position4, $numberarray4, $black);
 
 
 }	
+
+//Vérification si versant 5 existe et création versant 5
 
 $querypos5 = $_GET["chosedposition5"];
 if (empty($querypos5) && ($querypos4 != '')) {
@@ -733,6 +751,9 @@ imagepolygon($thumb5, $position5, $numberarray5, $black);
 
 
 }
+
+//Vérification si versant 6 existe et création versant 6
+
 $querypos6 = $_GET["chosedposition6"];
 if (empty($querypos6) && ($querypos5 != '')) {
 	imagepng($thumb5, $queryimgdecoded);
@@ -782,15 +803,17 @@ imagepng($thumb6, $queryimgdecoded);
 }
 ?>
 
-
+<!-- affichage de l'image -->
 	
 <div class="box" id="box">
 	<img src="<?php echo $queryimgdecoded ?>" class="img-polaroid" id="testimg"/>
 </div>
 	
+<!-- affichage position on click (pour test et vérification) supprimer a la fin -->	
+	
 <p id="position"></p>
 
-
+<!-- affichage data (pour test et vérification) supprimer a la fin -->	
 
 positions1 : <?php echo $_GET["chosedposition1"]; ?><br>
 angle1 : <?php echo $_GET["chosedangle1"]; ?><br>
@@ -815,6 +838,8 @@ pente5 : <?php echo $_GET["chosedpen5"]; ?><br>
 positions6 : <?php echo $_GET["chosedposition6"]; ?><br>
 angle6 : <?php echo $_GET["chosedangle6"]; ?><br>
 pente6 : <?php echo $_GET["chosedpen6"]; ?><br>
+
+<!-- script position on click (pour test et vérification) supprimer a la fin -->	
 
 <script>
 
