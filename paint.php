@@ -62,6 +62,7 @@ img{
 <div class="box" id="box">
 <img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/><div><span id="spnCursor"></span></div>
 
+<div class="alert alert-info" id="tips">Choisir le premier point, idéalement en bas à gauche</div>
 
 
 
@@ -78,10 +79,12 @@ $(document).ready(function() {
   $( ".tabpos" ).append( "<div>" + msg2 + "</div>" );
   $( ".tabpos2" ).append( "<div>" + '.' + msg + ',' + "</div>" );
   $('#eraselast').show(350);
+  
   }
   });
 });
 </script>
+
 
 <!-- Showing positions to user
     ================================================== -->
@@ -171,6 +174,99 @@ $(document).ready(function() {
   $('#submitall').hide();  
   $('#next').hide(); 
   $('#lastversanterase').hide(); 
+});
+</script>
+
+
+<!-- Alert system
+    ================================================== -->
+    
+<script>
+$(document).ready(function() {
+  $('#testimg').click(function() {
+$("#tips").empty();
+	if ( $('#tabpos').children().length > 1 ){
+     $("#tips").append("Si c'est complet faite submit position sinon choisissez un autre point"); 
+	}
+	
+	 else {
+	 	
+	 $("#tips").append("Choisissez un autre point"); 
+	 }
+	
+	
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#versant').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#editversant').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Utiliser le bouton rouge pour effacer le dernier point"); 
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#eraselast').click(function() {
+  	$("#tips").empty();
+	if ( $('#tabpos').children().length > 3 ){
+     $("#tips").append("Si c'est complet faite submit position sinon choisissez un autre point"); 
+	}
+	
+	 else {
+	 	
+	 $("#tips").append("Choisissez un autre point"); 
+	 }
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#boutonangle').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Vous devez maintenant choisir une pente ou vous pouvez modifier en appuyant sur..."); 
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#editangle').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#boutonpente').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Vous pouvez créer un autre (next versant) ou soumettre pour création d'image (create images)"); 
+  });
+});
+</script>
+
+
+<script>
+$(document).ready(function() {
+  $('#next').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Choisir le premier point, idéalement en bas à gauche"); 
+  });
 });
 </script>
 
@@ -331,31 +427,7 @@ $(document).ready(function() {
 <!-- Create versant on choosing a pente buttons
     ================================================== -->
 		
-<script>	
-$(document).ready(function() {
-var n = 0;
-var msg = "Versant";
-var name = 'Versant'
-var name2 = 'chosedangle'
-var name3 = 'chosedposition'
-var name4 = 'chosedpen'
-  $('#boutonpente').click(function () { 
-var angle = $('#chosedang').text();  
-var position = $('#tabpos2').text();
-var pente = $('#chosedpente').text();
-var img = '<?php echo $imgtrav; ?>';
-  $('#versants').append( '<div class="btn-group"><button class="btn btn-success" id="' + name + (n += 1) + '">' + msg + " " + (n) + '</button></div>' );
-  $('#form1').append( '<input type="text" value="' + (angle) + '" name="' + name2 + (n) + '" id="' + name2 + (n) + '"><br>' );
-  $('#form1').append( '<input type="text" value="' + "pos" + (position) + '" name="' + name3 + (n) + '" id="' + name3 + (n) + '"><br>' );
-  $('#form1').append( '<input type="text" value="' + (pente) + '" name="' + name4 + (n) + '" id="' + name4 + (n) + '"><br>' );
-  $('#form1').append( '<input type="text" value="' + (img) + '" name="imgtrav" id="imgtrav"><br>' );
-  $('#testimg').removeClass("img-polaroid");
-  $('#next').show(500);
-  $('#lastversanterase').show(500);
-  $('#versant').hide(500);
-  });  
-});
-</script>
+
 
 <script>
 $(document).ready(function() {
@@ -395,6 +467,35 @@ $(document).ready(function() {
   $( ".chosedpente" ).append( "<div>" + 5 + "</div>" );
   });
 }); 
+</script>
+
+<script>	
+$(document).ready(function() {
+var n = 0;
+var msg = "Versant";
+var name = 'Versant'
+var name2 = 'chosedangle'
+var name3 = 'chosedposition'
+var name4 = 'chosedpen'
+  $('#boutonpente').click(function () { 
+var angle = $('#chosedang').text();  
+var position = $('#tabpos2').text();
+var pente = $('#chosedpente').text();
+var img = '<?php echo $imgtrav; ?>';
+  $('#versants').append( '<div class="btn-group"><button class="btn btn-success" id="' + name + (n += 1) + '">' + msg + " " + (n) + '</button></div>' );
+  $('#form1').append( '<input type="text" value="' + (angle) + '" name="' + name2 + (n) + '" id="' + name2 + (n) + '"><br>' );
+  $('#form1').append( '<input type="text" value="' + "pos" + (position) + '" name="' + name3 + (n) + '" id="' + name3 + (n) + '"><br>' );
+  $('#form1').append( '<input type="text" value="' + (pente) + '" name="' + name4 + (n) + '" id="' + name4 + (n) + '"><br>' );
+  $('#form1').append( '<input type="text" value="' + (img) + '" name="imgtrav" id="imgtrav"><br>' );
+  $('#testimg').removeClass("img-polaroid");
+  $('#next').show(500);
+  $('#lastversanterase').show(500);
+  $('#versant').hide(500);
+  });
+   $('#lastversanterase').click(function () {
+    n = n - 1;
+  });  
+});
 </script>
 
 <!-- Pente buttons
@@ -592,11 +693,16 @@ $(document).ready(function() {
   $('#form1').children("input:last").remove();
   $('#form1').children("input:last").remove();
   $('#form1').children("input:last").remove();
+  $('#form1').children("input:last").remove();
+  $('#form1').children("br:last").remove();
   $('#form1').children("br:last").remove();
   $('#form1').children("br:last").remove();
   $('#form1').children("br:last").remove();
   $('#versants').children("div:last").remove();
- // $('#form1').children("div:last").remove();
+  
+    if ( $('#form1').children().length == 1 ){
+  $('#next').click();
+}
   });  
 });  
 </script>	
