@@ -35,11 +35,44 @@ $imgtrav = urlencode($target_Path);
 
 
 img{
-
 	cursor: crosshair;
 }
 
+.table{
+	margin:auto;
+    position:relative;
+}
 
+#versants{
+	margin:auto;
+	position:relative;
+}
+
+#tips{
+	margin:auto;
+	position:relative;
+
+}
+.box{
+	margin:auto;
+	position:relative;
+
+}
+.create{
+	margin:auto;
+	position:relative;
+
+}
+.tabpos{
+	margin:auto;
+	position:relative;
+
+}
+#eraselast{
+	margin:auto;
+	position:relative;
+
+}
 </style>
 
   </head>
@@ -145,7 +178,7 @@ $(document).ready(function() {
   </div>
 </div>
 
-<div><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
+<div class="create"><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
 <div style="display: none;">
 <form action="Result.php" method="get" id="form1">
 <input type="submit">
@@ -181,13 +214,18 @@ $(document).ready(function() {
   $('#editangle').hide();
   $('#editpente').hide();
   $('#eraselast').hide();  
-  $('#submitall').hide();  
+  $('#submitall').hide(); 
   $('#next').hide(); 
   $('#lastversanterase').hide(); 
 });
 </script>
 
+<script>
+$(document).ready(function() {
+  $('#testimg').click(function() {
+    $('#submitall').hide(); 
 
+</script>
 <!-- Alert system
     ================================================== -->
     
@@ -349,7 +387,8 @@ $(document).ready(function() {
   $('#tabpos2').children("div:last").remove();
   $("body").children("div:last").remove();  
   if ( $('#tabpos').children().length == 0 ){
-  $('#eraselast').hide(); }
+  $('#eraselast').hide();
+  $('#submitall').show();  }
   if ( $('#tabpos').children().length < 3 ){
   $('#versant').prop("disabled", true);}
   });
@@ -584,7 +623,6 @@ var img = '<?php echo $imgtrav; ?>';
   $('#form1').append( '<input type="text" value="' + (distance) + '" name="' + name5 + (n) + '" id="' + name5 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (img) + '" name="imgtrav" id="imgtrav"><br>' );
   $('#testimg').removeClass("img-polaroid");
-  $('#next').show(500);
   $('#lastversanterase').show(500);
   $('#versant').hide(500);
   });
@@ -592,6 +630,24 @@ var img = '<?php echo $imgtrav; ?>';
     n = n - 1;
   });  
 });
+</script>
+
+
+<script>
+$(document).ready(function() {
+  $('#boutonpente').click(function () { 
+   $('#submitall').prop("disabled", false);
+  });
+});
+
+</script>
+<script>
+$(document).ready(function() {
+  $('#boutonpente').click(function () { 
+   $('#next').click();
+  });
+});
+
 </script>
 
 <!-- Pente buttons
