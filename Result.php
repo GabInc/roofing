@@ -48,7 +48,7 @@
     </div>
     
 <?php 
-
+    error_reporting(E_ERROR | E_PARSE);
 // Aller chercher le data et décoder url image
 	$queryimg = $_GET["imgtrav"];
 	$queryimgdecoded = urldecode($queryimg);
@@ -551,6 +551,7 @@ else {
 }		
 
 // Création versant 1
+    ini_set("gd.jpeg_ignore_warning", 1);
 	$im = imagecreatefromjpeg($queryimgdecoded);
 
 imageantialias($imback, true);
@@ -604,7 +605,6 @@ $Y1 = ($position1[1]+$position1[3]+$position1[5]+$position1[7]+$position1[9]+$po
 $fuchia = imagecolorallocate($im, 173, 255, 47);
 $black = imagecolorallocate($im, 105, 105, 105);
 
-echo ($position1[0]);
 
 $w = imagesx( $im ); 
 $h = imagesy( $im ); 
@@ -614,10 +614,9 @@ $wback = imagesx( $imback );
 $hback = imagesy( $imback ); 
 $wcrop1 = $wcentre-round($X1);
 $hcrop1 = $hcentre-round($Y1);
+$querydist1 = $_GET["choseddistan1"];
 $dest_w1 = round((($wback-$w)/2)+$wcrop1);
-$dest_h1 = (round((($hback-$h)/2)+$hcrop1));
-
-
+$dest_h1 = (round(((($hback-$h)/2)+$hcrop1)-$querydist1));
 
 $newwidth = $w;
 $newheight = $h;
@@ -663,8 +662,10 @@ $black = imagecolorallocate($thumb, 0, 0, 0);
 
 $wcrop2 = $wcentre-round($X2);
 $hcrop2 = $hcentre-round($Y2);
+
+$querydist2 = $_GET["choseddistan2"];
 $dest_w2 = round((($wback-$w)/2)+$wcrop2);
-$dest_h2 = round((($hback-$h)/2)+$hcrop2);
+$dest_h2 = (round(((($hback-$h)/2)+$hcrop2)-$querydist2));
 
 $thumb2 = imagecreatetruecolor($newwidth, $newheight);
 imagecopyresized($thumb2, $imback2, 0, 0, $dest_w2, $dest_h2, $newwidth, $newheight, $width, $height);
@@ -712,8 +713,9 @@ $black = imagecolorallocate($thumb2, 0, 0, 0);
 
 $wcrop3 = $wcentre-round($X3);
 $hcrop3 = $hcentre-round($Y3);
+$querydist3 = $_GET["choseddistan3"];
 $dest_w3 = round((($wback-$w)/2)+$wcrop3);
-$dest_h3 = round((($hback-$h)/2)+$hcrop3);
+$dest_h3 = (round(((($hback-$h)/2)+$hcrop3)-$querydist3));
 
 $thumb3 = imagecreatetruecolor($newwidth, $newheight);
 imagecopyresized($thumb3, $imback3, 0, 0, $dest_w3, $dest_h3, $newwidth, $newheight, $width, $height);
@@ -765,8 +767,9 @@ $black = imagecolorallocate($thumb3, 0, 0, 0);
 
 $wcrop4 = $wcentre-round($X4);
 $hcrop4 = $hcentre-round($Y4);
+$querydist4 = $_GET["choseddistan4"];
 $dest_w4 = round((($wback-$w)/2)+$wcrop4);
-$dest_h4 = round((($hback-$h)/2)+$hcrop4);
+$dest_h4 = (round(((($hback-$h)/2)+$hcrop4)-$querydist4));
 
 $thumb4 = imagecreatetruecolor($newwidth, $newheight);
 imagecopyresized($thumb4, $imback4, 0, 0, $dest_w4, $dest_h4, $newwidth, $newheight, $width, $height);
@@ -826,8 +829,9 @@ $black = imagecolorallocate($thumb4, 0, 0, 0);
 
 $wcrop5 = $wcentre-round($X5);
 $hcrop5 = $hcentre-round($Y5);
+$querydist5 = $_GET["choseddistan5"];
 $dest_w5 = round((($wback-$w)/2)+$wcrop5);
-$dest_h5 = round((($hback-$h)/2)+$hcrop5);
+$dest_h5 = (round(((($hback-$h)/2)+$hcrop5)-$querydist5));
 
 $thumb5 = imagecreatetruecolor($newwidth, $newheight);
 imagecopyresized($thumb5, $imback5, 0, 0, $dest_w5, $dest_h5, $newwidth, $newheight, $width, $height);
@@ -895,6 +899,10 @@ $hcrop6 = $hcentre-round($Y6);
 $dest_w6 = round((($wback-$w)/2)+$wcrop6);
 $dest_h6 = round((($hback-$h)/2)+$hcrop6);
 
+$querydist6 = $_GET["choseddistan6"];
+$dest_w6 = round((($wback-$w)/2)+$wcrop6);
+$dest_h6 = (round(((($hback-$h)/2)+$hcrop6)-$querydist6));
+
 $thumb6 = imagecreatetruecolor($newwidth, $newheight);
 imagecopyresized($thumb6, $imback6, 0, 0, $dest_w6, $dest_h6, $newwidth, $newheight, $width, $height);
 imagefilledpolygon($thumb5, $position6, $numberarray6, $fuchia);
@@ -922,26 +930,32 @@ imagepng($thumb6, $queryimgdecoded);
 positions1 : <?php echo $_GET["chosedposition1"]; ?><br>
 angle1 : <?php echo $_GET["chosedangle1"]; ?><br>
 pente1 : <?php echo $_GET["chosedpen1"]; ?><br>
+dist1 : <?php echo $_GET["choseddistan1"]; ?><br>
 
 positions2 : <?php echo $_GET["chosedposition2"]; ?><br>
 angle2 : <?php echo $_GET["chosedangle2"]; ?><br>
 pente2 : <?php echo $_GET["chosedpen2"]; ?><br>
+dist2 : <?php echo $_GET["choseddistan2"]; ?><br>
 
 positions3 : <?php echo $_GET["chosedposition3"]; ?><br>
 angle3 : <?php echo $_GET["chosedangle3"]; ?><br>
 pente3 : <?php echo $_GET["chosedpen3"]; ?><br>
+dist3 : <?php echo $_GET["choseddistan3"]; ?><br>
 
 positions4 : <?php echo $_GET["chosedposition4"]; ?><br>
 angle4 : <?php echo $_GET["chosedangle4"]; ?><br>
 pente4 : <?php echo $_GET["chosedpen4"]; ?><br>
+dist4 : <?php echo $_GET["choseddistan4"]; ?><br>
 
 positions5 : <?php echo $_GET["chosedposition5"]; ?><br>
 angle5 : <?php echo $_GET["chosedangle5"]; ?><br>
 pente5 : <?php echo $_GET["chosedpen5"]; ?><br>
+dist5 : <?php echo $_GET["choseddistan5"]; ?><br>
 
 positions6 : <?php echo $_GET["chosedposition6"]; ?><br>
 angle6 : <?php echo $_GET["chosedangle6"]; ?><br>
 pente6 : <?php echo $_GET["chosedpen6"]; ?><br>
+dist6 : <?php echo $_GET["choseddistan6"]; ?><br>
 
 <!-- script position on click (pour test et vérification) supprimer a la fin -->	
 

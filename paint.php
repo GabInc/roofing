@@ -57,12 +57,12 @@ img{
       </div>
     </div>
 	
-
+<div class="alert alert-info" id="tips">Choisir le premier point, idéalement en bas à gauche</div>
 
 <div class="box" id="box">
 <img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/><div><span id="spnCursor"></span></div>
 
-<div class="alert alert-info" id="tips">Choisir le premier point, idéalement en bas à gauche</div>
+
 
 
 
@@ -103,6 +103,12 @@ $(document).ready(function() {
 <div class="table">
   <button class="btn btn-primary" id="versant" disabled="disabled">Submit positons</button>
   <button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
+  <div class="btn-group-vertical" id="boutondist">
+      <button type="radio" class="btn btn-primary" id="dist1">près</button>
+      <button type="radio" class="btn btn-primary" id="dist2">moyen</button>
+      <button type="radio" class="btn btn-primary" id="dist3">loin</button>
+    </div>
+    <button class="btn btn-mini" id="editdist"><span class="glyphicon glyphicon-arrow-left"></span></button>
     <div class="btn-group-vertical" id="boutonangle">
       <button type="radio" class="btn btn-primary" id="angle1">45°</button>
       <button type="radio" class="btn btn-primary" id="angle2">90°</button>
@@ -158,15 +164,19 @@ $(document).ready(function() {
 </div>
 <div class ="chosedang" id="chosedang" style="display: none;">
 </div>
+<div class ="choseddist" id="choseddist" style="display: none;">
+</div>
 
 <!-- Button hidding on page load
     ================================================== -->
 	
 <script type="text/javascript">
 $(document).ready(function() {
+  $('#boutondist').hide();
   $('#boutonangle').hide();
   $('#boutonpente').hide();
   $('#boutonsubmit').hide();
+  $('#editdist').hide();
   $('#editversant').hide();
   $('#editangle').hide();
   $('#editpente').hide();
@@ -203,6 +213,24 @@ $("#tips").empty();
 $(document).ready(function() {
   $('#versant').click(function() {
 $("#tips").empty();	
+   $("#tips").append("Vous devez maintenant la dsitance ou vous pouvez modifier en appuyant sur..."); 
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#editdist').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Utiliser le bouton rouge pour effacer le dernier point"); 
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#boutondist).click(function() {
+$("#tips").empty();	
    $("#tips").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
   });
 });
@@ -212,10 +240,12 @@ $("#tips").empty();
 $(document).ready(function() {
   $('#editversant').click(function() {
 $("#tips").empty();	
-   $("#tips").append("Utiliser le bouton rouge pour effacer le dernier point"); 
+   $("#tips").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
   });
 });
 </script>
+
+
 
 <script>
 $(document).ready(function() {
@@ -225,6 +255,9 @@ $(document).ready(function() {
      $("#tips").append("Si c'est complet faite submit position sinon choisissez un autre point"); 
 	}
 	
+	 else if ($('#tabpos').children().length == 1){
+	 	$("#tips").append("Choisir le premier point, idéalement en bas à gauche");
+	 }
 	 else {
 	 	
 	 $("#tips").append("Choisissez un autre point"); 
@@ -331,7 +364,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('#versant').click(function () {
   $('#editversant').show(500);
-  $('#boutonangle').show(500);
+  $('#boutondist').show(500);
   $('#eraselast').hide(500);
   $('#versant').attr('class','btn');  
   $('#versant').prop("disabled", true);
@@ -345,7 +378,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('#editversant').click(function () {
   $('#editversant').hide(500);
-  $('#boutonangle').hide(500);
+  $('#boutondist').hide(500);
   $('#eraselast').show(500);
   $('#versant').attr('class','btn btn-primary');  
   $('#versant').prop("disabled", false);
@@ -354,8 +387,68 @@ $(document).ready(function() {
 }); 
 </script>  
 
+<!-- Distance chosing buttons + edit button
 
+    ================================================== -->
 
+<script>
+$(document).ready(function() {
+  $('#dist1').click(function () {
+  $('#editdist').show(500);
+  $('#boutonangle').show(500);
+  $('#dist1').prop("disabled", true);
+  $('#dist2').prop("disabled", true);
+  $('#dist3').prop("disabled", true);
+  $('#editversant').prop("disabled", true);
+  $('#editdist').prop("disabled", false);
+  $( ".choseddist" ).append( "<div>" + 0 + "</div>" );
+  });
+}); 
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#dist2').click(function () {
+  $('#editdist').show(500);
+  $('#boutonangle').show(500);
+  $('#dist1').prop("disabled", true);
+  $('#dist2').prop("disabled", true);
+  $('#dist3').prop("disabled", true);
+  $('#editversant').prop("disabled", true);
+  $('#editdist').prop("disabled", false);
+  $( ".choseddist" ).append( "<div>" + 100 + "</div>" );
+  });
+}); 
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#dist3').click(function () {
+  $('#editdist').show(500);
+  $('#boutonangle').show(500);
+  $('#dist1').prop("disabled", true);
+  $('#dist2').prop("disabled", true);
+  $('#dist3').prop("disabled", true);
+  $('#editversant').prop("disabled", true);
+  $('#editdist').prop("disabled", false);
+  $( ".choseddist" ).append( "<div>" + 200 + "</div>" );
+  });
+}); 
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#editdist').click(function () {
+  $('#editdist').hide(500);
+  $('#boutonangle').hide(500);
+  $('#dist1').prop("disabled", false);
+  $('#dist2').prop("disabled", false);
+  $('#dist3').prop("disabled", false);
+  $('#editversant').prop("disabled", false);
+  $('#choseddist').children("div:last").remove();
+  });
+}); 
+</script>
 
 <!-- Angle chosing buttons + edit button
 
@@ -369,7 +462,7 @@ $(document).ready(function() {
   $('#angle1').prop("disabled", true);
   $('#angle2').prop("disabled", true);
   $('#angle3').prop("disabled", true);
-  $('#editversant').prop("disabled", true);
+  $('#editdist').prop("disabled", true);
   $('#editangle').prop("disabled", false);
   $( ".chosedang" ).append( "<div>" + 1 + "</div>" );
   });
@@ -385,7 +478,7 @@ $(document).ready(function() {
   $('#angle1').prop("disabled", true);
   $('#angle2').prop("disabled", true);
   $('#angle3').prop("disabled", true);
-  $('#editversant').prop("disabled", true);
+  $('#editdist').prop("disabled", true);
   $('#editangle').prop("disabled", false);
   $( ".chosedang" ).append( "<div>" + 2 + "</div>" );
   });
@@ -401,7 +494,7 @@ $(document).ready(function() {
   $('#angle1').prop("disabled", true);
   $('#angle2').prop("disabled", true);
   $('#angle3').prop("disabled", true);
-  $('#editversant').prop("disabled", true);
+  $('#editdist').prop("disabled", true);
   $('#editangle').prop("disabled", false);
   $( ".chosedang" ).append( "<div>" + 3 + "</div>" );
   });
@@ -416,7 +509,7 @@ $(document).ready(function() {
   $('#angle1').prop("disabled", false);
   $('#angle2').prop("disabled", false);
   $('#angle3').prop("disabled", false);
-  $('#editversant').prop("disabled", false);
+  $('#editdist').prop("disabled", false);
   $('#chosedang').children("div:last").remove();
   });
 }); 
@@ -477,15 +570,18 @@ var name = 'Versant'
 var name2 = 'chosedangle'
 var name3 = 'chosedposition'
 var name4 = 'chosedpen'
+var name5 = 'choseddistan'
   $('#boutonpente').click(function () { 
 var angle = $('#chosedang').text();  
 var position = $('#tabpos2').text();
 var pente = $('#chosedpente').text();
+var distance = $('#choseddist').text();
 var img = '<?php echo $imgtrav; ?>';
   $('#versants').append( '<div class="btn-group"><button class="btn btn-success" id="' + name + (n += 1) + '">' + msg + " " + (n) + '</button></div>' );
   $('#form1').append( '<input type="text" value="' + (angle) + '" name="' + name2 + (n) + '" id="' + name2 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + "pos" + (position) + '" name="' + name3 + (n) + '" id="' + name3 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (pente) + '" name="' + name4 + (n) + '" id="' + name4 + (n) + '"><br>' );
+  $('#form1').append( '<input type="text" value="' + (distance) + '" name="' + name5 + (n) + '" id="' + name5 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (img) + '" name="imgtrav" id="imgtrav"><br>' );
   $('#testimg').removeClass("img-polaroid");
   $('#next').show(500);
@@ -517,6 +613,8 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('#pente1').click(function () {
   $('#editversant').hide(500);
+  $('#boutondist').hide(500);
+  $('#editdist').hide(500);
   $('#boutonangle').hide(500);
   $('#editangle').hide(500);
   $('#boutonpente').hide(500);
@@ -532,6 +630,10 @@ $(document).ready(function() {
   $('#pente3').prop("disabled", false);
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
+  $('#dist1').prop("disabled", false);
+  $('#dist2').prop("disabled", false);
+  $('#dist3').prop("disabled", false);
+  
   $('.point').remove(); 
   });  
 });
@@ -556,6 +658,8 @@ $(document).ready(function() {
   $('#editversant').hide(500);
   $('#boutonangle').hide(500);
   $('#editangle').hide(500);
+  $('#boutondist').hide(500);
+  $('#editdist').hide(500);
   $('#boutonpente').hide(500);
   $('#submitall').show(500);
   $('#tabpos').empty(500);
@@ -569,6 +673,9 @@ $(document).ready(function() {
   $('#pente3').prop("disabled", false);
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
+  $('#dist1').prop("disabled", false);
+  $('#dist2').prop("disabled", false);
+  $('#dist3').prop("disabled", false);
   $('.point').remove(); 
   });  
 });
@@ -593,6 +700,8 @@ $(document).ready(function() {
   $('#editversant').hide(500);
   $('#boutonangle').hide(500);
   $('#editangle').hide(500);
+  $('#boutondist').hide(500);
+  $('#editdist').hide(500);
   $('#boutonpente').hide(500);
   $('#submitall').show(500);
   $('#tabpos').empty(500);
@@ -606,6 +715,9 @@ $(document).ready(function() {
   $('#pente3').prop("disabled", false);
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
+  $('#dist1').prop("disabled", false);
+  $('#dist2').prop("disabled", false);
+  $('#dist3').prop("disabled", false);
   $('.point').remove(); 
   });  
 });
@@ -630,6 +742,8 @@ $(document).ready(function() {
   $('#editversant').hide(500);
   $('#boutonangle').hide(500);
   $('#editangle').hide(500);
+  $('#boutondist').hide(500);
+  $('#editdist').hide(500);
   $('#boutonpente').hide(500);
   $('#submitall').show(500);
   $('#tabpos').empty(500);
@@ -643,6 +757,9 @@ $(document).ready(function() {
   $('#pente3').prop("disabled", false);
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
+  $('#dist1').prop("disabled", false);
+  $('#dist2').prop("disabled", false);
+  $('#dist3').prop("disabled", false);
   $('.point').remove(); 
   });  
 });
@@ -667,6 +784,8 @@ $(document).ready(function() {
   $('#editversant').hide(500);
   $('#boutonangle').hide(500);
   $('#editangle').hide(500);
+  $('#boutondist').hide(500);
+  $('#editdist').hide(500);
   $('#boutonpente').hide(500);
   $('#submitall').show(500);
   $('#tabpos').empty(500);
@@ -680,6 +799,9 @@ $(document).ready(function() {
   $('#pente3').prop("disabled", false);
   $('#pente4').prop("disabled", false);
   $('#pente5').prop("disabled", false);
+  $('#dist1').prop("disabled", false);
+  $('#dist2').prop("disabled", false);
+  $('#dist3').prop("disabled", false);
   $('.point').remove(); 
   });  
 });
@@ -694,6 +816,8 @@ $(document).ready(function() {
   $('#form1').children("input:last").remove();
   $('#form1').children("input:last").remove();
   $('#form1').children("input:last").remove();
+  $('#form1').children("input:last").remove();
+  $('#form1').children("br:last").remove();
   $('#form1').children("br:last").remove();
   $('#form1').children("br:last").remove();
   $('#form1').children("br:last").remove();
@@ -718,6 +842,7 @@ $(document).ready(function() {
   $('#tabpos2').empty();
   $('#chosedang').empty();
   $('#chosedpente').empty();
+  $('#choseddist').empty();
   });  
 });  
 </script>	
