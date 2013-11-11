@@ -12,13 +12,21 @@ $imgtrav = urlencode($target_Path);
     <meta name="dcterms.created" content="jeu., 03 oct. 2013 19:34:09 GMT">
     <meta name="description" content="">
     <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
 <meta charset=utf-8 />
 
     <title>Interlock Roofing</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,43 +44,22 @@ $imgtrav = urlencode($target_Path);
 
 img{
 	cursor: crosshair;
+
+   
 }
 
-.table{
-	margin:auto;
-    position:relative;
-}
-
-#versants{
-	margin:auto;
-	position:relative;
-}
-
-#tips{
-	margin:auto;
-	position:relative;
-
-}
 .box{
-	margin:auto;
-	position:relative;
+
+   
+}
+
+
+#versants {
+	float:right;
+
 
 }
-.create{
-	margin:auto;
-	position:relative;
 
-}
-.tabpos{
-	margin:auto;
-	position:relative;
-
-}
-#eraselast{
-	margin:auto;
-	position:relative;
-
-}
 </style>
 
   </head>
@@ -89,96 +76,77 @@ img{
         </div>
       </div>
     </div>
-	
-<div class="alert alert-info" id="tips">Choisir le premier point, idéalement en bas à gauche</div>
-
-<div class="box" id="box">
-<img src="<?php echo $target_Path ?>" class="img-polaroid" id="testimg"/><div><span id="spnCursor"></span></div>
-
-
-
-
-
-<!-- Showing positions in new div
-    ================================================== -->
-	
-<script>
-$(document).ready(function() {
-  $('.box').click(function(e) {
-    var offset = $('.box').offset();
- 	var msg = ((e.clientX - offset.left) + ", ." + (e.clientY - offset.top)); 
- 	var msg2 = ("Horizontal Axis : " + (e.clientX - offset.left) + "," + "  Vertical Axis : " + (e.clientY - offset.top));
- 	if ( $("#testimg").hasClass("img-polaroid") ) {
-  $( ".tabpos" ).append( "<div>" + msg2 + "</div>" );
-  $( ".tabpos2" ).append( "<div>" + '.' + msg + ',' + "</div>" );
-  $('#eraselast').show(350);
+   
+<div class="container"> 
+  <div class="row-fluid">	
+	<div class="alert alert-info" id="tips">Choisir le premier point, idéalement en bas à gauche</div> 
+  </div> 
+  <div class="row-fluid">	
+   <div class="box" id="box">			
+    <img src="<?php echo $target_Path ?>" class="img-responsive imgready" alt="Responsive image" id="testimg"/>
+   </div>
   
-  }
-  });
-});
-</script>
-
-
-<!-- Showing positions to user
-    ================================================== -->
-    
-<script type="text/javascript">
-   $(document).ready(function(){
-       $(document).mousemove(function(e){
-          $('#spnCursor').html("Horizontal Axis : " + e.clientX + "<br/> Vertical Axis : " + (e.clientY-50));
-       });
-    });
-  </script>
-
-</div>
-
-
-<div class="table">
-  <button class="btn btn-primary" id="versant" disabled="disabled">Submit positons</button>
-  <button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
-  <div class="btn-group-vertical" id="boutondist">
+  </div>
+  <div class="row-fluid table">	
+  
+   <div class=".col-md-12">
+      <button class="btn btn-primary" id="versant" disabled="disabled">Submit positons</button>
+      <button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
+   <div class="btn-group-vertical" id="boutondist">
       <button type="radio" class="btn btn-primary" id="dist1">près</button>
       <button type="radio" class="btn btn-primary" id="dist2">moyen</button>
       <button type="radio" class="btn btn-primary" id="dist3">loin</button>
-    </div>
-    <button class="btn btn-mini" id="editdist"><span class="glyphicon glyphicon-arrow-left"></span></button>
-    <div class="btn-group-vertical" id="boutonangle">
+   </div>
+      <button class="btn btn-mini" id="editdist"><span class="glyphicon glyphicon-arrow-left"></span></button>  
+   <div class="btn-group-vertical" id="boutonangle">
       <button type="radio" class="btn btn-primary" id="angle1">45°</button>
       <button type="radio" class="btn btn-primary" id="angle2">90°</button>
       <button type="radio" class="btn btn-primary" id="angle3">135°</button>
-    </div>
-  <button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
-    <div class="btn-group-vertical" id="boutonpente">
+   </div>
+     <button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
+   <div class="btn-group-vertical" id="boutonpente">
       <button type="radio" class="btn btn-primary" id="pente1">4/12</button>
       <button type="radio" class="btn btn-primary" id="pente2">6/12</button>
       <button type="radio" class="btn btn-primary" id="pente3">8/12</button>
       <button type="radio" class="btn btn-primary" id="pente4">10/12</button>
       <button type="radio" class="btn btn-primary" id="pente5">12/12</button>
-    </div>
-  <button class="btn btn-mini" id="editpente"><span class="glyphicon glyphicon-arrow-left"></span></button>
-    <div class="btn-group-vertical" id="boutonsubmit">
-      <button class="btn btn-primary" id ="addversant">Add a Versant</button>
-    </div>
+   </div>
+   <div class="btn-group-vertical" id="versants">
+      <button type="button" class="btn btn-danger" id ="lastversanterase">erase last</button>
+      
+   </div> 
+   </div> 
+
+   
+
+ </div>   
+ <div class="row-fluid">
+   <div class ="tabpos" id="tabpos">
+   </div>
+   <div>
+      <button class="btn btn-danger" id="eraselast">Erase last</button>
+   </div>
+ 
+ </div>  
+ <div class="row-fluid">
+   <div class="create"><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
+ </div>
+</div>
+  
+  
+<div><span id="spnCursor"></span></div>
+    
+
+
+    
+
+    
+
+     
+
+
 </div>
 
-
-<div class ="tabpos" id="tabpos">
-</div>
-
-
-
-<div>
-<button class="btn btn-danger" id="eraselast">Erase last</button>
-</div>
-
-<div class="btn-group" id="versants">
-  <div class="btn-group">
-  <button type="button" class="btn btn-danger" id ="lastversanterase">erase last versant</button>
-  <button type="button" class="btn btn-primary" id ="next">next versant</button>
-  </div>
-</div>
-
-<div class="create"><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
 <div style="display: none;">
 <form action="Result.php" method="get" id="form1">
 <input type="submit">
@@ -199,6 +167,51 @@ $(document).ready(function() {
 </div>
 <div class ="choseddist" id="choseddist" style="display: none;">
 </div>
+
+<div class ="rien" id="rien" style="display: none;">
+<button type="button" class="btn btn-primary" id ="next">next versant</button>
+<button class="btn btn-mini" id="editpente"><span class="glyphicon glyphicon-arrow-left"></span></button>
+       <div class="btn-group-vertical" id="boutonsubmit">
+         <button class="btn btn-primary" id ="addversant">Add a Versant</button>
+      </div>
+</div>
+
+
+
+<!-- Showing positions in new div
+    ================================================== -->
+<script>
+$(document).ready(function() {
+  $('#testimg').click(function(e) {
+  	var pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
+    var pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
+    var offset = $('#testimg').offset();
+ 	var msg = (pos_x + ", ." + pos_y); 
+ 	var msg2 = ("Horizontal Axis : " + pos_x + "," + "  Vertical Axis : " + pos_y);
+ 	if ( $("#testimg").hasClass("imgready") ) {
+  $( ".tabpos" ).append( "<div>" + msg2 + "</div>" );
+  $( ".tabpos2" ).append( "<div>" + '.' + msg + ',' + "</div>" );
+  $('#eraselast').show(350);
+  $('#submitall').prop("disabled", true);
+  
+  }
+  });
+});
+</script>
+
+
+<!-- Showing positions to user
+    ================================================== -->
+    
+<script type="text/javascript">
+   $(document).ready(function(){
+       $(document).mousemove(function(e){
+       	  	var pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("pointer_div").offsetLeft;
+            var pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("pointer_div").offsetTop;
+              $('#spnCursor').html("Horizontal Axis : " + pos_x + "<br/> Vertical Axis : " + pos_y);
+       });
+    });
+  </script>
 
 <!-- Button hidding on page load
     ================================================== -->
@@ -348,7 +361,7 @@ Il faut vérifier pourquoi c'est pas plus >2 qui fonctionne ?????
 <script>
 $(document).ready(function() {
   $('#testimg').click(function(e) {
-    if (( $('#tabpos').children().length > 1 )&&( $("#testimg").hasClass("img-polaroid") )){
+    if (( $('#tabpos').children().length > 1 )&&( $("#testimg").hasClass("imgready") )){
      $('#versant').removeAttr('disabled'); 
 	 }
   });
@@ -364,7 +377,7 @@ $(document).ready(function() {
         mouseY = ev.pageY;
         var color = '#000000';
         var size = '2px';
-		if ( $("#testimg").hasClass("img-polaroid") ) {
+		if ( $("#testimg").hasClass("imgready") ) {
         $("body").append(
             $('<div class="point"></div>')
                 .css('position', 'absolute')
@@ -408,7 +421,7 @@ $(document).ready(function() {
   $('#versant').attr('class','btn');  
   $('#versant').prop("disabled", true);
   $('#editversant').prop("disabled", false);
-  $('.img-polaroid').removeClass("img-polaroid");
+  $('.img-responsive').removeClass("imgready");
   });
 }); 
 </script>  
@@ -421,7 +434,7 @@ $(document).ready(function() {
   $('#eraselast').show(500);
   $('#versant').attr('class','btn btn-primary');  
   $('#versant').prop("disabled", false);
-  $('#testimg').addClass("img-polaroid");
+  $('#testimg').addClass("imgready");
   });
 }); 
 </script>  
@@ -610,7 +623,7 @@ var name2 = 'chosedangle'
 var name3 = 'chosedposition'
 var name4 = 'chosedpen'
 var name5 = 'choseddistan'
-  $('#boutonpente').click(function () { 
+$('#boutonpente').click(function () { 
 var angle = $('#chosedang').text();  
 var position = $('#tabpos2').text();
 var pente = $('#chosedpente').text();
@@ -622,7 +635,7 @@ var img = '<?php echo $imgtrav; ?>';
   $('#form1').append( '<input type="text" value="' + (pente) + '" name="' + name4 + (n) + '" id="' + name4 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (distance) + '" name="' + name5 + (n) + '" id="' + name5 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (img) + '" name="imgtrav" id="imgtrav"><br>' );
-  $('#testimg').removeClass("img-polaroid");
+  $('#testimg').removeClass("imgready");
   $('#lastversanterase').show(500);
   $('#versant').hide(500);
   });
@@ -631,8 +644,19 @@ var img = '<?php echo $imgtrav; ?>';
   });  
 });
 </script>
+<script>
+$(document).ready(function() {
+var img2 = document.getElementById('testimg'); 
+var width = img2.clientWidth;
+var height = img2.clientHeight;
+	$('#boutonpente').click(function (){
 
-
+  $('#form1').append( '<input type="text" value="' + (width) + '" name="imgsizeX" id="imgsizeX"><br>' );
+  $('#form1').append( '<input type="text" value="' + (height) + '" name="imgsizeY" id="imgsizeY"><br>' );
+ });  
+}); 
+</script>
+  
 <script>
 $(document).ready(function() {
   $('#boutonpente').click(function () { 
@@ -873,6 +897,10 @@ $(document).ready(function() {
   $('#form1').children("input:last").remove();
   $('#form1').children("input:last").remove();
   $('#form1').children("input:last").remove();
+  $('#form1').children("input:last").remove();
+  $('#form1').children("input:last").remove();
+  $('#form1').children("br:last").remove();
+  $('#form1').children("br:last").remove();
   $('#form1').children("br:last").remove();
   $('#form1').children("br:last").remove();
   $('#form1').children("br:last").remove();
@@ -883,6 +911,9 @@ $(document).ready(function() {
     if ( $('#form1').children().length == 1 ){
   $('#next').click();
 }
+    if ( $('#form1').children().length = 1 ){
+  $('#submitall').hide();
+}
   });  
 });  
 </script>	
@@ -892,7 +923,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   $('#next').click(function () {
-  $('#testimg').addClass("img-polaroid");
+  $('#testimg').addClass("imgready");
   $('#next').hide(500);
   $('#versant').show(500);
   $('#tabpos2').empty();
@@ -903,6 +934,7 @@ $(document).ready(function() {
 });  
 </script>	
 	
+
 
 <!-- Send data to result.php                   
 ================================================= -->
@@ -923,5 +955,6 @@ $(document).ready(function() {
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
   </body>
 </html>

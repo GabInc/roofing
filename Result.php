@@ -24,6 +24,12 @@
   padding-top: 50px;
 
 }
+
+img{
+    max-width:1000px;
+    max-height:600px;
+   
+}
  
   </style>
 
@@ -552,10 +558,19 @@ else {
 
 // Création versant 1
     ini_set("gd.jpeg_ignore_warning", 1);
-	$im = imagecreatefromjpeg($queryimgdecoded);
 
+	$imori = imagecreatefromjpeg($queryimgdecoded);
+	
+	
+$wori = imagesx( $imori ); 
+$hori = imagesy( $imori ); 
+$wnew =  $_GET["imgsizeX"];
+$hnew =  $_GET["imgsizeY"];
+
+$im = imagecreatetruecolor($wnew, $hnew);
+imagecopyresized($im, $imori, 0, 0, 0, 0, $wnew, $hnew, $wori, $hori);
 imageantialias($imback, true);
-
+imageantialias($im, true);
 if ($queryang2 != '') {
 	imageantialias($imback2, true);
 } else {
@@ -602,6 +617,17 @@ $Y1 = ($position1[1]+$position1[3]+$position1[5]+$position1[7]+$position1[9]+$po
 +$position1[89]+$position1[91]+$position1[93]+$position1[95]+$position1[97]+$position1[99]+$position1[101])/$numberarray;
 
 
+
+
+	//$wnew =  $_GET["imgsizeX"];
+   // $hnew =  $_GET["imgsizeY"];
+	//$imori = imagecreatefromjpeg($queryimgdecoded);
+
+	//imagecopyresampled($im, $imori, 0, 0, 0, 0, $wnew, $hnew, $wori, $hori);
+//	$im = imagecopyresized($im, $imori, 0, 0, 0, 0, $wnew, $hnew, $wori, $hori);
+
+
+
 $fuchia = imagecolorallocate($im, 173, 255, 47);
 $black = imagecolorallocate($im, 105, 105, 105);
 
@@ -623,6 +649,8 @@ $newheight = $h;
 $width = $w;
 $height = $h;
 $thumb = imagecreatetruecolor($newwidth, $newheight);
+
+
 
 imagecopyresized($thumb, $imback, 0, 0, $dest_w1, $dest_h1, $newwidth, $newheight, $width, $height);
 imagefilledpolygon($im, $position1, $numberarray, $fuchia);
@@ -916,9 +944,17 @@ imagepng($thumb6, $queryimgdecoded);
 ?>
 
 <!-- affichage de l'image -->
-	
-<div class="box" id="box">
-	<img src="<?php echo $queryimgdecoded ?>" class="img-polaroid" id="testimg"/>
+<div class="container"> 
+ <div class="row-fluid">	
+	<div class="alert alert-info" id="tips">Bravo bla, bla, bla</div> 
+ </div> 
+ <div class="row-fluid">	
+  <div class="box" id="box">			
+  <img src="<?php echo $queryimgdecoded ?>" class="img-responsive" alt="Responsive image" id="testimg"/>
+  </div>
+  
+ </div>	
+
 </div>
 	
 <!-- affichage position on click (pour test et vérification) supprimer a la fin -->	
@@ -926,6 +962,9 @@ imagepng($thumb6, $queryimgdecoded);
 <p id="position"></p>
 
 <!-- affichage data (pour test et vérification) supprimer a la fin -->	
+
+image size X : <?php echo $_GET["imgsizeX"]; ?><br>
+image size Y : <?php echo $_GET["imgsizeY"]; ?><br>
 
 positions1 : <?php echo $_GET["chosedposition1"]; ?><br>
 angle1 : <?php echo $_GET["chosedangle1"]; ?><br>
@@ -957,6 +996,10 @@ angle6 : <?php echo $_GET["chosedangle6"]; ?><br>
 pente6 : <?php echo $_GET["chosedpen6"]; ?><br>
 dist6 : <?php echo $_GET["choseddistan6"]; ?><br>
 
+
+<?php echo $queryimgdecoded; ?><br>
+<?php echo $wori; ?><br>
+<?php echo $hori; ?><br>
 <!-- script position on click (pour test et vérification) supprimer a la fin -->	
 
 
@@ -970,5 +1013,11 @@ $(document).ready(function() {
   });
 });
 </script>
+ <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
   </body>
 </html>
