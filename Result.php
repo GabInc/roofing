@@ -6,7 +6,7 @@
     <meta name="dcterms.created" content="jeu., 03 oct. 2013 19:34:09 GMT">
     <meta name="description" content="">
     <meta name="keywords" content="">
-
+    <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
 <meta charset=utf-8 />
 <!-- Bootstrap core CSS -->
@@ -26,9 +26,13 @@
 }
 
 img{
-    max-width:1000px;
-    max-height:600px;
+
    
+}
+#tips {
+	margin-top:10px;
+
+
 }
  
   </style>
@@ -48,7 +52,7 @@ img{
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Interlock Roofing</a>
+          <a class="navbar-brand" href="http://www.lfhs.ca/roofing/">Interlock Roofing</a>
         </div>
       </div>
     </div>
@@ -944,18 +948,19 @@ imagepng($thumb6, $queryimgdecoded);
 ?>
 
 <!-- affichage de l'image -->
-<div class="container"> 
+<div class="container">
  <div class="row-fluid">	
 	<div class="alert alert-info" id="tips">Bravo bla, bla, bla</div> 
  </div> 
+</div>
+<div class="container jumbotron"> 
  <div class="row-fluid">	
   <div class="box" id="box">			
-  <img src="<?php echo $queryimgdecoded ?>" class="img-responsive" alt="Responsive image" id="testimg"/>
+  <img src="<?php echo $queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
-  
+  </div>
  </div>	
 
-</div>
 	
 <!-- affichage position on click (pour test et vérification) supprimer a la fin -->	
 	

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
     <link rel="shortcut icon" href="../../assets/ico/favicon.png">
 
     <title>Interlock Roofing</title>
@@ -27,6 +28,11 @@
   padding: 40px 15px;
   text-align: center;
 }
+#tips {
+	margin-top:10px;
+
+
+}
  
   </style>
   </head>
@@ -39,12 +45,15 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Interlock Roofing</a>
+          <a class="navbar-brand" href="http://www.lfhs.ca/roofing/">Interlock Roofing</a>
         </div>
       </div>
     </div>
 
 <div class="container">
+	  <div class="row-fluid">	
+	<div class="alert alert-info" id="tips">Choisir une image ou prendre une photo</div> 
+  </div> 
 	<form role="form"  enctype="multipart/form-data" action="paint.php" method="POST">
   <div class="form-group">
    <br> <label for="exampleInputFile">File input</label> </br>
@@ -54,8 +63,8 @@
   <button type="submit" class="btn btn-default btn-lg">Submit</button>
     </form>
   </div>
+
 </div>
-  
 
 
     <!-- Bootstrap core JavaScript
