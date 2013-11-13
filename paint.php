@@ -68,10 +68,16 @@ img{
 }
 
 
+#erase {
+
+}
 #versants {
-	float:right;
 
 
+}
+
+.vers{
+  
 }
 
 #tips {
@@ -107,7 +113,7 @@ img{
 }
 
 .boite {
-	max-width:780px;
+	max-width:900px;
 	
 
 
@@ -148,7 +154,7 @@ img{
 
   <div class="row-fluid table">	
   
-   <div class=".col-md-9">
+   <div class=".col-md-12">
       <button class="btn btn-primary" id="versant" disabled="disabled">Next step</button>
       <button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
    <div class="btn-group-vertical" id="boutondist">
@@ -173,12 +179,8 @@ img{
      <button type="button" class="btn btn-primary" id ="next">next versant</button>
   
    </div> 
-   <div class=".col-md-3">
-   <div class="btn-group-vertical" id="versants">
-      <button type="button" class="btn btn-danger" id ="lastversanterase">Erase last</button>
-      
-   </div> 
- </div>   
+
+        
  </div>
  
  <div class="row-fluid panel panel-default boite">
@@ -194,11 +196,21 @@ img{
  <div class ="col-md-2 tabang" id="tabang">
    	<div class ="titre3" id="titre3"><h4><span class="label label-default">Angle :</h4></span></div>
  </div>
- <div class ="col-md-2 tabpente" id="tabpente">
+ <div class ="col-md-4 tabpente" id="tabpente">
    	<div class ="titre4" id="titre4"><h4><span class="label label-default">Pente :</h4></span></div>
  </div>
- </div> 
- </div> 
+
+ 	<div class="btn-group-vertical">
+ <div class=".col-md-2 vers" id="vers"> 
+ 	<div class="versants" id="versants">
+    </div>
+ 	<div class="erase" id="erase">  
+ 	<button type="button" class="btn btn-danger" id ="lastversanterase">Erase last</button> 		
+ </div>
+</div>
+ </div>
+  </div> 
+</div> 
  <div class="row-fluid tableau"><button class="btn btn-danger" id="eraselast">Erase last</button>
  </div>
  <div class="row-fluid">
@@ -601,7 +613,7 @@ $(document).ready(function() {
   if ( $('#tabpos').children().length < 4 ){
   $('#versant').prop("disabled", true);
   }
-  if($('#tabpos').children().length == 1 && $('#versants').children().length != 1){
+  if($('#tabpos').children().length == 1 && $('#versants').children().length != 0){
   $('#submitall').show();
   $('#submitall').prop("disabled", false);
   }
@@ -1127,7 +1139,7 @@ $(document).ready(function() {
     if ( $('#form1').children().length == 1 ){
   $('#next').click();
 }
-    if ( $('#versants').children().length == 1 ){
+    if ( $('#versants').children().length == 0 ){
   $('#submitall').hide();
   $('#lastversanterase').hide();
 }
