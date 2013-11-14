@@ -982,81 +982,113 @@ imagepng($thumb6, $value.$queryimgdecoded);
  </div> 
 </div>
 <div class="container jumbotron"> 
+	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
  <div class="row-fluid">	
   <div class="box" id="box">			
   <img src="<?php echo 'color1'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color2'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color3'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color4'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color5'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color6'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color7'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color8'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color9'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color10'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color11'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color12'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color13'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color14'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color15'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color16'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
@@ -1065,68 +1097,7 @@ imagepng($thumb6, $value.$queryimgdecoded);
 </div>
 
 
-	
-<!-- affichage position on click (pour test et vérification) supprimer a la fin -->	
-	
-<p id="position"></p>
 
-<!-- affichage data (pour test et vérification) supprimer a la fin -->	
-
-image size X : <?php echo $_GET["imgsizeX"]; ?><br>
-image size Y : <?php echo $_GET["imgsizeY"]; ?><br>
-
-positions1 : <?php echo $_GET["chosedposition1"]; ?><br>
-angle1 : <?php echo $_GET["chosedangle1"]; ?><br>
-pente1 : <?php echo $_GET["chosedpen1"]; ?><br>
-dist1 : <?php echo $_GET["choseddistan1"]; ?><br>
-
-positions2 : <?php echo $_GET["chosedposition2"]; ?><br>
-angle2 : <?php echo $_GET["chosedangle2"]; ?><br>
-pente2 : <?php echo $_GET["chosedpen2"]; ?><br>
-dist2 : <?php echo $_GET["choseddistan2"]; ?><br>
-
-positions3 : <?php echo $_GET["chosedposition3"]; ?><br>
-angle3 : <?php echo $_GET["chosedangle3"]; ?><br>
-pente3 : <?php echo $_GET["chosedpen3"]; ?><br>
-dist3 : <?php echo $_GET["choseddistan3"]; ?><br>
-
-positions4 : <?php echo $_GET["chosedposition4"]; ?><br>
-angle4 : <?php echo $_GET["chosedangle4"]; ?><br>
-pente4 : <?php echo $_GET["chosedpen4"]; ?><br>
-dist4 : <?php echo $_GET["choseddistan4"]; ?><br>
-
-positions5 : <?php echo $_GET["chosedposition5"]; ?><br>
-angle5 : <?php echo $_GET["chosedangle5"]; ?><br>
-pente5 : <?php echo $_GET["chosedpen5"]; ?><br>
-dist5 : <?php echo $_GET["choseddistan5"]; ?><br>
-
-positions6 : <?php echo $_GET["chosedposition6"]; ?><br>
-angle6 : <?php echo $_GET["chosedangle6"]; ?><br>
-pente6 : <?php echo $_GET["chosedpen6"]; ?><br>
-dist6 : <?php echo $_GET["choseddistan6"]; ?><br>
-
-
-<?php echo $queryimgdecoded; ?><br>
-<?php echo $wori; ?><br>
-<?php echo $hori; ?><br>
-
-
-
-
-
-<!-- script position on click (pour test et vérification) supprimer a la fin -->	
-
-
-
-<script>
-
-$(document).ready(function() {
-  $('.box').click(function(e) {
-    var offset = $(this).offset();
-    $('#position').text((e.clientX - offset.left) + ", " + (e.clientY - offset.top));
-  });
-});
-</script>
  <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

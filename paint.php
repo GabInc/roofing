@@ -62,8 +62,9 @@ img{
    
 }
 
-.box {
-
+.boite {
+	
+min-height:249px;
    
 }
 
@@ -146,7 +147,7 @@ img{
   <div class="container jumbotron"> 
   <div class="row-fluid">	
    <div class="box" id="box">			
-    <img src="<?php echo $img_Path ?>" class="roofimage imgready" id="testimg"/>
+    <img src="<?php echo $img_Path ?>" class="roofimage" id="testimg"/>
    </div>
   
   </div>
@@ -226,7 +227,7 @@ img{
   </div>
 </div> 
   
-<div><span id="spnCursor"></span></div>
+
     
 
 
@@ -238,7 +239,7 @@ img{
 
 
 </div>
-
+<div style="display: none;"><span id="spnCursor"></span></div>
 <div style="display: none;">
 <form action="Result.php" method="get" id="form1">
 <input type="submit">
@@ -259,7 +260,8 @@ img{
 </div>
 <div class ="choseddist" id="choseddist" style="display: none;">
 </div>
-
+<div class ="ready" id="ready" style="display: none;">
+</div>
 <div class ="rien" id="rien" style="display: none;">
 
 <button class="btn btn-mini" id="editpente"><span class="glyphicon glyphicon-arrow-left"></span></button>
@@ -280,11 +282,12 @@ $(document).ready(function() {
     var offset = $('#testimg').offset();
  	var msg = (pos_x + ", ." + pos_y); 
  	var msg2 = (pos_x + "," + pos_y);
- 	if ( $("#testimg").hasClass("imgready") ) {
+ 	if ( $("#ready").hasClass("ready") ) {
   $( ".tabpos" ).append( '<div class="posit">' + msg2 + '</div>' );
   $( ".tabpos2" ).append( "<div>" + '.' + msg + ',' + "</div>" );
   $('#eraselast').show(350);
   $('#submitall').prop("disabled", true);
+  $('#lastversanterase').prop("disabled", true);
   
   }
   });
@@ -346,18 +349,20 @@ $(document).ready(function() {
   $('#testimg').click(function() {
 $("#tips").empty();
 	if ( $('#tabpos').children().length > 3 ){
-     $("#tips").append("Si c'est complet faite submit position sinon choisissez un autre point"); 
+     $("#tips").append("Si c'est complet faite submit position sinon choisissez un autre point ou effacer le dernier en..."); 
 	}
 	
 	 else {
 	 	
-	 $("#tips").append("Choisissez un autre point"); 
+	 $("#tips").append("Choisissez un autre point ou effacer le dernier en..."); 
 	 }
 	
 	
   });
 });
 </script>
+
+
 
 <script>
 $(document).ready(function() {
@@ -372,14 +377,14 @@ $("#tips").empty();
 $(document).ready(function() {
   $('#editdist').click(function() {
 $("#tips").empty();	
-   $("#tips").append("Utiliser le bouton rouge pour effacer le dernier point"); 
+   $("#tips").append("Vous devez maintenant la dsitance ou vous pouvez modifier en appuyant sur..."); 
   });
 });
 </script>
 
 <script>
 $(document).ready(function() {
-  $('#boutondist).click(function() {
+  $('#boutondist').click(function() {
 $("#tips").empty();	
    $("#tips").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
   });
@@ -390,7 +395,7 @@ $("#tips").empty();
 $(document).ready(function() {
   $('#editversant').click(function() {
 $("#tips").empty();	
-   $("#tips").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
+   $("#tips").append("Utiliser le bouton rouge pour effacer le dernier point ou faire next step si c'est complet"); 
   });
 });
 </script>
@@ -402,19 +407,24 @@ $(document).ready(function() {
   $('#eraselast').click(function() {
   	$("#tips").empty();
 	if ( $('#tabpos').children().length > 4 ){
-     $("#tips").append("Si c'est complet faite submit position sinon choisissez un autre point"); 
+     $("#tips").append("Si c'est complet faite submit position sinon choisissez un autre point ou effacer le dernier en..."); 
 	}
 	
-	 else if ($('#tabpos').children().length == 1){
+	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length > 0 ){
+	 	$("#tips").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur...");
+	 }
+	 
+	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length == 0 ){
 	 	$("#tips").append("Choisir le premier point, idéalement en bas à gauche");
 	 }
 	 else {
 	 	
-	 $("#tips").append("Choisissez un autre point"); 
+	 $("#tips").append("Choisissez un autre point ou effacer le dernier en..."); 
 	 }
   });
 });
 </script>
+
 
 <script>
 $(document).ready(function() {
@@ -438,7 +448,7 @@ $("#tips").empty();
 $(document).ready(function() {
   $('#boutonpente').click(function() {
 $("#tips").empty();	
-   $("#tips").append("Vous pouvez créer un autre (next versant) ou soumettre pour création d'image (create images)"); 
+   $("#tips").append("Vous pouvez créer un autre (next versant) ou soumettre pour création d'image (create images) ou détruire le dernier versant créer en appuyant sur..."); 
   });
 });
 </script>
@@ -448,22 +458,45 @@ $("#tips").empty();
 $(document).ready(function() {
   $('#next').click(function() {
 $("#tips").empty();	
-   $("#tips").append("Choisir le premier point, idéalement en bas à gauche"); 
+   if ( $('#versants').children().length > 0 ){
+     $("#tips").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur..."); 
+	}
+
+ else {
+ 	$("#tips").append("Choisir le premier point, idéalement en bas à gauche"); 
+ }
   });
 });
 </script>
 
 <script>
 $(document).ready(function() {
+  $('#lastversanterase').click(function() {
+$("#tips").empty();	
+
+if ( $('#versants').children().length > 1 ){
+     $("#tips").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur..."); 
+	}
+
+ else {
+ 	$("#tips").append("Choisir le premier point, idéalement en bas à gauche"); 
+ }
+  });
+});
+</script>
+
+
+<script>
+$(document).ready(function() {
   $('#testimg').click(function() {
 $("#tips2").empty();
 	if ( $('#tabpos').children().length > 3 ){
-     $("#tips2").append("Si c'est complet faite submit position sinon choisissez un autre point"); 
+     $("#tips2").append("Si c'est complet faite submit position sinon choisissez un autre point ou effacer le dernier en..."); 
 	}
 	
 	 else {
 	 	
-	 $("#tips2").append("Choisissez un autre point"); 
+	 $("#tips2").append("Choisissez un autre point ou effacer le dernier en..."); 
 	 }
 	
 	
@@ -484,14 +517,14 @@ $("#tips2").empty();
 $(document).ready(function() {
   $('#editdist').click(function() {
 $("#tips2").empty();	
-   $("#tips2").append("Utiliser le bouton rouge pour effacer le dernier point"); 
+   $("#tips2").append("Vous devez maintenant la dsitance ou vous pouvez modifier en appuyant sur..."); 
   });
 });
 </script>
 
 <script>
 $(document).ready(function() {
-  $('#boutondist).click(function() {
+  $('#boutondist').click(function() {
 $("#tips2").empty();	
    $("#tips2").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
   });
@@ -502,7 +535,7 @@ $("#tips2").empty();
 $(document).ready(function() {
   $('#editversant').click(function() {
 $("#tips2").empty();	
-   $("#tips2").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
+   $("#tips2").append("Utiliser le bouton rouge pour effacer le dernier point ou faire next step si c'est complet"); 
   });
 });
 </script>
@@ -514,15 +547,19 @@ $(document).ready(function() {
   $('#eraselast').click(function() {
   	$("#tips2").empty();
 	if ( $('#tabpos').children().length > 4 ){
-     $("#tips2").append("Si c'est complet faite submit position sinon choisissez un autre point"); 
+     $("#tips2").append("Si c'est complet faite submit position sinon choisissez un autre point ou effacer le dernier en..."); 
 	}
 	
-	 else if ($('#tabpos').children().length == 1){
+	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length > 0 ){
+	 	$("#tips2").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur...");
+	 }
+	 
+	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length == 0 ){
 	 	$("#tips2").append("Choisir le premier point, idéalement en bas à gauche");
 	 }
 	 else {
 	 	
-	 $("#tips2").append("Choisissez un autre point"); 
+	 $("#tips2").append("Choisissez un autre point ou effacer le dernier en..."); 
 	 }
   });
 });
@@ -550,7 +587,7 @@ $("#tips2").empty();
 $(document).ready(function() {
   $('#boutonpente').click(function() {
 $("#tips2").empty();	
-   $("#tips2").append("Vous pouvez créer un autre (next versant) ou soumettre pour création d'image (create images)"); 
+   $("#tips2").append("Vous pouvez créer un autre (next versant) ou soumettre pour création d'image (create images) ou détruire le dernier versant créer en appuyant sur..."); 
   });
 });
 </script>
@@ -560,7 +597,29 @@ $("#tips2").empty();
 $(document).ready(function() {
   $('#next').click(function() {
 $("#tips2").empty();	
-   $("#tips2").append("Choisir le premier point, idéalement en bas à gauche"); 
+   if ( $('#versants').children().length > 0 ){
+     $("#tips2").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur..."); 
+	}
+
+ else {
+ 	$("#tips2").append("Choisir le premier point, idéalement en bas à gauche"); 
+ }
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#lastversanterase').click(function() {
+$("#tips2").empty();	
+
+if ( $('#versants').children().length > 1 ){
+     $("#tips2").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur..."); 
+	}
+
+ else {
+ 	$("#tips2").append("Choisir le premier point, idéalement en bas à gauche"); 
+ }
   });
 });
 </script>
@@ -572,7 +631,7 @@ Il faut vérifier pourquoi c'est pas plus >2 qui fonctionne ?????
 <script>
 $(document).ready(function() {
   $('#testimg').click(function(e) {
-    if (( $('#tabpos').children().length > 3 )&&( $("#testimg").hasClass("imgready") )){
+    if (( $('#tabpos').children().length > 3 )&&( $("#ready").hasClass("ready") )){
      $('#versant').removeAttr('disabled'); 
 	 }
   });
@@ -586,12 +645,12 @@ $(document).ready(function() {
     $("#testimg").click(function (ev) {
         mouseX = ev.pageX;
         mouseY = ev.pageY;
-		if ( $("#testimg").hasClass("imgready") ) {
+		if ( $("#ready").hasClass("ready") ) {
         $("body").append(
-            $('<img class="target" src="target.png">')
+            $('<img class="target" src="target2.png">')
                 .css('position', 'absolute')
-                .css('top', (mouseY - 24) + 'px')
-                .css('left', (mouseX - 24) + 'px')
+                .css('top', (mouseY - 14) + 'px')
+                .css('left', (mouseX - 14) + 'px')
 );
 				}
     });
@@ -609,6 +668,7 @@ $(document).ready(function() {
   if ( $('#tabpos').children().length == 1 ){
   $('#eraselast').hide();
   $('#titre').hide();
+  $('#lastversanterase').prop("disabled", false);
   }
   if ( $('#tabpos').children().length < 4 ){
   $('#versant').prop("disabled", true);
@@ -634,7 +694,7 @@ $(document).ready(function() {
   $('#versant').attr('class','btn');  
   $('#versant').prop("disabled", true);
   $('#editversant').prop("disabled", false);
-  $('.roofimage').removeClass("imgready");
+  $('#ready').removeClass("ready");
   });
 }); 
 </script>  
@@ -647,7 +707,7 @@ $(document).ready(function() {
   $('#eraselast').show();
   $('#versant').attr('class','btn btn-primary');  
   $('#versant').prop("disabled", false);
-  $('#testimg').addClass("imgready");
+  $('#ready').addClass("ready");
   });
 }); 
 </script>  
@@ -874,7 +934,7 @@ var img = '<?php echo $imgtrav; ?>';
   $('#form1').append( '<input type="text" value="' + (pente) + '" name="' + name4 + (n) + '" id="' + name4 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (distance) + '" name="' + name5 + (n) + '" id="' + name5 + (n) + '"><br>' );
   $('#form1').append( '<input type="text" value="' + (img) + '" name="imgtrav" id="imgtrav"><br>' );
-  $('#testimg').removeClass("imgready");
+  $('#ready').removeClass("ready");
   $('#lastversanterase').show();
   $('#versant').hide();
   });
@@ -900,6 +960,7 @@ var height = img2.clientHeight;
 $(document).ready(function() {
   $('#boutonpente').click(function () { 
    $('#submitall').prop("disabled", false);
+   $('#lastversanterase').prop("disabled", false);
   });
 });
 
@@ -1152,7 +1213,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   $('#next').click(function () {
-  $('#testimg').addClass("imgready");
+  $('#ready').addClass("ready");
   $('#next').hide();
   $('#versant').show();
   $('#tabpos2').empty();
@@ -1168,6 +1229,7 @@ $(document).ready(function() {
   $('.dis').remove();
   $('.ang').remove();
   $('.pen').remove();
+  
   });  
 });  
 </script>	
