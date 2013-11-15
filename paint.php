@@ -83,13 +83,15 @@ min-height:249px;
 
 #tips {
 	margin-top:10px;
-
+    min-height:150px;
+    font-size:20px;
 
 }
 
 #tips2 {
 	margin-top:10px;
-
+    min-height:150px;
+    font-size:20px;
 
 }
 
@@ -141,7 +143,8 @@ min-height:249px;
    
 <div class="container"> 
   <div class="row-fluid">	
-	<div class="alert alert-info" id="tips">Choisir le premier point, idéalement en bas à gauche</div> 
+	<div class="alert alert-info" id="tips">Now it's time to create a side, if you need to do more than one side, the first one should ideally be the one behind the others.
+		 Now click on the first corner of your side.</div> 
   </div> 
 </div>
   <div class="container jumbotron"> 
@@ -177,7 +180,7 @@ min-height:249px;
       <button type="radio" class="btn btn-primary" id="pente4">10/12</button>
       <button type="radio" class="btn btn-primary" id="pente5">12/12</button>
    </div>
-     <button type="button" class="btn btn-primary" id ="next">next versant</button>
+     <button type="button" class="btn btn-primary" id ="next">Nexzt side</button>
   
    </div> 
 
@@ -198,7 +201,7 @@ min-height:249px;
    	<div class ="titre3" id="titre3"><h4><span class="label label-default">Angle :</h4></span></div>
  </div>
  <div class ="col-md-4 tabpente" id="tabpente">
-   	<div class ="titre4" id="titre4"><h4><span class="label label-default">Pente :</h4></span></div>
+   	<div class ="titre4" id="titre4"><h4><span class="label label-default">Slope :</h4></span></div>
  </div>
 
  	<div class="btn-group-vertical">
@@ -206,13 +209,13 @@ min-height:249px;
  	<div class="versants" id="versants">
     </div>
  	<div class="erase" id="erase">  
- 	<button type="button" class="btn btn-danger" id ="lastversanterase">Erase last</button> 		
+ 	<button type="button" class="btn btn-danger" id ="lastversanterase">Erase last side</button> 		
  </div>
 </div>
  </div>
   </div> 
 </div> 
- <div class="row-fluid tableau"><button class="btn btn-danger" id="eraselast">Erase last</button>
+ <div class="row-fluid tableau"><button class="btn btn-danger" id="eraselast">Erase last position</button>
  </div>
  <div class="row-fluid">
    <div class="create"><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
@@ -223,7 +226,8 @@ min-height:249px;
 <div class="container">
 
   <div class="row-fluid">	
-	<div class="alert alert-info" id="tips2">Choisir le premier point, idéalement en bas à gauche</div> 
+	<div class="alert alert-info" id="tips2">Now it's time to create a side, if you need to do more than one side, the first one should ideally be the one behind the others. 
+		Now click on the first corner of your side.</div> 
   </div>
 </div> 
   
@@ -266,7 +270,7 @@ min-height:249px;
 
 <button class="btn btn-mini" id="editpente"><span class="glyphicon glyphicon-arrow-left"></span></button>
        <div class="btn-group-vertical" id="boutonsubmit">
-         <button class="btn btn-primary" id ="addversant">Add a Versant</button>
+         <button class="btn btn-primary" id ="addversant">Add a side</button>
       </div>
 </div>
 
@@ -349,157 +353,88 @@ $(document).ready(function() {
   $('#testimg').click(function() {
 $("#tips").empty();
 	if ( $('#tabpos').children().length > 3 ){
-     $("#tips").append("Si c'est complet faite submit position sinon choisissez un autre point ou effacer le dernier en..."); 
+     $("#tips").append("If your side is complete press the next step button. If not, choose another corner of your side. Remember, you must choose the corners in a logical way for the program to draw your side.You can always erase your last corner by pressing the erase last position button."); 
 	}
 	
 	 else {
 	 	
-	 $("#tips").append("Choisissez un autre point ou effacer le dernier en..."); 
+	 $("#tips").append("Now you have to choose another corner of your side (you need at least 3 to complete it). Remember, you must choose the corners in a logical way for the program to draw your side.You can always erase your last corner by pressing the erase last position button."); 
 	 }
 	
 	
   });
 });
 </script>
-
-
-
-<script>
-$(document).ready(function() {
-  $('#versant').click(function() {
-$("#tips").empty();	
-   $("#tips").append("Vous devez maintenant la dsitance ou vous pouvez modifier en appuyant sur..."); 
-  });
-});
-</script>
-
-<script>
-$(document).ready(function() {
-  $('#editdist').click(function() {
-$("#tips").empty();	
-   $("#tips").append("Vous devez maintenant la dsitance ou vous pouvez modifier en appuyant sur..."); 
-  });
-});
-</script>
-
-<script>
-$(document).ready(function() {
-  $('#boutondist').click(function() {
-$("#tips").empty();	
-   $("#tips").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
-  });
-});
-</script>
-
-<script>
-$(document).ready(function() {
-  $('#editversant').click(function() {
-$("#tips").empty();	
-   $("#tips").append("Utiliser le bouton rouge pour effacer le dernier point ou faire next step si c'est complet"); 
-  });
-});
-</script>
-
-
-
-<script>
-$(document).ready(function() {
-  $('#eraselast').click(function() {
-  	$("#tips").empty();
-	if ( $('#tabpos').children().length > 4 ){
-     $("#tips").append("Si c'est complet faite submit position sinon choisissez un autre point ou effacer le dernier en..."); 
-	}
-	
-	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length > 0 ){
-	 	$("#tips").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur...");
-	 }
-	 
-	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length == 0 ){
-	 	$("#tips").append("Choisir le premier point, idéalement en bas à gauche");
-	 }
-	 else {
-	 	
-	 $("#tips").append("Choisissez un autre point ou effacer le dernier en..."); 
-	 }
-  });
-});
-</script>
-
-
-<script>
-$(document).ready(function() {
-  $('#boutonangle').click(function() {
-$("#tips").empty();	
-   $("#tips").append("Vous devez maintenant choisir une pente ou vous pouvez modifier en appuyant sur..."); 
-  });
-});
-</script>
-
-<script>
-$(document).ready(function() {
-  $('#editangle').click(function() {
-$("#tips").empty();	
-   $("#tips").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
-  });
-});
-</script>
-
-<script>
-$(document).ready(function() {
-  $('#boutonpente').click(function() {
-$("#tips").empty();	
-   $("#tips").append("Vous pouvez créer un autre (next versant) ou soumettre pour création d'image (create images) ou détruire le dernier versant créer en appuyant sur..."); 
-  });
-});
-</script>
-
-
-<script>
-$(document).ready(function() {
-  $('#next').click(function() {
-$("#tips").empty();	
-   if ( $('#versants').children().length > 0 ){
-     $("#tips").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur..."); 
-	}
-
- else {
- 	$("#tips").append("Choisir le premier point, idéalement en bas à gauche"); 
- }
-  });
-});
-</script>
-
-<script>
-$(document).ready(function() {
-  $('#lastversanterase').click(function() {
-$("#tips").empty();	
-
-if ( $('#versants').children().length > 1 ){
-     $("#tips").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur..."); 
-	}
-
- else {
- 	$("#tips").append("Choisir le premier point, idéalement en bas à gauche"); 
- }
-  });
-});
-</script>
-
 
 <script>
 $(document).ready(function() {
   $('#testimg').click(function() {
 $("#tips2").empty();
 	if ( $('#tabpos').children().length > 3 ){
-     $("#tips2").append("Si c'est complet faite submit position sinon choisissez un autre point ou effacer le dernier en..."); 
+     $("#tips2").append("If your side is complete press the next step button. If not, choose another corner of your side. Remember, you must choose the corners in a logical way for the program to draw your side.You can always erase your last corner by pressing the erase last position button."); 
 	}
 	
 	 else {
 	 	
-	 $("#tips2").append("Choisissez un autre point ou effacer le dernier en..."); 
+	 $("#tips2").append("Now you have to choose another corner of your side (you need at least 3 to complete it). Remember, you must choose the corners in a logical way for the program to draw your side.You can always erase your last corner by pressing the erase last position button."); 
 	 }
 	
 	
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#eraselast').click(function() {
+  	$("#tips").empty();
+	if ( $('#tabpos').children().length > 4 ){
+     $("#tips").append("If your side is complete press the next step button. If not, choose another corner of your side. Remember, you must choose the corners in a logical way for the program to draw your side.You can always erase your last corner by pressing the erase last position button."); 
+	}
+	
+	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length > 0 ){
+	 	$("#tips").append("Now it's time to create another side. Now click on the first corner of your side. If you don't need another side you can press the create images button to finish or you can also delete the last created side by pressing the erase last side button.");
+	 }
+	 
+	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length == 0 ){
+	 	$("#tips").append("Now it's time to create a side, if you need to do more than one side, the first one should ideally be the one behind the others. Now click on the first corner of your side.");
+	 }
+	 else {
+	 	
+	 $("#tips").append("Now you have to choose another corner of your side (you need at least 3 to complete it). Remember, you must choose the corners in a logical way for the program to draw your side.You can always erase your last corner by pressing the erase last position button."); 
+	 }
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#eraselast').click(function() {
+  	$("#tips2").empty();
+	if ( $('#tabpos').children().length > 4 ){
+     $("#tips2").append("If your side is complete press the next step button. If not, choose another corner of your side. Remember, you must choose the corners in a logical way for the program to draw your side.You can always erase your last corner by pressing the erase last position button."); 
+	}
+	
+	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length > 0 ){
+	 	$("#tips2").append("Now it's time to create another side. Now click on the first corner of your side. If you don't need another side you can press the create images button to finish or you can also delete the last created side by pressing the erase last side button.");
+	 }
+	 
+	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length == 0 ){
+	 	$("#tips2").append("Now it's time to create a side, if you need to do more than one side, the first one should ideally be the one behind the others. Now click on the first corner of your side.");
+	 }
+	 else {
+	 	
+	 $("#tips2").append("Now you have to choose another corner of your side (you need at least 3 to complete it). Remember, you must choose the corners in a logical way for the program to draw your side.You can always erase your last corner by pressing the erase last position button."); 
+	 }
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#versant').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Now you have to select the distance from witch the image as been taken. If you only see the roof, choose near. If you the house and the roof, choose middle. And if you see the house and the some yard, choose far. You can also come back to the side part by pressing the arrow left to the distances buttons."); 
   });
 });
 </script>
@@ -508,16 +443,17 @@ $("#tips2").empty();
 $(document).ready(function() {
   $('#versant').click(function() {
 $("#tips2").empty();	
-   $("#tips2").append("Vous devez maintenant la dsitance ou vous pouvez modifier en appuyant sur..."); 
+   $("#tips2").append("Now you have to select the distance from witch the image as been taken. If you only see the roof, choose near. If you the house and the roof, choose middle. And if you see the house and the some yard, choose far. You can also come back to the side part by pressing the arrow left to the distances buttons."); 
   });
 });
 </script>
 
+
 <script>
 $(document).ready(function() {
-  $('#editdist').click(function() {
-$("#tips2").empty();	
-   $("#tips2").append("Vous devez maintenant la dsitance ou vous pouvez modifier en appuyant sur..."); 
+  $('#boutondist').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Now you have to select the angle of the side you've made. (...to be determine) You can also come back to the distance part by pressing the arrow left to the angles buttons."); 
   });
 });
 </script>
@@ -526,41 +462,16 @@ $("#tips2").empty();
 $(document).ready(function() {
   $('#boutondist').click(function() {
 $("#tips2").empty();	
-   $("#tips2").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
+   $("#tips2").append("Now you have to select the angle of the side you've made. (...to be determine) You can also come back to the distance part by pressing the arrow left to the angles buttons."); 
   });
 });
 </script>
 
 <script>
 $(document).ready(function() {
-  $('#editversant').click(function() {
-$("#tips2").empty();	
-   $("#tips2").append("Utiliser le bouton rouge pour effacer le dernier point ou faire next step si c'est complet"); 
-  });
-});
-</script>
-
-
-
-<script>
-$(document).ready(function() {
-  $('#eraselast').click(function() {
-  	$("#tips2").empty();
-	if ( $('#tabpos').children().length > 4 ){
-     $("#tips2").append("Si c'est complet faite submit position sinon choisissez un autre point ou effacer le dernier en..."); 
-	}
-	
-	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length > 0 ){
-	 	$("#tips2").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur...");
-	 }
-	 
-	 else if ($('#tabpos').children().length == 2 && $('#versants').children().length == 0 ){
-	 	$("#tips2").append("Choisir le premier point, idéalement en bas à gauche");
-	 }
-	 else {
-	 	
-	 $("#tips2").append("Choisissez un autre point ou effacer le dernier en..."); 
-	 }
+  $('#boutonangle').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Now you have to select a slope for the side you've create. Chose the nearest slope possible. You can also come back to the angle part by pressing the arrow left to the slopes buttons."); 
   });
 });
 </script>
@@ -569,16 +480,16 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('#boutonangle').click(function() {
 $("#tips2").empty();	
-   $("#tips2").append("Vous devez maintenant choisir une pente ou vous pouvez modifier en appuyant sur..."); 
+   $("#tips2").append("Now you have to select a slope for the side you've create. Chose the nearest slope possible. You can also come back to the angle part by pressing the arrow left to the slopes buttons."); 
   });
 });
 </script>
 
 <script>
 $(document).ready(function() {
-  $('#editangle').click(function() {
-$("#tips2").empty();	
-   $("#tips2").append("Vous devez maintenant choisir un angle ou vous pouvez modifier en appuyant sur..."); 
+  $('#boutonpente').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Now it's time to create another side or to submit your(s) to create the images. To create a new side, click the next side button. If you have finish and want to see the results click on the create images button. You can also delete the last created side by pressing the erase last side button."); 
   });
 });
 </script>
@@ -587,22 +498,115 @@ $("#tips2").empty();
 $(document).ready(function() {
   $('#boutonpente').click(function() {
 $("#tips2").empty();	
-   $("#tips2").append("Vous pouvez créer un autre (next versant) ou soumettre pour création d'image (create images) ou détruire le dernier versant créer en appuyant sur..."); 
+   $("#tips2").append("Now it's time to create another side or to submit your(s) to create the images. To create a new side, click the next side button. If you have finish and want to see the results click on the create images button. You can also delete the last created side by pressing the erase last side button."); 
   });
 });
 </script>
 
+<script>
+$(document).ready(function() {
+  $('#editversant').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Press the erase last position button to erase the last corner created or press the next step button if your side is complete."); 
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#editversant').click(function() {
+$("#tips2").empty();	
+   $("#tips2").append("Press the erase last position button to erase the last corner created or press the next step button if your side is complete."); 
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#editdist').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Now you have to select the distance from witch the image as been taken. If you only see the roof, choose near. If you the house and the roof, choose middle. And if you see the house and the some yard, choose far. You can also come back to the side part by pressing the arrow left to the distances buttons."); 
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#editdist').click(function() {
+$("#tips2").empty();	
+   $("#tips2").append("Now you have to select the distance from witch the image as been taken. If you only see the roof, choose near. If you the house and the roof, choose middle. And if you see the house and the some yard, choose far. You can also come back to the side part by pressing the arrow left to the distances buttons."); 
+  });
+});
+</script>
+
+
+
+<script>
+$(document).ready(function() {
+  $('#editangle').click(function() {
+$("#tips").empty();	
+   $("#tips").append("Now you have to select the angle of the side you've made. (...to be determine) You can also come back to the distance part by pressing the arrow left to the angles buttons."); 
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#editangle').click(function() {
+$("#tips2").empty();	
+   $("#tips2").append("Now you have to select the angle of the side you've made. (...to be determine) You can also come back to the distance part by pressing the arrow left to the angles buttons."); 
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+<script>
+$(document).ready(function() {
+  $('#next').click(function() {
+$("#tips").empty();	
+   if ( $('#versants').children().length > 0 ){
+     $("#tips").append("Now it's time to create another side. Now click on the first corner of your side. If you don't need another side you can press the create images button to finish or you can also delete the last created side by pressing the erase last side button."); 
+	}
+
+ else {
+ 	$("#tips").append("Now it's time to create a side, if you need to do more than one side, the first one should ideally be the one behind the others. Now click on the first corner of your side."); 
+ }
+  });
+});
+</script>
 
 <script>
 $(document).ready(function() {
   $('#next').click(function() {
 $("#tips2").empty();	
    if ( $('#versants').children().length > 0 ){
-     $("#tips2").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur..."); 
+     $("#tips2").append("Now it's time to create another side. Now click on the first corner of your side. If you don't need another side you can press the create images button to finish or you can also delete the last created side by pressing the erase last side button."); 
 	}
 
  else {
- 	$("#tips2").append("Choisir le premier point, idéalement en bas à gauche"); 
+ 	$("#tips2").append("Now it's time to create a side, if you need to do more than one side, the first one should ideally be the one behind the others. Now click on the first corner of your side."); 
+ }
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#lastversanterase').click(function() {
+$("#tips").empty();	
+
+if ( $('#versants').children().length > 1 ){
+     $("#tips").append("Now it's time to create another side. Now click on the first corner of your side. If you don't need another side you can press the create images button to finish or you can also delete the last created side by pressing the erase last side button."); 
+	}
+
+ else {
+ 	$("#tips").append("Now it's time to create a side, if you need to do more than one side, the first one should ideally be the one behind the others. Now click on the first corner of your side."); 
  }
   });
 });
@@ -614,11 +618,11 @@ $(document).ready(function() {
 $("#tips2").empty();	
 
 if ( $('#versants').children().length > 1 ){
-     $("#tips2").append("Choisir le premier point, idéalement en bas à gauche ou crée l'image en...ou détruire le dernier versant créer en appuyant sur..."); 
+     $("#tips2").append("Now it's time to create another side. Now click on the first corner of your side. If you don't need another side you can press the create images button to finish or you can also delete the last created side by pressing the erase last side button."); 
 	}
 
  else {
- 	$("#tips2").append("Choisir le premier point, idéalement en bas à gauche"); 
+ 	$("#tips2").append("Now it's time to create a side, if you need to do more than one side, the first one should ideally be the one behind the others. Now click on the first corner of your side."); 
  }
   });
 });

@@ -37,7 +37,8 @@
 }
 #tips {
 	margin-top:10px;
-
+    min-height:150px;
+    font-size:20px;
 
 }
  
@@ -59,7 +60,8 @@
 
 <div class="container">
 	  <div class="row-fluid">	
-	<div class="alert alert-info" id="tips">Choisir une image ou prendre une photo</div> 
+	<div class="alert alert-info" id="tips">Hi, welcome to Interlock Roofing Visualization. 
+		To start, press choose file button and choose an image or take a picture if you're working with an Ipad.</div> 
   </div> 
 	<form role="form"  enctype="multipart/form-data" action="paint.php" method="POST">
   <div class="form-group choosefile">
@@ -78,7 +80,7 @@
 $(document).ready(function() { 
 	$("#exampleInputFile").change(function(){
 		$("#tips").empty();
-        $("#tips").append("Vous pouvez maintenant soumettre votre image... ou en chosir une autre...");
+        $("#tips").append("It's now time to submit your image by clicking on the submit button or you can also change it or retake a picture by clicking on the choose file button");
     });
 });
 </script>

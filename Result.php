@@ -31,7 +31,8 @@ img{
 }
 #tips {
 	margin-top:10px;
-
+    min-height:150px;
+    font-size:20px;
 
 }
 .box {
@@ -67,7 +68,7 @@ img{
 	
 //Créer l'array des couleurs
 
-$couleur = array("color1","color2","color3","color4","color4","color5","color6","color7","color8","color9","color10","color11","color12","color13","color14","color15","color16");
+$couleur = array("color1","color2","color3","color4","color4","color5","color6","color7","color8");
 
 foreach ($couleur as $value) {
 	
@@ -103,76 +104,76 @@ foreach ($couleur as $value) {
 //$queryimgdecoded6 = ("images/'$couleur[0]'/1.png");
 		
 if ($queryang == 1 && $querypente == 1) {
-	$imback = imagecreatefrompng("images/".$value."/1.png");
+	$imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 } 
 
 elseif ($queryang == 1 && $querypente == 2) {
-	    $imback = imagecreatefrompng("images/".$value."/2.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang == 1 && $querypente == 3) {
-	    $imback = imagecreatefrompng("images/".$value."/3.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang == 1 && $querypente == 4) {
-	    $imback = imagecreatefrompng("images/".$value."/4.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang == 1 && $querypente == 5) {
-	    $imback = imagecreatefrompng("images/".$value."/5.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang == 2 && $querypente == 1) {
-	    $imback = imagecreatefrompng("images/".$value."/6.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang == 2 && $querypente == 2) {
-	    $imback = imagecreatefrompng("images/".$value."/7.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang == 2 && $querypente == 3) {
-	    $imback = imagecreatefrompng("images/".$value."/8.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang == 2 && $querypente == 4) {
-	    $imback = imagecreatefrompng("images/".$value."/9.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang == 2 && $querypente == 5) {
-	    $imback = imagecreatefrompng("images/".$value."/10.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang == 3 && $querypente == 1) {
-	    $imback = imagecreatefrompng("images/".$value."/11.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang == 3 && $querypente == 2) {
-	    $imback = imagecreatefrompng("images/".$value."/12.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang == 3 && $querypente == 3) {
-	    $imback = imagecreatefrompng("images/".$value."/13.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang == 3 && $querypente == 4) {
-	    $imback = imagecreatefrompng("images/".$value."/14.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang == 3 && $querypente == 5) {
-	    $imback = imagecreatefrompng("images/".$value."/15.png");
+	    $imback = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
@@ -187,72 +188,72 @@ if ($queryang2 == 1 && $querypente2 == 1) {
 } 
 
 elseif ($queryang2 == 1 && $querypente2 == 2) {
-	    $imback2 = imagecreatefrompng("images/".$value."/2.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang2 == 1 && $querypente2 == 3) {
-	    $imback2 = imagecreatefrompng("images/".$value."/3.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang2 == 1 && $querypente2 == 4) {
-	    $imback2 = imagecreatefrompng("images/".$value."/4.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang2 == 1 && $querypente2 == 5) {
-	    $imback2 = imagecreatefrompng("images/".$value."/5.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang2 == 2 && $querypente2 == 1) {
-	    $imback2 = imagecreatefrompng("images/".$value."/6.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang2 == 2 && $querypente2 == 2) {
-	    $imback2 = imagecreatefrompng("images/".$value."/7.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang2 == 2 && $querypente2 == 3) {
-	    $imback2 = imagecreatefrompng("images/".$value."/8.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang2 == 2 && $querypente2 == 4) {
-	    $imback2 = imagecreatefrompng("images/".$value."/9.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang2 == 2 && $querypente2 == 5) {
-	    $imback2 = imagecreatefrompng("images/".$value."/10.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang2 == 3 && $querypente2 == 1) {
-	    $imback2 = imagecreatefrompng("images/".$value."/11.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang2 == 3 && $querypente2 == 2) {
-	    $imback2 = imagecreatefrompng("images/".$value."/12.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang2 == 3 && $querypente2 == 3) {
-	    $imback2 = imagecreatefrompng("images/".$value."/13.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang2 == 3 && $querypente2 == 4) {
-	    $imback2 = imagecreatefrompng("images/".$value."/14.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang2 == 3 && $querypente2 == 5) {
-	    $imback2 = imagecreatefrompng("images/".$value."/15.png");
+	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
@@ -268,72 +269,72 @@ if ($queryang3 == 1 && $querypente3 == 1) {
 } 
 
 elseif ($queryang3 == 1 && $querypente3 == 2) {
-	    $imback3 = imagecreatefrompng("images/".$value."/2.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang3 == 1 && $querypente3 == 3) {
-	    $imback3 = imagecreatefrompng("images/".$value."/3.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang3 == 1 && $querypente3 == 4) {
-	    $imback3 = imagecreatefrompng("images/".$value."/4.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang3 == 1 && $querypente3 == 5) {
-	    $imback3 = imagecreatefrompng("images/".$value."/5.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang3 == 2 && $querypente3 == 1) {
-	    $imback3 = imagecreatefrompng("images/".$value."/6.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang3 == 2 && $querypente3 == 2) {
-	    $imback3 = imagecreatefrompng("images/".$value."/7.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang3 == 2 && $querypente3 == 3) {
-	    $imback3 = imagecreatefrompng("images/".$value."/8.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang3 == 2 && $querypente3 == 4) {
-	    $imback3 = imagecreatefrompng("images/".$value."/9.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang3 == 2 && $querypente3 == 5) {
-	    $imback3 = imagecreatefrompng("images/".$value."/10.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang3 == 3 && $querypente3 == 1) {
-	    $imback3 = imagecreatefrompng("images/".$value."/11.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang3 == 3 && $querypente3 == 2) {
-	    $imback3 = imagecreatefrompng("images/".$value."/12.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang3 == 3 && $querypente3 == 3) {
-	    $imback3 = imagecreatefrompng("images/".$value."/13.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang3 == 3 && $querypente3 == 4) {
-	    $imback3 = imagecreatefrompng("images/".$value."/14.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang3 == 3 && $querypente3 == 5) {
-	    $imback3 = imagecreatefrompng("images/".$value."/15.png");
+	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
@@ -349,72 +350,72 @@ if ($queryang4 == 1 && $querypente4 == 1) {
 } 
 
 elseif ($queryang4 == 1 && $querypente4 == 2) {
-	    $imback4 = imagecreatefrompng("images/".$value."/2.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang4 == 1 && $querypente4 == 3) {
-	    $imback4 = imagecreatefrompng("images/".$value."/3.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang4 == 1 && $querypente4 == 4) {
-	    $imback4 = imagecreatefrompng("images/".$value."/4.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang4 == 1 && $querypente4 == 5) {
-	    $imback4 = imagecreatefrompng("images/".$value."/5.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang4 == 2 && $querypente4 == 1) {
-	    $imback4 = imagecreatefrompng("images/".$value."/6.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang4 == 2 && $querypente4 == 2) {
-	    $imback4 = imagecreatefrompng("images/".$value."/7.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang4 == 2 && $querypente4 == 3) {
-	    $imback4 = imagecreatefrompng("images/".$value."/8.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang4 == 2 && $querypente4 == 4) {
-	    $imback4 = imagecreatefrompng("images/".$value."/9.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang4 == 2 && $querypente4 == 5) {
-	    $imback4 = imagecreatefrompng("images/".$value."/10.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang4 == 3 && $querypente4 == 1) {
-	    $imback4 = imagecreatefrompng("images/".$value."/11.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang4 == 3 && $querypente4 == 2) {
-	    $imback4 = imagecreatefrompng("images/".$value."/12.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang4 == 3 && $querypente4 == 3) {
-	    $imback4 = imagecreatefrompng("images/".$value."/13.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang4 == 3 && $querypente4 == 4) {
-	    $imback4 = imagecreatefrompng("images/".$value."/14.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang4 == 3 && $querypente4 == 5) {
-	    $imback4 = imagecreatefrompng("images/".$value."/15.png");
+	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
@@ -430,72 +431,72 @@ if ($queryang5 == 1 && $querypente5 == 1) {
 } 
 
 elseif ($queryang5 == 1 && $querypente5 == 2) {
-	    $imback5 = imagecreatefrompng("images/".$value."/2.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang5 == 1 && $querypente5 == 3) {
-	    $imback5 = imagecreatefrompng("images/".$value."/3.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang5 == 1 && $querypente5 == 4) {
-	    $imback5 = imagecreatefrompng("images/".$value."/4.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang5 == 1 && $querypente5 == 5) {
-	    $imback5 = imagecreatefrompng("images/".$value."/5.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang5 == 2 && $querypente5 == 1) {
-	    $imback5 = imagecreatefrompng("images/".$value."/6.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang5 == 2 && $querypente5 == 2) {
-	    $imback5 = imagecreatefrompng("images/".$value."/7.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang5 == 2 && $querypente5 == 3) {
-	    $imback5 = imagecreatefrompng("images/".$value."/8.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang5 == 2 && $querypente5 == 4) {
-	    $imback5 = imagecreatefrompng("images/".$value."/9.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang5 == 2 && $querypente5 == 5) {
-	    $imback5 = imagecreatefrompng("images/".$value."/10.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang5 == 3 && $querypente5 == 1) {
-	    $imback5 = imagecreatefrompng("images/".$value."/11.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang5 == 3 && $querypente5 == 2) {
-	    $imback5 = imagecreatefrompng("images/".$value."/12.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang5 == 3 && $querypente5 == 3) {
-	    $imback5 = imagecreatefrompng("images/".$value."/13.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang5 == 3 && $querypente5 == 4) {
-	    $imback5 = imagecreatefrompng("images/".$value."/14.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang5 == 3 && $querypente5 == 5) {
-	    $imback5 = imagecreatefrompng("images/".$value."/15.png");
+	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
@@ -511,72 +512,72 @@ if ($queryang6 == 1 && $querypente6 == 1) {
 } 
 
 elseif ($queryang6 == 1 && $querypente6 == 2) {
-	    $imback6 = imagecreatefrompng("images/".$value."/2.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang6 == 1 && $querypente6 == 3) {
-	    $imback6 = imagecreatefrompng("images/".$value."/3.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang6 == 1 && $querypente6 == 4) {
-	    $imback6 = imagecreatefrompng("images/".$value."/4.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang6 == 1 && $querypente6 == 5) {
-	    $imback6 = imagecreatefrompng("images/".$value."/5.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 } 
 
 elseif ($queryang6 == 2 && $querypente6 == 1) {
-	    $imback6 = imagecreatefrompng("images/".$value."/6.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang6 == 2 && $querypente6 == 2) {
-	    $imback6 = imagecreatefrompng("images/".$value."/7.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang6 == 2 && $querypente6 == 3) {
-	    $imback6 = imagecreatefrompng("images/".$value."/8.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang6 == 2 && $querypente6 == 4) {
-	    $imback6 = imagecreatefrompng("images/".$value."/9.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang6 == 2 && $querypente6 == 5) {
-	    $imback6 = imagecreatefrompng("images/".$value."/10.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang6 == 3 && $querypente6 == 1) {
-	    $imback6 = imagecreatefrompng("images/".$value."/11.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang6 == 3 && $querypente6 == 2) {
-	    $imback6 = imagecreatefrompng("images/".$value."/12.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang6 == 3 && $querypente6 == 3) {
-	    $imback6 = imagecreatefrompng("images/".$value."/13.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang6 == 3 && $querypente6 == 4) {
-	    $imback6 = imagecreatefrompng("images/".$value."/14.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
 elseif ($queryang6 == 3 && $querypente6 == 5) {
-	    $imback6 = imagecreatefrompng("images/".$value."/15.png");
+	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
 	
 }
 
@@ -978,7 +979,8 @@ imagepng($thumb6, $value.$queryimgdecoded);
 <!-- affichage de l'image -->
 <div class="container">
  <div class="row-fluid">	
-	<div class="alert alert-info" id="tips">Félicitation, vous avez maintenant...</div> 
+	<div class="alert alert-info" id="tips">Congradulation you can now visualize the roof with each of the color and model of Interlock roofing product. 
+		To create another roof or to start again just press the Interlock Roofing button in the top bar.</div> 
  </div> 
 </div>
 <div class="container jumbotron"> 
@@ -1031,69 +1033,7 @@ imagepng($thumb6, $value.$queryimgdecoded);
   <img src="<?php echo 'color7'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
 
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color8'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color9'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color10'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color11'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color12'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color13'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color14'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color15'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color16'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
 </div>
 
 
