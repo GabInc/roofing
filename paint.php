@@ -159,28 +159,31 @@ min-height:249px;
   <div class="row-fluid table">	
   
    <div class=".col-md-12">
-      <button class="btn btn-primary" id="versant" disabled="disabled">Next step</button>
+      <button class="btn btn-primary" id="versant" disabled="disabled">Next step <span class="glyphicon glyphicon-circle-arrow-right"></button>
       <button class="btn btn-mini" id="editversant"><span class="glyphicon glyphicon-arrow-left"></span></button>
    <div class="btn-group-vertical" id="boutondist">
+   	<h4><span class="label label-default">Distance :</h4></span>
       <button type="radio" class="btn btn-primary" id="dist1">Near</button>
       <button type="radio" class="btn btn-primary" id="dist2">Middle</button>
       <button type="radio" class="btn btn-primary" id="dist3">Far</button>
    </div>
       <button class="btn btn-mini" id="editdist"><span class="glyphicon glyphicon-arrow-left"></span></button>  
    <div class="btn-group-vertical" id="boutonangle">
-      <button type="radio" class="btn btn-primary" id="angle1">0°</button>
+   	  <h4><span class="label label-default">Angle :</h4></span>
+      <button type="radio" class="btn btn-primary" id="angle1">In front</button>
       <button type="radio" class="btn btn-primary" id="angle2">45°</button>
       <button type="radio" class="btn btn-primary" id="angle3">135°</button>
    </div>
      <button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
    <div class="btn-group-vertical" id="boutonpente">
+   	  <h4><span class="label label-default">Slope :</h4></span>
       <button type="radio" class="btn btn-primary" id="pente1">4/12</button>
       <button type="radio" class="btn btn-primary" id="pente2">6/12</button>
       <button type="radio" class="btn btn-primary" id="pente3">8/12</button>
       <button type="radio" class="btn btn-primary" id="pente4">10/12</button>
       <button type="radio" class="btn btn-primary" id="pente5">12/12</button>
    </div>
-     <button type="button" class="btn btn-primary" id ="next">Nexzt side</button>
+     <button type="button" class="btn btn-primary" id ="next">Next side <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
   
    </div> 
 
@@ -190,18 +193,18 @@ min-height:249px;
  <div class="row-fluid panel panel-default boite">
  	<div class="panel-body">
    <div class ="col-md-2 tabpos" id="tabpos">
-   	<div class ="titre" id="titre"><h4><span class="label label-default">Positions :</h4></span></div>
+   	<div class ="titre" id="titre"><h4><span class="label label-primary">Positions :</h4></span></div>
    	
    </div>
    
    <div class ="col-md-2 tabdist" id="tabdist">
-   	<div class ="titre2" id="titre2"><h4><span class="label label-default">Distance :</h4></span></div>
+   	<div class ="titre2" id="titre2"><h4><span class="label label-primary">Distance :</h4></span></div>
  </div>
  <div class ="col-md-2 tabang" id="tabang">
-   	<div class ="titre3" id="titre3"><h4><span class="label label-default">Angle :</h4></span></div>
+   	<div class ="titre3" id="titre3"><h4><span class="label label-primary">Angle :</h4></span></div>
  </div>
  <div class ="col-md-4 tabpente" id="tabpente">
-   	<div class ="titre4" id="titre4"><h4><span class="label label-default">Slope :</h4></span></div>
+   	<div class ="titre4" id="titre4"><h4><span class="label label-primary">Slope :</h4></span></div>
  </div>
 
  	<div class="btn-group-vertical">
@@ -209,16 +212,16 @@ min-height:249px;
  	<div class="versants" id="versants">
     </div>
  	<div class="erase" id="erase">  
- 	<button type="button" class="btn btn-danger" id ="lastversanterase">Erase last side</button> 		
+ 	<button type="button" class="btn btn-danger" id ="lastversanterase">Erase last side <span class="glyphicon glyphicon-remove-circle"></span></button> 		
  </div>
 </div>
  </div>
   </div> 
 </div> 
- <div class="row-fluid tableau"><button class="btn btn-danger" id="eraselast">Erase last position</button>
+ <div class="row-fluid tableau"><button class="btn btn-danger" id="eraselast">Erase last position <span class="glyphicon glyphicon-remove-circle"></span></button>
  </div>
  <div class="row-fluid">
-   <div class="create"><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images</button></div>
+   <div class="create"><button type="button" class="btn btn-primary btn-lg btn-block" id ="submitall">Create images <span class="glyphicon glyphicon-save"></span></button></div>
  </div>
  
  
@@ -319,6 +322,8 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('#boutondist').hide();
   $('#boutonangle').hide();
+  $('#angle3').hide();
+  $('#angle2').hide(); 
   $('#boutonpente').hide();
   $('#boutonsubmit').hide();
   $('#editdist').hide();
@@ -730,7 +735,7 @@ $(document).ready(function() {
   $('#dist3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
   $('#editdist').prop("disabled", false);
-  $( ".choseddist" ).append( "<div>" + 0 + "</div>" );
+  $( ".choseddist" ).append( "<div>" + 100 + "</div>" );
   $( ".tabdist" ).append( '<div class="dis">Near</div>' );
   $('#titre2').show();
   });
@@ -747,7 +752,7 @@ $(document).ready(function() {
   $('#dist3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
   $('#editdist').prop("disabled", false);
-  $( ".choseddist" ).append( "<div>" + 100 + "</div>" );
+  $( ".choseddist" ).append( "<div>" + 200 + "</div>" );
   $( ".tabdist" ).append( '<div class="dis">Middle</div>' );
   $('#titre2').show();
   });
@@ -764,7 +769,7 @@ $(document).ready(function() {
   $('#dist3').prop("disabled", true);
   $('#editversant').prop("disabled", true);
   $('#editdist').prop("disabled", false);
-  $( ".choseddist" ).append( "<div>" + 200 + "</div>" );
+  $( ".choseddist" ).append( "<div>" + 400 + "</div>" );
   $( ".tabdist" ).append( '<div class="dis">Far</div>' );
   $('#titre2').show();
   });
@@ -803,7 +808,7 @@ $(document).ready(function() {
   $('#editdist').prop("disabled", true);
   $('#editangle').prop("disabled", false);
   $( ".chosedang" ).append( "<div>" + 1 + "</div>" );
-  $( ".tabang" ).append( '<div class="ang">0°</div>' );
+  $( ".tabang" ).append( '<div class="ang">In Front</div>' );
   });
 }); 
 </script>

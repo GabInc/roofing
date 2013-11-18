@@ -29,6 +29,11 @@ img{
 
    
 }
+#loadimg
+{
+max-height:50px;
+ max-width:50px;  
+}
 #tips {
 	margin-top:10px;
     min-height:150px;
@@ -40,7 +45,8 @@ img{
 
 
 }
- 
+
+
   </style>
 
     <title>Interlock Roofing</title>
@@ -49,7 +55,6 @@ img{
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
 <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -62,13 +67,26 @@ img{
         </div>
       </div>
     </div>
-    
-<?php 
-    error_reporting(E_ERROR | E_PARSE);
+<div class="container">
+ <div class="row-fluid">	
+ 	
+	<div class="alert alert-info" id="tips">Please wait while the images are created<img src="loading.gif" class="loadimg" id="loadimg" align='top' alt=""></div> 
+ </div> 
+</div>
+<?php
+
+
+
+//$message = "Please wait while this task completes, it may take up to a minute or two";
+//echo "<script type='text/javascript'>alert('$message');</script>";
+
+
+error_reporting(E_ERROR | E_PARSE);
+
 	
 //Créer l'array des couleurs
 
-$couleur = array("color1","color2","color3","color4","color4","color5","color6","color7","color8");
+$couleur = array("color1","color2","color4","color5","color6","color7","color8","color9","color10","color11","color12");
 
 foreach ($couleur as $value) {
 	
@@ -108,72 +126,72 @@ if ($queryang == 1 && $querypente == 1) {
 } 
 
 elseif ($queryang == 1 && $querypente == 2) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang == 1 && $querypente == 3) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang == 1 && $querypente == 4) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang == 1 && $querypente == 5) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang == 2 && $querypente == 1) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang == 2 && $querypente == 2) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang == 2 && $querypente == 3) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang == 2 && $querypente == 4) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang == 2 && $querypente == 5) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang == 3 && $querypente == 1) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang == 3 && $querypente == 2) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang == 3 && $querypente == 3) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang == 3 && $querypente == 4) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang == 3 && $querypente == 5) {
-	    $imback = imagecreatefrompng("images/".$value."/1.png");
+	    $imback = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
@@ -184,76 +202,76 @@ else {
 //Définir l'image de derrière versant 2
 
 if ($queryang2 == 1 && $querypente2 == 1) {
-	$imback2 = imagecreatefrompng("images/".$value."/1.png");
+	$imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 } 
 
 elseif ($queryang2 == 1 && $querypente2 == 2) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang2 == 1 && $querypente2 == 3) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang2 == 1 && $querypente2 == 4) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang2 == 1 && $querypente2 == 5) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang2 == 2 && $querypente2 == 1) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang2 == 2 && $querypente2 == 2) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang2 == 2 && $querypente2 == 3) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang2 == 2 && $querypente2 == 4) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang2 == 2 && $querypente2 == 5) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang2 == 3 && $querypente2 == 1) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang2 == 3 && $querypente2 == 2) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang2 == 3 && $querypente2 == 3) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang2 == 3 && $querypente2 == 4) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang2 == 3 && $querypente2 == 5) {
-	    $imback2 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback2 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
@@ -265,76 +283,76 @@ else {
 //Définir l'image de derrière versant 3
 
 if ($queryang3 == 1 && $querypente3 == 1) {
-	$imback3 = imagecreatefrompng("images/".$value."/1.png");
+	$imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 } 
 
 elseif ($queryang3 == 1 && $querypente3 == 2) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang3 == 1 && $querypente3 == 3) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang3 == 1 && $querypente3 == 4) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang3 == 1 && $querypente3 == 5) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang3 == 2 && $querypente3 == 1) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang3 == 2 && $querypente3 == 2) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang3 == 2 && $querypente3 == 3) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang3 == 2 && $querypente3 == 4) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang3 == 2 && $querypente3 == 5) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang3 == 3 && $querypente3 == 1) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang3 == 3 && $querypente3 == 2) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang3 == 3 && $querypente3 == 3) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang3 == 3 && $querypente3 == 4) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang3 == 3 && $querypente3 == 5) {
-	    $imback3 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback3 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
@@ -346,76 +364,76 @@ else {
 //Définir l'image de derrière versant 4
 
 if ($queryang4 == 1 && $querypente4 == 1) {
-	$imback4 = imagecreatefrompng("images/".$value."/1.png");
+	$imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 } 
 
 elseif ($queryang4 == 1 && $querypente4 == 2) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang4 == 1 && $querypente4 == 3) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang4 == 1 && $querypente4 == 4) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang4 == 1 && $querypente4 == 5) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang4 == 2 && $querypente4 == 1) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang4 == 2 && $querypente4 == 2) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang4 == 2 && $querypente4 == 3) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang4 == 2 && $querypente4 == 4) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang4 == 2 && $querypente4 == 5) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang4 == 3 && $querypente4 == 1) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang4 == 3 && $querypente4 == 2) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang4 == 3 && $querypente4 == 3) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang4 == 3 && $querypente4 == 4) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang4 == 3 && $querypente4 == 5) {
-	    $imback4 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback4 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
@@ -427,76 +445,76 @@ else {
 //Définir l'image de derrière versant 5
 
 if ($queryang5 == 1 && $querypente5 == 1) {
-	$imback5 = imagecreatefrompng("images/".$value."/1.png");
+	$imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 } 
 
 elseif ($queryang5 == 1 && $querypente5 == 2) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang5 == 1 && $querypente5 == 3) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang5 == 1 && $querypente5 == 4) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang5 == 1 && $querypente5 == 5) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang5 == 2 && $querypente5 == 1) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang5 == 2 && $querypente5 == 2) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang5 == 2 && $querypente5 == 3) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang5 == 2 && $querypente5 == 4) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang5 == 2 && $querypente5 == 5) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang5 == 3 && $querypente5 == 1) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang5 == 3 && $querypente5 == 2) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang5 == 3 && $querypente5 == 3) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang5 == 3 && $querypente5 == 4) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang5 == 3 && $querypente5 == 5) {
-	    $imback5 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback5 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
@@ -508,76 +526,76 @@ else {
 //Définir l'image de derrière versant 6
 
 if ($queryang6 == 1 && $querypente6 == 1) {
-	$imback6 = imagecreatefrompng("images/".$value."/1.png");
+	$imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 } 
 
 elseif ($queryang6 == 1 && $querypente6 == 2) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang6 == 1 && $querypente6 == 3) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang6 == 1 && $querypente6 == 4) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang6 == 1 && $querypente6 == 5) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 } 
 
 elseif ($queryang6 == 2 && $querypente6 == 1) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang6 == 2 && $querypente6 == 2) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang6 == 2 && $querypente6 == 3) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang6 == 2 && $querypente6 == 4) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang6 == 2 && $querypente6 == 5) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang6 == 3 && $querypente6 == 1) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang6 == 3 && $querypente6 == 2) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang6 == 3 && $querypente6 == 3) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang6 == 3 && $querypente6 == 4) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
 elseif ($queryang6 == 3 && $querypente6 == 5) {
-	    $imback6 = imagecreatefrompng("images/".$value."/1.png");
+	    $imback6 = imagecreatefromjpeg("images/".$value."/1.jpg");
 	
 }
 
@@ -977,12 +995,8 @@ imagepng($thumb6, $value.$queryimgdecoded);
 ?>
 
 <!-- affichage de l'image -->
-<div class="container">
- <div class="row-fluid">	
-	<div class="alert alert-info" id="tips">Congradulation you can now visualize the roof with each of the color and model of Interlock roofing product. 
-		To create another roof or to start again just press the Interlock Roofing button in the top bar.</div> 
- </div> 
-</div>
+
+
 <div class="container jumbotron"> 
 	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
 
@@ -998,45 +1012,91 @@ imagepng($thumb6, $value.$queryimgdecoded);
   <img src="<?php echo 'color2'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
 
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color3'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+    
+    <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
 
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color4'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+  
+  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
 
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color5'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+  
+  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
 
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color6'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
-  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+  
+  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
 
    <div class="row-fluid">	
   <div class="box" id="box">
   <img src="<?php echo 'color7'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
+  
+  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
+   <div class="row-fluid">	
+  <div class="box" id="box">
+  <img src="<?php echo 'color8'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
+  </div>
+  </div>
+
+  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
+   <div class="row-fluid">	
+  <div class="box" id="box">
+  <img src="<?php echo 'color9'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
+  </div>
+  </div>
+  
+    <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
+   <div class="row-fluid">	
+  <div class="box" id="box">
+  <img src="<?php echo 'color10'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
+  </div>
+  </div>
+
+
+  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
+   <div class="row-fluid">	
+  <div class="box" id="box">
+  <img src="<?php echo 'color11'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
+  </div>
+  </div>
+
+  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
+   <div class="row-fluid">	
+  <div class="box" id="box">
+  <img src="<?php echo 'color12'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
+  </div>
+  </div>
 
 </div>
 
 
+<script>
+$(document).ready(function() {
+
+$("#tips").empty();	
+   $("#tips").append("Congratulation you can now visualize the roof with each of the color and model of Interlock roofing product. To create another roof or to start again just press the Interlock Roofing button in the top bar."); 
+  });
+</script>
 
  <!-- Bootstrap core JavaScript
     ================================================== -->
