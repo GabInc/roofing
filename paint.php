@@ -177,11 +177,11 @@ min-height:249px;
      <button class="btn btn-mini" id="editangle"><span class="glyphicon glyphicon-arrow-left"></span></button>
    <div class="btn-group-vertical" id="boutonpente">
    	  <h4><span class="label label-default">Slope :</h4></span>
-      <button type="radio" class="btn btn-primary" id="pente1">4/12</button>
+      <button type="radio" class="btn btn-primary" id="pente1" style="display: none;">4/12</button>
       <button type="radio" class="btn btn-primary" id="pente2">6/12</button>
-      <button type="radio" class="btn btn-primary" id="pente3">8/12</button>
-      <button type="radio" class="btn btn-primary" id="pente4">10/12</button>
-      <button type="radio" class="btn btn-primary" id="pente5">12/12</button>
+      <button type="radio" class="btn btn-primary" id="pente3" style="display: none;">8/12</button>
+      <button type="radio" class="btn btn-primary" id="pente4" style="display: none;">10/12</button>
+      <button type="radio" class="btn btn-primary" id="pente5" style="display: none;">12/12</button>
    </div>
      <button type="button" class="btn btn-primary" id ="next">Next side <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
   

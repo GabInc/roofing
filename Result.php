@@ -86,7 +86,7 @@ error_reporting(E_ERROR | E_PARSE);
 	
 //Créer l'array des couleurs
 
-$couleur = array("color1","color2","color4","color5","color6","color7","color8","color9","color10","color11","color12");
+$couleur = array("color1","color2","color4","color5","color6","color7","color8");
 
 foreach ($couleur as $value) {
 	
@@ -1045,48 +1045,14 @@ imagepng($thumb6, $value.$queryimgdecoded);
   <img src="<?php echo 'color7'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
-  
-  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
 
-   <div class="row-fluid">	
-  <div class="box" id="box">
+  	<div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
+
+ <div class="row-fluid">	
+  <div class="box" id="box">			
   <img src="<?php echo 'color8'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
   </div>
   </div>
-
-  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color9'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-  
-    <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color10'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-
-
-  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color11'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-
-  <div class ="row-fluid titre" id="titre"><h3><span class="label label-success">Model X, Color X : </h3></span></div>
-
-   <div class="row-fluid">	
-  <div class="box" id="box">
-  <img src="<?php echo 'color12'.$queryimgdecoded ?>" class="imgfinal" id="testimg"/>
-  </div>
-  </div>
-
 </div>
 
 
